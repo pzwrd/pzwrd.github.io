@@ -1,0 +1,41 @@
+@mixin check-radio() {
+  position: relative;
+  cursor: pointer;
+
+  input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    cursor: pointer;
+
+    & ~ .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      &::after {
+        content: "";
+        position: absolute;
+      }
+    }
+
+    &[type="radio"] {
+      & ~ .checkmark {
+        &::after {
+          opacity: 0;
+        }
+      }
+
+      &:checked ~ .checkmark {
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+%check-radio {
+  @include check-radio;
+}

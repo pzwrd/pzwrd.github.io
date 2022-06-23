@@ -1,0 +1,177 @@
+@use "../abstracts" as *;
+
+.drag-list--drag-handle {
+  svg {
+    color: $gray1;
+  }
+}
+.drag-list--dropdown {
+  @include screen-lg {
+    width: 100%;
+  }
+  .angular_selectbox {
+    max-width: 262px;
+    min-width: 262px;
+    width: 100%;
+    @media (max-width:$screen-xl) {
+      min-width: 100%;
+    }
+    .angular_selectbox--menu-button {
+      @include screen-lg {
+        min-height: 48px;
+        .angular_selectbox--button-text {
+          font-size: $text-md;
+        }
+      }
+      @include screen-lap-sm {
+        padding: 2px 21px 2px 16px;
+        min-height: 38px;
+      }
+      &:not(.form-error) {
+        border: 1px solid $gray3;
+      }
+    }
+  }
+}
+/* in-flight clone */
+.gu-mirror {
+  position: fixed;
+  margin: 0;
+  z-index: 9999;
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  pointer-events: none;
+}
+/* high-performance display:none; helper */
+.gu-hide {
+  left: -9999px;
+}
+/* added to mirrorContainer (default = body) while dragging */
+.gu-unselectable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* added to the source element while its mirror is dragged */
+.gu-transit {
+  opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: alpha(opacity=20);
+}
+.drag-list.gu-mirror {
+  opacity: 1;
+  cursor: grabbing;
+}
+
+.drag-list-delete {
+  .app-l-action-btn {
+    &:hover {
+      .delete-action {
+        svg {
+          color: $error;
+        }
+      }
+    }
+  }
+}
+.app-l-form-items_single {
+  .app-c-dragdrop-container {
+    .ngx-file-drop__drop-zone {
+      position: relative;
+      border: none;
+      height: 85px;
+      .ngx-file-drop__content {
+        color: $gray2;
+      }
+      .app-c-browse-btn {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        border-radius: 8px;
+        background: $gray5;
+        border: none;
+        max-height: 85px;
+        font-size: $text-md;
+        font-weight: $font-weight-medium;
+        color: $app-theme-primary;
+        .app-c-greentxt {
+          color: $app-theme-primary-green;
+          @include screen-lg{
+            text-transform: capitalize;
+          }
+        }
+      }
+      &.ngx-file-drop__drop-zone--over{
+        .app-c-browse-btn {
+          border: 1px solid $app-theme-secondary-blue;
+        }
+      }
+    }
+    .icon__right {
+      position: relative;
+      z-index: 1;
+      left: -120px;
+      top: -8px;
+    }
+  }
+  .app-c-filecontainer {
+    @extend %flex-vert-start;
+    margin-top: 10px;
+    .app-c-text {
+      color: $gray2;
+      font-size: $text-sm-plus;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+    .app-c-file-name {
+      font-size: $text-sm-plus;
+      color: $app-theme-primary;
+      font-weight: $font-weight-semi-bold;
+      display: block;
+    }
+  }
+  &.app-c-upload-greentheme{
+    .app-c-dragdrop-container {
+      .ngx-file-drop__drop-zone {
+        @include screen-lg {
+          height: 64px;
+        }
+        .app-c-browse-btn {
+          background: rgba(231, 250, 243, 0.2);
+          border: 1px dashed $app-theme-primary-green;
+          border-radius: $card-radius;
+          transition: border-style $animation-type3 $animation-duration3;
+          cursor: pointer;
+          &:hover{
+            border-style: solid;
+          }
+        
+          @include screen-lg {
+            height: 64px;
+          }
+        }
+        &.ngx-file-drop__drop-zone--over{
+          border-radius: 0px;
+          background-color: transparent;
+          .app-c-browse-btn {
+            border: 1px solid $app-theme-primary-green;
+          }
+        }
+      }
+    }
+    .ngx-file-drop__content{
+      @include screen-lg {
+      .icon-svg{
+         width: 24px;
+         height: 24px;
+      }
+    }
+    }
+  }
+}
+

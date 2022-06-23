@@ -1,0 +1,325 @@
+@use "../abstracts" as *;
+.app-l-profile__container {
+  @extend %flex;
+  padding: 40px 45px 40px 30px;
+  @include screen-lg {
+    @include flex-direction(column);
+    padding: 20px;
+    background: $white;
+    margin-bottom: 20px;
+    min-height: auto;
+  }
+  .app-l-profile-left {
+    flex: 1 0 282px;
+    margin-right: 30px;
+    @include screen-lg {
+      margin-right: 0px;
+      flex: 0 1 auto;
+    }
+    .app-c-menu-container {
+      padding-left: 0;
+      list-style: none;
+      @extend %flex-col;
+      li{
+        &:first-child{
+          .app-c-menu-item{
+            border-radius: 8px 8px 0px 0px;
+          }
+        }
+        &:nth-last-child(2) {
+          .app-c-menu-item{
+          border-bottom: none;
+          border-radius: 0px 0px 8px 8px;
+          }
+        }
+        &:last-child{
+          .app-c-menu-item{
+            @include screen-lg {
+              margin-right: 0px;
+            }
+          }
+
+        }
+      }
+      @include screen-lg {
+        @include flex-direction(row);
+        overflow-x: auto;
+        margin-bottom: 8px;
+      }
+    }
+    .app-c-menu-item {
+      border-bottom: 1px solid $gray4;
+      background: $white;
+      padding: 20px;
+      @extend %flex;
+      outline: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color $animation-duration3,
+      background-color $animation-duration3,box-shadow $animation-duration3;
+      &:hover {
+        background-color: rgba($color: $gray5, $alpha: 0.5);
+        @include screen-lg {
+          background-color: transparent;
+        }
+        .app-c-menu-text {
+          color: $app-theme-primary;
+        }
+      }
+      @include screen-lg {
+        padding: 0px;
+        margin-right: 30px;
+        display: inline-block;
+        background: transparent;
+        border: none;
+      }
+      &:after {
+        @include screen-lg {
+          content: "";
+          width: 0px;
+          opacity: 0;
+          background: $app-theme-primary-green;
+          height: 3px;
+          border-radius: $border-radius1;
+          margin-top: 6px;
+          position: relative;
+          display: flex;
+          left: 0;
+          bottom: 5;
+          z-index: 2;
+          transition: opacity $animation-duration3 $animation-type3,
+            width $animation-duration3 $animation-type3;
+        }
+      }
+      
+      &.active {
+        box-shadow: inset 3px 0px 0px $app-theme-primary;
+        @include screen-lg {
+          box-shadow: none;
+        }
+        &:after {
+          @include screen-lg {
+            width: 47px;
+            opacity: 1;
+          }
+        }
+        .app-c-menu-text {
+          font-weight: $font-weight-bold;
+          color: $app-theme-primary;
+          @include screen-lg {
+            color: $app-theme-primary-green;
+          }
+        }
+      }
+      .app-c-menu-text {
+        font-weight: $font-weight-regular;
+        color: $gray1;
+        font-size: $text-lg;
+        line-height: 1.2;
+        text-decoration: none;
+        word-break: break-all;
+        white-space: normal;
+        @extend %flex-vert-center;
+        width: 100%;
+        @include screen-lg {
+          white-space: nowrap;
+        }
+        @include screen-lg {
+          line-height: 1.5;
+          color: $app-theme-primary;
+          font-weight: $font-weight-semi-bold;
+        }
+      }
+      .app-c-status {
+        background: $app-theme-orange;
+        font-size: $text-xs;
+        font-weight: $font-weight-medium;
+        padding: 4px 8px;
+        color: $white;
+        border-radius: $field-btn-radius;
+        margin-left: auto;
+        line-height: 1.1;
+        min-height: 18px;
+        min-width: 55px;
+        max-width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        @include screen-lg {
+          margin-left: 6px;
+        }
+      }
+      &.mv-only{
+        display: none;
+        @include screen-lg {
+          display: block;
+        }
+      }
+    }
+    .app-l-sticky-wrapper{
+      @media (min-width: $screen-lg) {
+        position: sticky;
+        top: 0;
+      }
+    }
+  }
+  .app-l-profile-right {
+    flex: 1 1 100%;
+    background: $white;
+    border-radius: $card-radius;
+    min-height: calc(100vh - 215px);
+    @include screen-lap-sm {
+      min-height: calc(100vh - 170px);
+    }
+    @include screen-lg {
+      min-height: auto;
+    }
+  }
+  .app-c-profilemenu-btn {
+    background: transparent;
+    margin-top: 30px;
+    border: 1px solid $app-theme-primary;
+    &:hover {
+      border: 1px solid $gray2;
+    }
+    @include screen-lg {
+      display: none;
+    }
+  }
+}
+
+.app-l-profile-right__container {
+  .app-c-profile-header {
+    padding: 30px 40px;
+    border-bottom: 1px solid $gray4;
+    @include screen-lg {
+      display: none;
+    }
+    .app-c-title {
+      line-height: 1.2;
+      color: $app-theme-primary;
+      font-weight: $font-weight-bold;
+      font-size: $text-xxl-small;
+    }
+  }
+  .app-c-profile-content {
+    padding: 40px 60px 40px 40px;
+    @extend %flex;
+    @include screen-lg {
+      @include flex-direction(column);
+      padding: 40px 0px 40px 0px;
+    }
+    .app-c-profile-content-left {
+      flex: 1 0 44%;
+      .app-c-vital-items {
+        margin-bottom: 48px;
+        @include screen-lg {
+          margin-bottom: 30px;
+        }
+        .app-l-form-wrap{
+          max-width: 100%;
+          @include screen-lg {
+            max-width: 100%;
+          }
+        }
+        .app-l-form-wrap--label{
+          @include screen-lg {
+            font-size: $text-md;
+          }
+        }
+      }
+      .app-textfield {
+        background: $gray6;
+        //for remove ios boxshadow in input field
+        -webkit-appearance: none;
+      }
+    }
+    .app-c-profile-content-right {
+      flex: 1 1 50%;
+      text-align: center;
+      .app-c-pic-container {
+        width: 216px;
+        height: 216px;
+        border-radius: $circle-radius;
+        border: 2px solid $app-theme-primary-green;
+        background: $green-shade;
+        margin-left: auto;
+        overflow: hidden;
+        @extend %flex-horiz-end-vert-center;
+        img{
+          max-width: 100%;
+          max-height: 100%;
+        }
+        @include screen-lg {
+          width: 110px;
+          height: 110px;
+          border: 1px solid $app-theme-primary-green;
+        }
+      }
+      .app-c-outer-pic-container {
+        position: relative;
+        width: 216px;
+        height: 216px;
+        margin-left: auto;
+        @include screen-lg {
+          width: 110px;
+          height: 110px;
+        }
+        
+      }
+      img {
+        @include screen-lg {
+          max-width: 70px;
+          object-fit: contain;
+        }
+      }
+      .app-c-upload__btn {
+        position: absolute;
+        display: inline-block;
+        bottom: -18px;
+        right: 80px;
+        transition: background-color $animation-duration3;
+        @include screen-lg {
+          right: 37px;
+        }
+        &:hover{
+          .app-c-btn{
+            background-color: $sblue;
+          }
+        }
+      }
+      .app-c-upload__btn input[type="file"] {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        width: 47px;
+        height: 47px;
+        border-radius: $circle-radius;
+        overflow: hidden;
+        z-index: 1;
+        cursor: pointer;
+        text-indent: -999px;
+        @include screen-lg {
+          width: 35px;
+          height: 35px;
+        }
+      }
+      .app-c-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 2px solid $white;
+        @extend %flex-all-center;
+        background: $gray4;
+        @include screen-lg {
+          width: 35px;
+          height: 35px;
+        }
+        .icon-size-32{
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+}

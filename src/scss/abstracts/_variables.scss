@@ -1,0 +1,103 @@
+@use "./palette" as *;
+
+//Header
+$main-header-signup-h: 97px;
+$main-header-h: 80px;
+
+//Animation
+$animation-type1: ease;
+$animation-type2: ease-in;
+$animation-type3: ease-out;
+
+$animation-duration1: 0.1s;
+$animation-delay1: 0.1s;
+
+$animation-duration2: 0.2s;
+$animation-delay2: 0.2s;
+
+$animation-duration3: 0.3s;
+$animation-delay3: 0.3s;
+
+$animation-duration4: 0.4s;
+
+$animation-duration5: 0.5s;
+$animation-delay5: 0.5s;
+
+$animation-duration8: 0.8s;
+$animation-delay8: 0.8s;
+
+$animation-duration11: 1s;
+$animation-delay11: 1s;
+
+//form items
+$field-addon-btn-radius: 25px;
+$field-p-x: 16px;
+$btn-field-check-radio-w-h: 18px;
+$field-check-radio-w-h: 24px;
+$field-check-radio-w-s: 16px;
+
+//button
+$field-btn-md-py: 9px;
+$field-btn-radius: 16px;
+$field-btn-radius-lg: 40px;
+$field-btn-sm-h: 36px;
+$field-btn-sm-p: 8px 16px;
+$field-btn-md-h: 40px;
+
+$btn-with-icon-w-h: 18px;
+
+//circle
+$circle-radius: 50%;
+$card-radius: 8px;
+$icon-radius: 16px;
+$tag-radius: 32px;
+$gld-radius:34px;
+
+//modal
+$zindex-modal: 1040;
+$zindex-modal-backdrop: 1040;
+$box-shadow-modal: 4px 8px 20px rgba(198, 207, 216, 0.25);
+$box-shadow-modal-sm: 4px 8px 20px rgba(198, 207, 216, 0.25);
+$box-shadow-modal-lg: 4px 8px 20px rgba(198, 207, 216, 0.25);
+$modal-dialog-margin: 0.5rem;
+$modal-inner-padding: 3rem;
+
+$modal-footer-margin-between: 0.5rem;
+
+$modal-dialog-margin: 0.5rem;
+$modal-dialog-margin-y-sm-up: 1.75rem;
+
+$modal-title-line-height: 1.5;
+
+$modal-content-color: null;
+$modal-content-bg: $white;
+$modal-content-border-color: rgba($black, 0.2);
+$modal-header-padding: 2rem;
+
+$modal-backdrop-bg: $white;
+$modal-backdrop-opacity: 0.5;
+
+$modal-sm: 300px;
+$modal-md: 500px;
+$modal-md-plus: 626px;
+$modal-lg: 960px;
+$modal-xl: 1140px;
+
+$modal-fade-transform: translate(0, -50px);
+$modal-show-transform: none;
+$modal-transition: transform $animation-duration3 $animation-type3;
+$modal-scale-transform: scale(1.02);
+$modal-header-border-width: 0.1rem;
+$modal-header-border-color: $gray4;
+$modal-dialog-margin-y-sm-up: 1.75rem;
+$modal-content-box-shadow-sm-up: $box-shadow-modal;
+
+$modal-border-radius-sm: 0.2rem;
+$modal-border-radius-lg: 0.3rem;
+
+$icon-sizes: (12px, 14px, 16px, 18px, 20px, 22px, 24px, 26px, 28px);
+
+$border-radius1:2px;
+$border-radius2:4px;
+$border-radius3:6px;
+$border-radius4:10px;

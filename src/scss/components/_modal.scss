@@ -1,0 +1,462 @@
+@use "../abstracts" as *;
+
+.modal-open {
+  overflow: hidden;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $zindex-modal;
+  display: none;
+  overflow: hidden;
+  outline: 0;
+  opacity: 0;
+  .modal-open & {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  &.fade {
+    &.in {
+      opacity: 1;
+    }
+  }
+}
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: $modal-dialog-margin;
+  pointer-events: none;
+
+  .modal.fade & {
+    transition: $modal-transition;
+  }
+  .modal.show & {
+    transform: translate(0, 0);
+  }
+}
+
+.modal-dialog-centered {
+  @extend %flex;
+  align-items: center;
+  height: 100%;
+  max-height: calc(100% - (#{$modal-dialog-margin} * 2));
+}
+
+.modal-content {
+  position: relative;
+  @extend %flex;
+  @include flex-direction(column);
+  width: 100%;
+  pointer-events: auto;
+  background-color: $white;
+  background-clip: padding-box;
+  background: #ffffff;
+  border-radius: 16px;
+  outline: 0;
+  box-shadow: $box-shadow-modal;
+  @media (max-width: $screen-md) {
+    margin: 20px 15px;
+  }
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $zindex-modal-backdrop;
+  background-color: $modal-backdrop-bg;
+
+  &.fade {
+    opacity: 0;
+    &.in {
+      opacity: $modal-backdrop-opacity;
+    }
+  }
+}
+
+.modal-header {
+  @extend %flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: $modal-header-padding;
+  border-bottom: $modal-header-border-width solid $modal-header-border-color;
+  border-top-right-radius: $modal-border-radius-lg;
+  border-top-left-radius: $modal-border-radius-lg;
+
+  .close {
+    padding: $modal-header-padding;
+    margin: (-$modal-header-padding) (-$modal-header-padding)
+      (-$modal-header-padding) auto;
+    @media (max-width: $screen-md) {
+      margin-top: 7px;
+    }
+  }
+}
+
+.modal-title {
+  margin-bottom: 0;
+  line-height: $modal-title-line-height;
+}
+
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: $modal-inner-padding;
+}
+
+.modal-footer {
+  @extend %flex-vert-start;
+  padding: $modal-inner-padding;
+  border-top: 0.1rem solid $gray5;
+
+  > :not(:first-child) {
+    margin-left: 0.25rem;
+  }
+  > :not(:last-child) {
+    margin-right: 0.25rem;
+  }
+}
+
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
+@media (min-width: $screen-sm) {
+  .modal-dialog {
+    max-width: $modal-md;
+    margin: $modal-dialog-margin-y-sm-up auto;
+    &.modal-md-plus {
+      max-width: 626px;
+    }
+  }
+
+  .modal-dialog-centered {
+    max-height: calc(100% - (#{$modal-dialog-margin-y-sm-up} * 2));
+    height: 100%;
+  }
+
+  .modal-content {
+    box-shadow: $box-shadow-modal;
+  }
+
+  .modal-sm {
+    max-width: $modal-sm;
+  }
+}
+
+@media (min-width: $screen-lg) {
+  .modal-lg {
+    max-width: $modal-lg;
+  }
+}
+.fade {
+  transition: opacity $animation-duration3 $animation-type3;
+}
+
+/*----------------------custom css--------------------*/
+.app-l-delete-modal {
+  .modal-header {
+    h5 {
+      font-weight: $font-weight-semi-bold;
+      font-size: $text-xl;
+      color: $app-theme-primary;
+      margin: 0 auto;
+    }
+  }
+  .modal-body {
+    .app-l-description {
+      font-weight: $font-weight-medium;
+      font-size: $text-lg;
+      color: $gray1;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .app-l-btn-group {
+      @extend %flex-all-center;
+      margin-bottom: 10px;
+      button {
+        &.app-btn {
+          @media (max-width: 420px) {
+            padding: 16px 25px;
+          }
+          @media (max-width: 320px) {
+            padding: 16px 15px;
+          }
+          &.app-btn-secondary {
+            margin-right: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+/*------------------submit code modal-----------*/
+.app-l-submitcode-modal {
+  .modal-header {
+    border-bottom: none;
+    padding-bottom: 0px;
+    .app-c-close-modal {
+      margin-left: auto;
+      color: $gray2;
+      cursor: pointer;
+      transition: color $animation-type1 $animation-duration3;
+      .icon-svg {
+        @include screen-lg {
+          width: 14px;
+          height: 14px;
+        }
+      }
+      &:hover {
+        color: $app-theme-primary;
+      }
+    }
+  }
+  .modal-body {
+    padding-top: 0px;
+    @include screen-lg {
+      padding: 0px 20px 20px 20px;
+    }
+    .app-l-folder-fl {
+      text-align: center;
+      margin-bottom: 30px;
+      @include screen-lg {
+        margin-bottom: 20px;
+      }
+      .file-icon {
+        @include screen-lg {
+          width: 80px;
+          height: 50px;
+        }
+      }
+    }
+    .app-l-modal-hd {
+      font-weight: $font-weight-bold;
+      font-size: $text-xxl;
+      color: $app-theme-primary;
+      margin-bottom: 20px;
+      text-align: center;
+      @include screen-lg {
+        font-size: $text-xl;
+        margin-bottom: 15px;
+      }
+    }
+
+    .app-l-description {
+      font-weight: $font-weight-medium;
+      font-size: $text-md;
+      color: $gray1;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .app-l-btn-group {
+      @extend %flex-all-center;
+      margin-bottom: 20px;
+
+      .app-btn {
+        @include screen-lg {
+          text-transform: capitalize;
+          padding: 16px 20px;
+        }
+        @media (max-width: $screen-xs) {
+          padding: 16px 10px;
+        }
+        &.app-btn-secondary {
+          margin-right: 20px;
+        }
+      }
+    }
+    .app-c-notification {
+      font-size: $text-sm;
+      font-weight: $font-weight-medium;
+      line-height: 1.5;
+      color: $gray1;
+      text-align: center;
+      padding: 0px 96px;
+      @include screen-lg {
+        padding: 0px;
+      }
+    }
+  }
+}
+/*------------------award modal-----------*/
+.app-l-award-modal {
+  .modal-header {
+    border-bottom: none;
+    padding-bottom: 0px;
+    .app-c-close-modal {
+      margin-left: auto;
+      color: $gray2;
+      cursor: pointer;
+      transition: color $animation-type1 $animation-duration3;
+      .icon-svg {
+        @include screen-lg {
+          width: 14px;
+          height: 14px;
+        }
+      }
+      &:hover {
+        color: $app-theme-primary;
+      }
+    }
+  }
+  .modal-body {
+    padding-top: 0px;
+    .app-l-folder-fl {
+      text-align: center;
+      margin-bottom: 30px;
+      @include screen-lg {
+        margin-bottom: 26px;
+      }
+      .award-icon {
+        @include screen-lg {
+          width: 194px;
+        }
+      }
+    }
+
+    .app-l-description-aw {
+      font-weight: $font-weight-medium;
+      font-size: $text-lg;
+      color: $gray2;
+      margin-bottom: 14px;
+      text-align: center;
+      line-height: 1.5;
+
+      @include screen-lg {
+        font-size: $text-md;
+      }
+      .highlight-text {
+        font-weight: $font-weight-semi-bold;
+        color: $app-theme-primary;
+      }
+    }
+    .membership-type {
+      background: linear-gradient(
+        220.8deg,
+        $lg-yellowdark 14.16%,
+        $lg-yellowlight 98.42%
+      );
+      border-radius: $icon-radius;
+      color: $white;
+      font-size: $text-md;
+      font-weight: $font-weight-bold;
+      padding: 4px 12px;
+      @include screen-lg {
+        font-size: $text-xs-plus;
+        padding: 3px 9px;
+      }
+    }
+  }
+}
+
+.modal-default-type {
+  max-width: 712px;
+  .modal-content {
+    max-height: calc(100% - 76px);
+    .app-btn-lg {
+      height: auto;
+    }
+  }
+  .modal-header {
+    h5 {
+      font-weight: $font-weight-semi-bold;
+      font-size: $text-xl;
+      color: $app-theme-primary;
+      margin: 0 auto;
+      @include screen-lg {
+        font-size: $text-lg;
+      }
+    }
+    .app-c-close {
+      cursor: pointer;
+      color: $gray2;
+      &:hover {
+        color: $gray1;
+      }
+    }
+  }
+  .modal-body {
+    overflow: auto;
+    padding: 48px 40px;
+
+    @include screen-lg {
+      padding: 15px 20px 40px;
+    }
+    .modal-portfolio-card {
+      @extend %flex;
+      @include screen-lg {
+        flex-direction: column;
+      }
+    }
+    .modal-portfolio-item {
+      background-color: $gray5;
+      padding: 30px 22px 34px;
+      text-align: center;
+      line-height: 1.5;
+      margin-right: 30px;
+      border-radius: 8px;
+      @include screen-lg {
+        margin: 0 0 20px;
+        padding: 20px;
+      }
+      &:last-child {
+        margin: 0;
+      }
+      .mp-title {
+        font-size: $text-lg;
+        color: $app-theme-primary;
+        margin-bottom: 20px;
+        font-weight: $font-weight-semi-bold;
+        @include screen-lg {
+          margin-bottom: 10px;
+        }
+      }
+      .mp-description {
+        font-size: $text-md;
+        color: $gray1;
+        margin-bottom: 30px;
+        @include screen-lg {
+          margin-bottom: 10px;
+        }
+      }
+      .mp-action {
+        @extend %flex-all-center;
+      }
+    }
+  }
+}
+.popover-signup {
+  overflow: hidden;
+  .app-c-backdrop-mobile {
+    width: 100%;
+    height: 100%;
+    &::before {
+      transition: 0.3s all;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: $app-theme-primary;
+      opacity: 0.6;
+    }
+  }
+  .app-sidepanel-backdrop {
+    background: rgba(19, 37, 57, 0.47);
+  }
+}
+.app-c-backdrop-mobile {
+  display: none;
+}

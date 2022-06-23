@@ -1,0 +1,1260 @@
+@use "../abstracts" as *;
+.app-l-dashboard {
+    .app-l-dashboard-list {
+      .app-l-dashboard-companies--header {
+        padding-top: 20px;
+      }
+      .app-c-challenges-null {
+        .companies-pane--header {
+          margin-bottom: 20px;
+          @include screen-lg {
+            margin-bottom: 10px;
+          }
+        }
+        .app-c-text-null {
+          color: $gray1;
+          font-size: $text-md;
+          font-weight: $font-weight-medium;
+          line-height: 1.5;
+        }
+      }
+      .app-c-challenges-valid {
+        &.app-c-challenges-completed {
+          .companies-pane--header {
+            margin-top: 30px;
+            @include screen-lg {
+              margin-top: 0px;
+            }
+          }
+          @include screen-lg {
+            margin-top: 40px;
+          }
+          .app-c-header-wrap {
+            border-bottom: 1px solid $gray4;
+            padding-bottom: 20px;
+           
+            .app-c-waiting-evaluation {
+              @extend %flex;
+              margin-right: 20px;
+              font-size: $text-md;
+              font-weight: $font-weight-medium;
+              .app-c-waiting--text-primary {
+                margin-left: 10px;
+              }
+            }
+            @include screen-lg {
+              border-bottom: none;
+              padding-bottom: 0;
+            }
+            .app-c-date-submitted {
+              position: relative;
+              top: 3px;
+            }
+          }
+          .app-header-text {
+            margin-left: auto;
+            font-size: $text-sm;
+            color: $gray2;
+            line-height: 2;
+            @extend %flex;
+            font-weight: $font-weight-medium;
+            @include screen-lg {
+              margin-top: 8px;
+              display: block;
+            }
+          }
+          .app-c-card-body {
+            padding-bottom: 0px;
+            @include screen-lg {
+              border-top: 1px solid $gray4;
+              margin-top: 15px;
+            }
+            .app-c-completed--status {
+              display: flex;
+              align-items: center;
+             
+              @media screen and (max-width: $screen-xxxl) {
+                flex-direction: row;
+                align-items: flex-start;
+                flex-wrap: wrap;
+              }
+              @include screen-xxlprocess {
+                flex-wrap: wrap;
+              }
+              .app-c-code {
+                flex: 1 1 15%;
+                @media screen and (max-width: $screen-xxxl) {
+                  flex: 1 1 50%;
+                }
+                @include screen-lg {
+                  flex: 1 1 50%;
+                }
+                .app-c-label-container {
+                  font-weight: $font-weight-semi-bold;
+                  font-size: $text-md;
+                  line-height: 1.5;
+                  color: $gray1;
+                  margin-bottom: 8px;
+                }
+                .app-c-value-container {
+                  .app-c-value-obtained {
+                    font-weight: $font-weight-bold;
+                    font-size: $text-xxl;
+                    line-height: 1.5;
+                    color: $app-theme-primary;
+                  }
+                  .app-c-value-total {
+                    font-weight: $font-weight-semi-bold;
+                    font-size: $text-lg;
+                    line-height: 1.5;
+                    color: $gray2;
+                  }
+                }
+              }
+              .app-c-badge {
+                flex: 1 1 27%;
+                @media screen and (max-width: $screen-xxxl) {
+                  flex: 1 1 50%;
+                  order: 3;
+                }
+                @include screen-lg {
+                  order: 3;
+                  flex: 1 1 50%;
+                }
+                .app-c-icon-container {
+                  .gt-score-medals {
+                    @extend %flex;
+                    .medal-section {
+                      display: flex;
+                      align-items: center;
+                      margin-right: 30px;
+                      .medal-score {
+                        font-size: $text-sm;
+                        font-weight: $font-weight-semi-bold;
+                        color: $app-theme-primary;
+                        margin-left: 10px;
+                      }
+                    }
+                  }
+                }
+                .app-c-label-container {
+                  font-weight: $font-weight-semi-bold;
+                  font-size: $text-md;
+                  line-height: 1.5;
+                  color: $gray1;
+                  margin-bottom: 8px;
+                }
+              }
+              .app-c-quality {
+                flex: 1 1 0;
+                @media screen and (max-width: $screen-xxxl) {
+                  flex: 1 1 50%;
+                  order: 2;
+                  margin: 0px 0px 20px 0px;
+                }
+                @include screen-lg {
+                  order: 2;
+                }
+                .app-c-label-container {
+                  font-weight: $font-weight-semi-bold;
+                  font-size: $text-md;
+                  line-height: 1.5;
+                  color: $gray1;
+                  margin-bottom: 8px;
+                }
+                .app-c-value-container {
+                  color: $app-theme-primary;
+                  font-size: $text-xxl;
+                  font-weight: $font-weight-bold;
+                  line-height: 1.5;
+                }
+              }
+            }
+          }
+          .app-c-button-container {
+            display: flex;
+            padding: 0;
+            .app-c-btn-card {
+              flex: 1 1 auto;
+              padding: 20px 0px;
+              border-radius: 0px;
+              @include screen-lg {
+                padding: 15px 0px;
+              }
+              &:first-child {
+                border-right: 1px solid $gray4;
+              }
+            }
+          }
+          .app-c-card__item {
+            padding: 0px;
+            .app-c-card-inner--code-challenge {
+              padding: 20px;
+            }
+          }
+        }
+        .companies-pane--header {
+          margin-bottom: 20px;
+          @include screen-lg {
+            margin-top: 0px;
+          }
+        }
+        .app-l-tab-slider--container {
+          @include screen-lg {
+            padding: 0px;
+          }
+        }
+        .app-c-text-null {
+          color: $gray1;
+          font-size: $text-md;
+          font-weight: $font-weight-medium;
+          line-height: 1.5;
+        }
+        .app-c-card__item {
+          padding: 0px;
+          cursor: auto;
+          box-shadow: 4px 8px 20px rgba(198, 207, 216, 0.25);
+          .app-c-card-inner--code-challenge {
+            padding: 20px;
+            @include screen-lg {
+              padding-bottom: 15px;
+            }
+          }
+        }
+        .app-c-button-container {
+          @extend %flex;
+          padding: 0;
+          .app-c-btn-card {
+            flex: 1 1 auto;
+            padding: 20px 0px;
+            border-radius: 0px;
+            position: relative;
+            .app-l-file-upload {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              opacity: 0;
+              z-index: 0;
+              cursor: pointer;
+              max-width: 100px;
+            }
+            @include screen-lg {
+              padding: 15px 0px;
+            }
+          }
+        }
+      }
+      .app-c-challenges-recommended {
+        margin-top: 30px;
+        @include screen-lg {
+          margin-top: 40px;
+        }
+      }
+      .app-l-header-challenges {
+        display: block;
+      }
+      .app-l-dashboard-companies {
+        .app-c-code-evaluation {
+          @extend %flex;
+          @include screen-lg {
+            flex-direction: column;
+            padding: 0px 20px;
+            .app-c-card__item {
+              padding: 0px;
+              margin: 0px;
+            }
+          }
+          .app-c-gt-score {
+            flex: 0 1 290px;
+            margin-right: 30px;
+            @include screen-lg {
+              flex: 1 1 auto;
+              margin-right: 0px;
+              margin-bottom: 20px;
+            }
+            .app-c-card__item {
+              padding: 0px;
+              margin: 0px;
+              cursor: auto;
+              box-shadow: 4px 8px 20px rgba(198, 207, 216, 0.25);
+            }
+          }
+          .app-c-badges {
+            flex: 1 1 100%;
+            .app-c-card__item {
+              padding: 0px;
+              margin: 0px;
+              cursor: auto;
+              box-shadow: 4px 8px 20px rgba(198, 207, 216, 0.25);
+            }
+          }
+          .app-c-card-header {
+            padding: 20px;
+            border-bottom: 1px solid $gray4;
+            @extend %flex-vert-center;
+            .app-c-main-title {
+              font-weight: $font-weight-semi-bold;
+              font-size: $text-md;
+              color: $gray1;
+              line-height: 1.2;
+            }
+            .app-c-sub-title {
+              margin-left: auto;
+              font-size: $text-sm;
+              color: $gray1;
+              font-weight: $font-weight-medium;
+              color: $gray2;
+              @include screen-lg {
+                display: none;
+              }
+              .membership {
+                padding: 4px 9px;
+                text-transform: uppercase;
+                border-radius: $icon-radius;
+                color: $white;
+                font-weight: $font-weight-bold;
+                font-size: $text-xs;
+                margin: 0px 3px;
+                transform: translateX(-50%);
+                @include screen-lg {
+                  padding: 2px 6.5px;
+                  bottom: 4px;
+                }
+                &-gold {
+                  background: linear-gradient(
+                    220.8deg,
+                    #c48d00 14.16%,
+                    #f7d001 98.42%
+                  );
+                }
+                &-silver {
+                  background: linear-gradient(
+                    2.42deg,
+                    #697f8e -1.62%,
+                    rgba(124, 140, 150, 0.39) 102.77%
+                  );
+                }
+                &-bronze {
+                  background: linear-gradient(
+                    9.87deg,
+                    #c77b30 2.71%,
+                    rgba(206, 145, 85, 0.33) 99.37%
+                  );
+                }
+              }
+            }
+            .app-c-sub-title-bold {
+              font-weight: $font-weight-semi-bold;
+              color: $gray1;
+            }
+          }
+          .app-c-card-body {
+            padding: 22px 20px;
+            &.app-c-card-body-gt {
+              padding: 22px 20px 26px 20px;
+              @include screen-lg {
+                padding: 20px 20px 30px 20px;
+              }
+            }
+            &.app-c-card-body-badge {
+              padding: 13px 20px 20px 20px;
+              @include screen-lg {
+                padding: 20px;
+              }
+              .app-c-sub-title--mobile {
+                display: none;
+                @include screen-lg {
+                  display: block;
+                  font-size: $text-sm;
+                  font-weight: $font-weight-medium;
+                  line-height: 1.5;
+                  margin-bottom: 10px;
+                  color: $gray2;
+                  .app-c-sub-title-bold {
+                    font-weight: $font-weight-semi-bold;
+                    color: $app-theme-primary;
+                  }
+                }
+              }
+              .membership {
+                padding: 4px 9px;
+                text-transform: uppercase;
+                border-radius: 16px;
+                color: $white;
+                font-weight: $font-weight-bold;
+                font-size: $text-xs;
+                margin: 0px 3px;
+                transform: translateX(-50%);
+                @include screen-lg {
+                  padding: 2px 6.5px;
+                  bottom: 4px;
+                }
+                &-gold {
+                  background: linear-gradient(
+                    220.8deg,
+                    #c48d00 14.16%,
+                    #f7d001 98.42%
+                  );
+                }
+                &-silver {
+                  background: linear-gradient(
+                    2.42deg,
+                    #697f8e -1.62%,
+                    rgba(124, 140, 150, 0.39) 102.77%
+                  );
+                }
+                &-bronze {
+                  background: linear-gradient(
+                    9.87deg,
+                    #c77b30 2.71%,
+                    rgba(206, 145, 85, 0.33) 99.37%
+                  );
+                }
+              }
+            }
+            .app-c-gt-points {
+              @extend %flex;
+              .app-c-gt-score--value {
+                font-weight: $font-weight-extra-bold;
+                font-size: $text-xxxl;
+                color: $app-theme-primary-green;
+                line-height: 1.2;
+              }
+              .app-c-point--text {
+                font-size: $text-md;
+                font-weight: $font-weight-regular;
+                margin: 25px 0px 0px 15px;
+                color: $gray1;
+                line-height: 1.2;
+              }
+            }
+            .app-c-badge-list--container {
+              @extend %flex;
+              justify-content: space-between;
+              @include screen-lg {
+                flex-direction: column;
+              }
+              .app-c-badge-list {
+                &.advanced {
+                  flex: 1 1 25%;
+                  @include screen-lg {
+                    display: flex;
+                    margin-bottom: 16px;
+                  }
+                }
+                &.intermediate {
+                  flex: 1 1 25%;
+                  @include screen-lg {
+                    display: flex;
+                    margin-bottom: 16px;
+                  }
+                }
+                &.basic {
+                  flex: 1 1 auto;
+                  @include screen-lg {
+                    display: flex;
+                    margin-bottom: 16px;
+                  }
+                }
+                .app-c-badge--count {
+                  font-weight: $font-weight-extra-bold;
+                  line-height: 1.5;
+                  color: $app-theme-primary;
+                  font-size: $text-xxl-small;
+                  margin-bottom: 4px;
+                  @include screen-lg {
+                    order: 2;
+                    margin-left: auto;
+                  }
+                }
+                .app-c-badge--iconlist {
+                  @extend %flex-vert-center;
+                }
+              }
+              .app-c-badge--icontext {
+                font-size: $text-md;
+                font-weight: $font-weight-regular;
+                color: $gray1;
+                margin-left: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .app-l-listing-section.app-listing-section-code {
+    padding: 10px 0px 20px 0px;
+    .app-c-card__item {
+      padding: 20px;
+      margin-bottom: 30px;
+      margin: 0px 0px 16px;
+      @include screen-lg {
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      .app-c-button-container {
+        border-top: 1px solid $gray4;
+        margin-top: 0px;
+        padding: 20px 0px 0px;
+        @extend %flex-all-center;
+        &.app-c-mypf-btn-container{
+          padding: 0px;
+        }
+        .app-c-btn-card {
+          color: $app-theme-primary-green;
+          line-height: 1.5;
+        }
+      }
+    }
+    .app-c-card-inner {
+      &.app-c-card-inner--code-challenge {
+        @extend %flex;
+        outline: none;
+        @include screen-xxlprocess {
+          flex-direction: column;
+        }
+      }
+      .app-c-img-container {
+        margin-right: 20px;
+        flex: 1 0 200px;
+        @include screen-xxlprocess {
+          flex: 1 1 auto;
+          margin-right: 0;
+        }
+        .app-c-header-wrap {
+          display: none;
+          @include screen-xxlprocess {
+            display: block;
+            flex: 1 1 100%;
+            margin-left: 10px;
+          }
+        }
+      }
+      .app-c-header-wrap {
+        @extend %flex-vert-center;
+        @include screen-xxlprocess {
+          display: none;
+        }
+        margin-bottom: 0;
+        .app-c-card__title {
+          margin-left: auto;
+          font-size: $text-lg;
+        }
+        .app-c-card__title-main {
+          margin-bottom: 0;
+          font-size: $text-xxl;
+          @include screen-xxlprocess {
+            font-size: $text-lg;
+          }
+        }
+      }
+      .app-c-detail-container {
+        flex: 1 1 100%;
+      }
+    }
+    .app-c-code-details-wrapper {
+      margin-top: 0px;
+      @extend %flex-vert-center;
+      align-items: flex-start;
+      @media screen and (max-width: $screen-xxxl) {
+        flex-direction: column;
+        .app-c-details-time-wrapper {
+          margin-bottom: 20px;
+        }
+      }
+      @include screen-xxlprocess {
+        flex-direction: column;
+        align-items: flex-start;
+        order: 3;
+        padding-top: 15px;
+        .app-c-card-content {
+          border-bottom: none;
+        }
+      }
+      .app-c-details-time-wrapper {
+        flex: 1 1 auto;
+      }
+      .app-c-details-badge-wrapper {
+        padding-right: 40px;
+        @include screen-xxlprocess {
+          display: none;
+        }
+      }
+    }
+    .app-c-card-body {
+      padding-top: 20px;
+      .app-c-challenge--status {
+        @extend %flex-vert-center;
+        @media screen and (max-width: $screen-xxxl) {
+          flex-direction: column;
+          width: 100%;
+        }
+        @include screen-lg {
+          flex-direction: column;
+        }
+        .app-c-status-time {
+          border: 1px solid $error;
+          padding: 10px 20px;
+          border-radius: $card-radius;
+          @media screen and (max-width: $screen-xxxl) {
+            width: 100%;
+            margin-bottom: 20px;
+          }
+          @include screen-lg {
+            display: flex;
+            width: 100%;
+            margin-bottom: 0px;
+          }
+          .app-c-status-text {
+            font-size: $text-md;
+            font-weight: $font-weight-regular;
+            color: $app-theme-primary;
+            margin-bottom: 4px;
+            line-height: 1.2;
+            @include screen-lg {
+              margin-bottom: 0px;
+            }
+          }
+          .app-c-status-count {
+            font-size: $text-md;
+            font-weight: $font-weight-bold;
+            color: $error;
+            line-height: 1.2;
+            @include screen-lg {
+              margin-left: auto;
+            }
+          }
+        }
+        .app-c-waiting-container {
+          @include screen-lg {
+            width: 100%;
+          }
+          .app-c-waiting-evaluation {
+            @extend %flex-vert-center;
+            font-weight: $font-weight-medium;
+            font-size: $text-md;
+            line-height: 1.5;
+            .app-c-waiting--text-primary {
+              margin-left: 10px;
+            }
+          }
+          .app-c-waiting--text {
+            font-size: $text-sm;
+            font-weight: $font-weight-medium;
+            color: $gray1;
+            margin-top: 10px;
+          }
+        }
+  
+        .app-c-upload-code--status {
+          margin-left: auto;
+          flex: 0 1 300px;
+          position: relative;
+          @media screen and (max-width: $screen-xxxl) {
+            width: 100%;
+            flex: 1 1 auto;
+          }
+          @include screen-lg {
+            flex: 1 1 100%;
+            margin-left: 0px;
+            margin-top: 15px;
+            width: 100%;
+          }
+          .gt-score {
+            &-section {
+              background: $white;
+              box-shadow: 4px 8px 20px rgba(198, 207, 216, 0.15);
+              border-radius: 8px;
+              @extend %flex;
+              margin-right: 20px;              
+              &.inactive{
+                .gt-score-data,.gt-score-medals { 
+                  opacity: 0.1; 
+                } 
+              }
+              @include screen-lg {
+                box-shadow: 4px 8px 20px rgba(198, 207, 216, 0.15);
+                top: 72px;
+                width: 100%;
+                left: 0;
+                margin: 0;
+                border-radius: 0;
+                z-index: 0;
+                min-height: 56px;
+              }
+              &.no-headershdw {
+                box-shadow: none;
+              }
+            }
+            &-medals {
+              padding: 8.5px 15px;
+              @extend %flex-vert-center;
+              @include screen-lg {
+                overflow-x: auto;
+                padding: 8.5px 40px 8.5px 10px;
+              }
+              .medal-section {
+                @extend %flex-all-center-col;
+                margin-right: 10.5px;
+                text-align: center;
+                @include screen-lg {
+                  @include flex-direction(column);
+                  margin-right: 10px;
+                  align-items: center;
+                }
+                &:last-child {
+                  margin-right: 0;
+                }
+              }
+              .medal-score {
+                font-size: $text-sm;
+                font-weight: $font-weight-semi-bold;
+                margin-top: 2.5px;
+                color: $app-theme-primary-dark-1;
+                line-height: 1.6rem;
+  
+                @include screen-lg {
+                  margin: 0 0 0 4.5px;
+                  font-size: $text-lg;
+                }
+              }
+            }
+            &-data {
+              padding: 12px 18px;
+              background-color: $app-theme-secondary-yellow;
+              color: $white;
+              border-radius: 8px 0 0 8px;
+              @extend %flex-all-center-col;               
+              @include screen-lg {
+                @include flex-direction(row);
+                flex-shrink: 0;
+              }
+              .gt-score-value {
+                font-weight: $font-weight-bold;
+                font-size: $text-lg;
+                line-height: 1.6rem;
+                @include screen-lg {
+                  font-size: $text-xl;
+                  line-height: 1.8rem;
+                }
+              }
+              .gt-score-title {
+                font-weight: $font-weight-semi-bold;
+                margin-top: 8px;
+                font-size: $text-sm;
+                line-height: 1.2rem;
+                @include screen-lg {
+                  font-weight: $font-weight-medium;
+                  margin: 6px 0 0 4px;
+                  line-height: 1rem;
+                  font-size: $text-xs;
+                  color: $white;
+                }
+              }
+            }
+          }
+          .app-c-overlay-upload {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            &.submit {
+              top: 25px;
+            }
+            .app-c-btn-text {
+              font-weight: $font-weight-semi-bold;
+              font-size: $text-lg;
+              line-height: 1.5;
+              color: $app-theme-primary-green;
+              margin-bottom: 2px;
+              position: relative;
+              .app-l-file-upload {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                z-index: 1;
+                cursor: pointer;
+                max-width: 100px;
+              }
+            }
+            .app-c-text-upload {
+              font-size: $text-sm;
+              color: $gray2;
+              font-weight: $font-weight-medium;
+              .app-c-duration {
+                font-weight: $font-weight-bold;
+                color: $gray1;
+              }
+            }
+          }
+        }
+      }
+      @include screen-xxlprocess {
+        padding-top: 15px;
+      }
+      .app-c-card__item-cntnt {
+        .app-c-descrptn {
+          font-size: $text-lg;
+          color: $gray1;
+          &.app-c-day-dcrptn {
+            font-size: $text-md;
+          }
+          @include screen-xxlprocess {
+            font-size: $text-md;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+          }
+        }
+        &.app-c-last-item {
+          margin-bottom: 0px;
+        }
+      }
+    }
+    .app-c-header-wrap {
+      .app-c-code-submission {
+        margin-top: 10px;
+        font-size: $text-md;
+        font-weight: $font-weight-semi-bold;
+      }
+    }
+    .app-c-watching-container {
+      margin-bottom: 20px;
+      @include screen-lg {
+        margin-bottom: 0px;
+      }
+      .app-c-watching-head {
+        align-items: baseline;
+        .app-c-count {
+          margin-left: 34px;
+          position: relative;
+          top: 2px;
+          @include screen-lg {
+            margin-left: auto;
+          }
+        }
+      }
+    }
+  
+    .app-l-tab-slider--container .app-c-card-header {
+      padding-bottom: 0px;
+     
+      .app-c-logo-wrap .app-c-img--tile {
+        min-height: 128px;
+        max-height: 128px;
+        object-fit: cover;
+        border-radius: $card-radius;
+        min-width: 200px;
+        max-width: 200px;
+        @include screen-xxlprocess {
+          min-height: 60px;
+          max-height: 60px;
+          min-width: 100px;
+          max-width: 100px;
+          border-radius: 4px;
+        }
+      }
+      .app-c-logo-wrap {
+        flex: 1 1 130px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        @include screen-lg {
+          flex: 1 1 170px;
+        }
+      }
+    }
+    .app-c-icon__back {
+      .app-c-bck-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: $app-theme-primary;
+        margin-right: 20px;
+        position: relative;
+        top: 3px;
+      }
+    }
+    .app-c-back-text {
+      font-size: $text-xxl-small;
+      @include screen-lg {
+        font-size: $text-lg;
+      }
+    }
+    .app-l-dashboard-companies--header.app-l-code-challenge-header {
+      margin-bottom: 40px;
+      margin-top: 0px;
+      @include screen-lg {
+        margin-bottom: 30px;
+      }
+    }
+    .app-c-watching-container .app-c-watching-body {
+      margin-bottom: 0px;
+      @include screen-lg {
+        margin-bottom: 15px;
+      }
+    }
+  }
+  
+  .app-l-tab-slider--container .app-c-card__badge {
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    width: 42px;
+    height: 42px;
+    background-color: $app-theme-secondary-yellow;
+    border-radius: $circle-radius;
+    display: flex;
+    align-items: center;
+    @include screen-xxlprocess {
+      width: 30px;
+      height: 30px;
+      top: -10px;
+    }
+    &.app-c-card__badge--pending {
+      background-color: $error; 
+    }
+    .app-c-badge-pend-icnwrap {
+      position: relative;
+      top: -1px;
+      left: 2px;
+    }
+  }
+
+
+  .app-c-datadetails-card {
+    &.app-c-cl-data {
+     
+      @include screen-lg{
+        margin-bottom: 40px;
+      }
+      .app-l-tab-slider--container .app-c-card-header {
+        padding-bottom: 0px;
+        @include screen-xxlprocess {
+          padding-bottom: 0px;
+        }
+        .app-c-logo-wrap .app-c-img--tile {
+          min-height: 128px;
+          max-height: 128px;
+          object-fit: cover;
+          border-radius: $card-radius;
+          min-width: 200px;
+          max-width: 200px;
+          @include screen-xxlprocess {
+            min-height: 56px;
+            max-height: 56px;
+            min-width: 80px;
+            max-width: 80px;
+            border-radius: 4px;
+          }
+        }
+        .app-c-logo-wrap {
+          flex: 1 1 130px;
+          justify-content: flex-start;
+          align-items: flex-start;
+          @include screen-lg {
+            flex: 1 1 80px;
+          }
+        }
+      }
+    
+      .app-check-radio-label{
+        font-weight: $font-weight-medium;
+        font-size: $text-sm;
+        color: $gray1;
+        line-height: 1.5;
+        }
+      .checkbox-group{
+        @include screen-lg{
+          padding-top: 16px;
+        }
+      }
+      .app-c-header-wrap {
+        border-bottom: 1px solid $gray4;
+        padding-bottom: 16px;
+       
+        .app-c-header-wrap-left{
+         
+          .app-c-card__subtitle-main{
+            font-weight: $font-weight-medium;
+            font-size: $text-md;
+            line-height: 1.5;
+            color: $gray2;
+            margin-top: 4px;
+          }
+        }
+        .app-c-header-wrap-right{
+          margin-left: auto;
+          
+        }
+        .app-c-waiting-evaluation {
+          @extend %flex;
+          margin-right: 20px;
+          font-size: $text-md;
+          font-weight: $font-weight-medium;
+          .app-c-waiting--text-primary {
+            margin-left: 10px;
+          }
+        }
+        @include screen-lg {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+        .app-c-date-submitted {
+          position: relative;
+          top: 3px;
+        }
+      }
+      .app-header-text {
+        margin-left: auto;
+        font-size: $text-sm;
+        color: $gray2;
+        line-height: 2;
+        @extend %flex;
+        font-weight: $font-weight-medium;
+        @include screen-lg {
+          margin-top: 8px;
+          display: block;
+        }
+      }
+      .app-c-card-body {
+        padding-bottom: 0px;
+        @include screen-lg {
+          border-top: 1px solid $gray4;
+          margin-top: 20px;
+        }
+        .app-c-completed--status {
+          
+          &.mv-only{
+            display: none;
+            @include screen-lg{
+              display: flex;
+              margin-top: 5px;
+         
+            }
+          } 
+          @media screen and (max-width: $screen-xxxl) {
+            flex-direction: row;
+            align-items: flex-start;
+            flex-wrap: wrap;
+          }
+          @include screen-xxlprocess {
+            flex-wrap: wrap;
+          }
+          .app-c-code {
+            flex: 1 1 15%;
+            @media screen and (max-width: $screen-xxxl) {
+              flex: 1 1 50%;
+            }
+            @include screen-lg {
+              flex: 1 1 50%;
+            }
+            .app-c-label-container {
+              font-weight: $font-weight-semi-bold;
+              font-size: $text-md;
+              line-height: 1.5;
+              color: $gray1;
+              margin-bottom: 8px;
+            }
+            .app-c-value-container {
+              .app-c-value-obtained {
+                font-weight: $font-weight-bold;
+                font-size: $text-xxl-small;
+                line-height: 1.5;
+                color: $app-theme-primary;
+              }
+              .app-c-value-total {
+                font-weight: $font-weight-semi-bold;
+                font-size: $text-lg;
+                line-height: 1.5;
+                color: $gray2;
+              }
+            }
+          }
+          .app-c-badge {
+            flex: 1 1 27%;
+            @media screen and (max-width: $screen-xxxl) {
+              flex: 1 1 50%;
+              order: 3;
+            }
+            @include screen-lg {
+              order: 3;
+              flex: 1 1 50%;
+            }
+            .app-c-icon-container {
+              .gt-score-medals {
+                @extend %flex;
+                .medal-section {
+                  display: flex;
+                  align-items: center;
+                  margin-right: 30px;
+                  .medal-score {
+                    font-size: $text-sm;
+                    font-weight: $font-weight-semi-bold;
+                    color: $app-theme-primary;
+                    margin-left: 10px;
+                  }
+                }
+              }
+            }
+            .app-c-label-container {
+              font-weight: $font-weight-semi-bold;
+              font-size: $text-md;
+              line-height: 1.5;
+              color: $gray1;
+              margin-bottom: 8px;
+            }
+          }
+          .app-c-quality {
+            flex: 1 1 0;
+            @media screen and (max-width: $screen-xxxl) {
+              flex: 1 1 50%;
+              order: 2;
+              margin: 0px 0px 20px 0px;
+            }
+            @include screen-lg {
+              order: 2;
+            }
+            .app-c-label-container {
+              font-weight: $font-weight-semi-bold;
+              font-size: $text-md;
+              line-height: 1.5;
+              color: $gray1;
+              margin-bottom: 8px;
+            }
+            .app-c-value-container {
+              color: $app-theme-primary;
+              font-size: $text-xxl-small;
+              font-weight: $font-weight-bold;
+              line-height: 1.5;
+            }
+          }
+        }
+      }
+      .app-c-button-container {
+        display: flex;
+        padding: 0;
+        .app-c-btn-card {
+          flex: 1 1 auto;
+          padding: 20px 0px;
+          border-radius: 0px;
+          @include screen-lg {
+            padding: 15px 0px;
+          }
+          &:first-child {
+            border-right: 1px solid $gray4;
+          }
+        }
+      }
+      .app-c-card__item {
+        padding: 0px;
+        .app-c-card-inner--code-challenge {
+          padding: 20px;
+        }
+      }
+    }
+    .companies-pane--header {
+      margin-bottom: 20px;
+      @include screen-lg {
+        margin-top: 0px;
+      }
+    }
+    .app-l-tab-slider--container {
+     @include screen-lg {
+        padding: 0px;
+      }
+    }
+    .app-c-text-null {
+      color: $gray1;
+      font-size: $text-md;
+      font-weight: $font-weight-medium;
+      line-height: 1.5;
+    }
+    .app-c-card__item {
+      padding: 0px;
+      cursor: auto;
+      box-shadow: 4px 8px 20px rgba(198, 207, 216, 0.25);
+      .app-c-card-inner--code-challenge {
+        padding: 20px;
+        @include screen-lg {
+          padding-bottom: 15px;
+        }
+      }
+    }
+    .app-c-button-container {
+      @extend %flex;
+      padding: 0;
+      .app-c-btn-card {
+        flex: 1 1 auto;
+        padding: 20px 0px;
+        border-radius: 0px;
+        position: relative;
+        .app-l-file-upload {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          z-index: 0;
+          cursor: pointer;
+          max-width: 100px;
+        }
+        @include screen-lg {
+          padding: 15px 0px;
+        }
+      }
+    }
+  }
+
+  .app-c-score-codequality-cntr{
+    margin-top: 20px;
+    .app-c-code {
+     
+      .app-c-label-container {
+        font-weight: $font-weight-semi-bold;
+        font-size: $text-md;
+        line-height: 1.5;
+        color: $gray1;
+        margin-bottom: 8px;
+      }
+      .app-c-value-container {
+        .app-c-value-obtained {
+          font-weight: $font-weight-bold;
+          font-size: $text-xxl-small;
+          line-height: 1.5;
+          color: $app-theme-primary;
+        }
+        .app-c-value-total {
+          font-weight: $font-weight-semi-bold;
+          font-size: $text-lg;
+          line-height: 1.5;
+          color: $gray2;
+        }
+      }
+    }
+  
+    .app-c-quality {
+     margin-top: 30px;
+      .app-c-label-container {
+        font-weight: $font-weight-semi-bold;
+        font-size: $text-md;
+        line-height: 1.5;
+        color: $gray1;
+        margin-bottom: 8px;
+      }
+      .app-c-value-container {
+        color: $app-theme-primary;
+        font-size: $text-xxl-small;
+        font-weight: $font-weight-bold;
+        line-height: 1.5;
+      }
+    }
+  }
+  .app-c-datavl-label{
+    font-weight: $font-weight-semi-bold;
+    font-size: $text-md;
+    line-height: 1.5;
+    color: $gray1;
+    margin-bottom: 8px;
+  }

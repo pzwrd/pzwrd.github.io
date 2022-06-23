@@ -1,0 +1,46 @@
+@use "../abstracts" as *;
+
+.app-c-stepper {
+  @extend %flex-vert-start;
+  &--label {
+    color: $app-theme-primary;
+    font-size: $text-sm;
+    font-weight: $font-weight-semi-bold;
+    letter-spacing: 0.05em;
+    display: none;
+  }
+  &--indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: $circle-radius;
+    margin: 0 auto 5px;
+  }
+  li {
+    padding-right: 40px;
+    position: relative;
+    &.completed {
+      .app-c-stepper--indicator {
+        background-color: $app-theme-secondary-green;
+      }
+    }
+    &.inprogress {
+      .app-c-stepper--indicator {
+        background-color: $app-theme-primary-green;
+      }
+      .app-c-stepper--label {
+        display: block;
+        position: absolute;
+        white-space: nowrap;
+        left: 6px;
+        top: 17px;
+        transform: translateX(-50%);
+      }
+    }
+    &.incomplete {
+      .app-c-stepper--indicator {
+        background-color: $gray3;
+      }
+    }
+
+  }
+}

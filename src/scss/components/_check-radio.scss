@@ -1,0 +1,516 @@
+@use "../abstracts" as *;
+@use "../framework/check-radio" as *;
+
+.app-check-radio-wrap {
+  @include check-radio;
+  @extend %inline-flex-vert-center;
+  min-width: $field-check-radio-w-s;
+  min-height: $field-check-radio-w-s;
+  @extend %user-select-none;
+  @extend %touch-tap-none;
+  transition: border-color $animation-duration3;
+  &.app-radio-btn{
+   min-width: auto;
+   min-height: auto;
+   input ~ .checkmark {
+    &.radio-checkmark {
+     left: 2px;
+    }
+  }
+  }
+  /* IE11 fix for min height parent with flex align center */
+  &::after {
+    @extend %ie11-min-h-flex-center-fix;
+  }
+
+  &:hover {
+    input {
+      &.form-error {
+        & ~ .checkmark {
+          @extend %form-error-shadow;
+        }
+      }
+
+      &:not(:disabled) {
+        & ~ .checkmark {
+          @extend %form-item-shadow;
+        }
+      }
+    }
+  }
+
+  .app-check-radio-label {
+    margin-left: calc(#{$field-check-radio-w-s} + 11px);
+  }
+
+  // Common styles for checkbox & radio buttions
+  input {
+    &:focus {
+      & ~ .checkmark {
+        @extend %form-item-shadow;
+      }
+      & ~ .app-check-radio--title {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      &.form-error {
+        & ~ .checkmark {
+          @extend %form-error-shadow;
+        }
+      }
+    }
+
+    &:disabled,
+    &.disabled {
+      & ~ .checkmark,
+      &:checked ~ .checkmark {
+        border: 1.2px solid $app-theme-primary-green;
+        cursor: not-allowed;
+        opacity: 0.5;
+        .icon-svg {
+          color: $white;
+          opacity: 0.5;
+        }
+        & ~ .app-check-radio--title {
+          border: 1.2px solid $gray2;
+          background-color: $gray2;
+        }
+      }
+
+      & ~ .app-check-radio-label {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      & ~ .app-check-radio--title {
+        color: $gray5;
+        cursor: not-allowed;
+      }
+      &:hover {
+        box-shadow: none;
+      }
+    }
+
+    &.form-error {
+      & ~ .checkmark,
+      &:checked ~ .checkmark {
+        border: 1.2px solid $app-theme-tertiary-red;
+        background-color: $white;
+
+        .icon-svg {
+          color: $app-theme-tertiary-red;
+        }
+      }
+    }
+
+    & ~ .checkmark {
+      width: $field-check-radio-w-s;
+      height: $field-check-radio-w-s;
+      border: 1px solid $gray1;
+      background-color: $white;
+      transition: box-shadow $animation-type1 $animation-duration3,
+        border-color $animation-duration3 $animation-type3;
+
+      &::after {
+        transition: opacity $animation-type1 $animation-duration3;
+      }
+    }
+
+    // Styles for checkbox
+    &[type="checkbox"] {
+      & ~ .checkmark {
+        border-radius: 4px;
+        transition: box-shadow $animation-type1 $animation-duration3,
+          border-color $animation-duration3 $animation-type3;
+        border-color: $gray1;
+        .icon-svg {
+          opacity: 0;
+          height: 8px;
+          width: 10px;
+          margin: 3px 5px 0 2px;
+          stroke-dasharray: 0px 12px;
+          transition: opacity $animation-duration3 $animation-type3,
+            border-color $animation-duration3 $animation-type3,
+            stroke-dasharray $animation-duration3 $animation-type3;
+        }
+      }
+
+      &:checked ~ .checkmark {
+        &::after {
+          position: relative;
+        }
+      }
+      &:focus {
+        & ~ .checkmark {
+          transition: box-shadow $animation-type1 $animation-duration3;
+          box-shadow: 0 0 0 3px
+            transparentize($color: $gray-shadow, $amount: 0.7);
+        }
+      }
+    }
+    // Styles for radio
+    &[type="radio"] {
+      & ~ .checkmark {
+        border-radius: $circle-radius;
+        transition: box-shadow $animation-type1 $animation-duration3,
+          border-color $animation-duration3 $animation-type3;
+        border-color: $gray1;
+        .icon-svg {
+          opacity: 0;
+          height: 8px;
+          width: 10px;
+          margin: 3px 5px 0 2px;
+          stroke-dasharray: 0px 12px;
+          transition: opacity $animation-duration3 $animation-type3,
+            border-color $animation-duration3 $animation-type3,
+            stroke-dasharray $animation-duration3 $animation-type3;
+        }
+      }
+
+      &:checked ~ .checkmark {
+        &::after {
+          position: relative;
+        }
+      }
+      &:focus {
+        & ~ .checkmark {
+          transition: box-shadow $animation-type1 $animation-duration3;
+          box-shadow: 0 0 0 3px
+            transparentize($color: $gray-shadow, $amount: 0.7);
+        }
+      }
+    }
+
+    // Styles for checked state
+    &:checked ~ .checkmark {
+      background-color: $app-theme-primary-green;
+      border-color: $app-theme-primary-green;
+
+      .icon-svg {
+        color: $white;
+        stroke-dasharray: 12px 0px;
+        opacity: 1;
+      }
+
+      &::after {
+        transform: translate(-50%, -50%) scale(0.45);
+      }
+    }
+  }
+
+  &:hover {
+    input {
+      &[type="checkbox"] {
+        &:not(:disabled) {
+          & ~ .checkmark {
+            box-shadow: none;
+            border-color: $app-theme-primary-green;
+          }
+        }
+        &.form-error {
+          & ~ .checkmark {
+            border-color: $error;
+          }
+        }
+      }
+    }
+  }
+  input ~ .checkmark {
+    &.radio-checkmark {
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      left: 20px;
+    }
+  }
+
+  &.-white-themed {
+    input{
+      &:not(:checked){
+        ~ .checkmark{
+          background-color: transparent;
+        }
+      }
+      &:checked {
+        ~ .app-check-radio-label{
+          font-weight: $font-weight-semi-bold;
+          color: $white;
+        }
+        ~ .checkmark {
+          background-color: $app-theme-secondary-green;
+          border-color: $app-theme-secondary-green;
+          .icon-svg{
+            stroke-dasharray: 13px 0px;
+            margin: 3px 5px 0 3px;
+            height: 10px;
+            width: 10px;
+          }
+        }
+      }
+    }
+    .checkmark {
+      width: 18px;
+      height: 18px;
+      border-color: rgba($color: $gray3, $alpha: 0.8);
+      border-radius: 2px;
+    }
+    .app-check-radio-label {
+      color: $gray3;
+      font-size: $text-lg;
+      margin-left: calc(16px + 22px);
+    }
+  }
+}
+
+.app-check-radio-label {
+  margin-left: 11px;
+  font-size: $text-md-plus;
+  color: $black;
+}
+.radio-action-btn {
+  input {
+    &:checked ~ .checkmark {
+      background-color: $app-theme-primary;
+      border-color: $app-theme-primary;
+      .icon-svg {
+        color: $white;
+      }
+    }
+    &:focus {
+      &:not(:checked) {
+        ~ .checkmark {
+          box-shadow: none;
+        }
+      }
+      ~ .checkmark {
+        border-color: $app-theme-primary;
+      }
+    }
+  }
+}
+
+/*------------------radio button----------------*/
+.app-radio-wrap {
+  @include check-radio;
+  @extend %inline-flex-vert-center;
+  min-width: $field-check-radio-w-h;
+  min-height: $field-check-radio-w-h;
+  @extend %user-select-none;
+  @extend %touch-tap-none;
+
+  /* IE11 fix for min height parent with flex align center */
+  &::after {
+    @extend %ie11-min-h-flex-center-fix;
+  }
+
+  &:hover {
+    input {
+      &.form-error {
+        & ~ .checkmark {
+          @extend %form-error-shadow;
+        }
+      }
+
+      &:not(:disabled) {
+        & ~ .checkmark {
+          @extend %form-item-shadow-iconround;
+        }
+      }
+    }
+  }
+
+  .app-radio-label {
+    margin-left: calc(#{$field-check-radio-w-h} + 11px);
+  }
+
+  // Common styles for checkbox & radio buttions
+  input {
+    &:focus {
+      & ~ .checkmark {
+        @extend %form-item-shadow-iconround;
+      }
+
+      &.form-error {
+        & ~ .checkmark {
+          @extend %form-error-shadow;
+        }
+      }
+    }
+
+    &:disabled,
+    &.disabled {
+      & ~ .checkmark,
+      &:checked ~ .checkmark {
+        border: 1.2px solid $gray5;
+        background-color: $gray5;
+        cursor: not-allowed;
+
+        .icon-svg {
+          color: $gray2;
+        }
+      }
+
+      & ~ .app-check-radio-label {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+
+    &.form-error {
+      & ~ .checkmark,
+      &:checked ~ .checkmark {
+        border: 1.2px solid $error;
+        .icon-svg {
+          color: $error;
+          opacity: 0.4;
+        }
+      }
+    }
+
+    & ~ .checkmark {
+      width: $field-check-radio-w-h;
+      height: $field-check-radio-w-h;
+      background-color: $white;
+      transition: box-shadow $animation-type1 $animation-duration3;
+      width: 24px;
+      height: 24px;
+      border: 1px solid $app-theme-primary;
+
+      &::after {
+        transition: opacity $animation-type1 $animation-duration3;
+      }
+    }
+
+    // Styles for radio
+    &[type="radio"] {
+      & ~ .checkmark {
+        border-radius: $circle-radius;
+        transition: background-color $animation-duration3 $animation-type3;
+
+        .icon-svg {
+          opacity: 0;
+          height: 10px;
+          width: 0;
+          margin: 6px 0px 0 4px;
+          color: $app-theme-tertiary-green;
+          transition: opacity $animation-duration3 $animation-type3;
+
+          &.user-type-checkbox {
+            margin: 6px;
+            position: relative;
+            top: 1px;
+          }
+        }
+      }
+
+      &:checked ~ .checkmark {
+        &::after {
+          position: relative;
+        }
+      }
+      &:focus {
+        & ~ .checkmark {
+          box-shadow: 0 0 0 3px
+            transparentize($color: $app-theme-tertiary-green, $amount: 0.7);
+        }
+
+        &:not(:checked) {
+          & ~ .checkmark {
+            box-shadow: none;
+            background: transparentize(
+              $color: $app-theme-tertiary-green,
+              $amount: 0.7
+            );
+          }
+        }
+      }
+    }
+
+    // Styles for checked state
+    &:checked ~ .checkmark {
+      background-color: $app-theme-primary;
+      border-color: $app-theme-primary;
+
+      .icon-svg {
+        animation: tick-anim-radio $animation-duration2 $animation-delay1
+          forwards;
+        opacity: 1;
+
+        @keyframes tick-anim-radio {
+          20% {
+            width: 7px;
+          }
+          100% {
+            width: 13px;
+          }
+        }
+      }
+
+      &::after {
+        transform: translate(-50%, -50%) scale(0.45);
+      }
+    }
+  }
+}
+
+.app-radio-label {
+  margin-top: 2px;
+  margin-left: 11px;
+  font-size: $text-md-plus;
+}
+
+.app-c-radio-wrapper {
+  [type="radio"]:checked,
+  [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+  }
+  [type="radio"]:checked + label,
+  [type="radio"]:not(:checked) + label {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: $gray1;
+    font-size: $text-md;
+    font-weight: $font-weight-medium;
+  }
+  [type="radio"]:checked + label:before,
+  [type="radio"]:not(:checked) + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid $app-theme-primary-green;
+    border-radius: 100%;
+    background: $white;
+  }
+  [type="radio"]:checked + label:after,
+  [type="radio"]:not(:checked) + label:after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: $app-theme-primary-green;
+    position: absolute;
+    top: 2.9px;
+    left: 3px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+  [type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  [type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  [type="radio"]:checked + label {
+    font-weight: $font-weight-semi-bold;
+  }
+}

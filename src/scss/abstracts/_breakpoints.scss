@@ -1,0 +1,118 @@
+$screen-xs: 320px!default;
+$screen-xm: 370px!default;
+$screen-sm: 576px!default;
+$screen-sm-down: ($screen-sm - 1)!default; // 575px
+
+$screen-md: 768px!default;
+$screen-md-down: ($screen-md - 1)!default; // 767px
+
+$screen-lg: 992px!default;
+$screen-lg-down: ($screen-lg - 1)!default; // 991px
+
+$screen-ipad-landscape: 1024px!default;
+$screen-ipad-landscape-down: ($screen-ipad-landscape - 1)!default; // 1023px
+
+$screen-xl: 1200px!default;
+$screen-xl-down: ($screen-xl - 1)!default; // 1199px
+
+$screen-xxl: 1366px!default;
+$screen-xxl-down: ($screen-xxl - 1)!default; // 1365px
+
+$screen-xllap: 1260px!default;
+$screen-xllap-down: ($screen-xllap - 1)!default; // 1249px
+
+$screen-xxlprocess: 1090px!default;
+$screen-xxlprocess-down: ($screen-xxlprocess - 1)!default; // 1090px
+
+$screen-xxxl: 1320px!default;
+$screen-xxxl-down: ($screen-xxxl - 1)!default; // 1318px
+
+
+
+//less than tablet devices
+@mixin screen-lg{
+  @media (max-width:#{$screen-lg}){
+    @content;
+  }
+}
+
+@mixin screen-md{
+  @media (max-width:#{$screen-md}){
+    @content;
+  }
+}
+ 
+@mixin screen-sm{
+  @media (max-width:#{$screen-sm}){
+    @content;
+  }
+}
+@mixin screen-iPad{
+  @media (max-width:#{$screen-xl-down}){
+    @content;
+  }
+}
+@mixin screen-xxlprocess{
+  @media (max-width:#{$screen-xxlprocess}){
+    @content;
+  }
+}
+@mixin screen-xllap{
+  @media (max-width:#{$screen-xllap}){
+    @content;
+  }
+}
+//lap height 900px below devices
+@mixin screen-lap{
+  @media (min-height:725px) and (max-height:900px) and (min-width : $screen-lg){
+    @content;
+  }
+}
+//lap height below 768px
+@mixin screen-lap-sm{
+  @media (min-height:520px) and (max-height:800px) and (min-width : $screen-lg){
+    @content;
+  }
+}
+
+@mixin screen-lap-vh{
+  @media (min-height:0) and (max-height:900px) and (min-width : $screen-lg){
+    @content;
+  }
+}
+
+@mixin screen-desktop{
+  @media (min-width: 1440px) and (min-height:800px){
+    @content;
+  }
+}
+
+//lap height below 700px
+@mixin screen-lap-sm-hm{
+  @media (min-height:520px) and (max-height:700px) and (min-width : $screen-lg){
+    @content;
+  }
+}
+@mixin screen-lap-sm-dots{
+  @media (min-height:520px) and (max-height:700px) and (max-width :$screen-xxxl) and (min-width :$screen-lg){
+    @content;
+  }
+}
+
+//lap height below 725px
+@mixin screen-lap-sm-salary{
+  @media (min-height:520px) and (max-height:790px) and (min-width : $screen-lg){
+    @content;
+  }
+}
+//lap height below 730px
+@mixin screen-lap-sm-preference{
+  @media (min-height:520px) and (max-height:800px) and (min-width : $screen-lg){
+    @content;
+  }
+}
+@mixin screen-lap-xsm{
+  @media (min-height:400px) and (max-height:588px){
+    @content;
+  }
+}

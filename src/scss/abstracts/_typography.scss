@@ -1,0 +1,127 @@
+@use "./variables" as *;
+@use "./breakpoints" as *;
+@use "./palette" as *;
+
+// Font family
+$font-primary: "Manrope";
+$font-secondary: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
+$body-font: $font-primary, $font-secondary;
+$font-secondary-web: 'Poppins', sans-serif;
+
+// Font weights
+$font-weight-light:200;
+$font-weight-normal:300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+
+// Font sizes
+$text-xs: 1rem; // 10px
+$text-xs-plus: ($text-xs + 0.1); // 11px
+$text-sm: ($text-xs + 0.2); // 12px
+$text-sm-plus: ($text-xs + 0.3); // 13px
+$text-md: ($text-xs + 0.4); // 14px
+$text-md-plus: ($text-xs + 0.5); // 15px
+$text-lg: ($text-xs + 0.6); // 16px
+$text-lg-plus: ($text-xs + 0.7); // 17px
+$text-xl: ($text-xs + 0.8); // 18px
+$text-xl-plus: ($text-xs + 0.9); // 19px
+$text-xxl: ($text-xs + 1); // 20px
+$text-xxl-small: ($text-xs + 1.4); // 24px
+$text-xxl-plus: ($text-xs + 2); // 30px
+$text-xxl-large: ($text-xs + 2.6); // 36px
+$text-xxxl: ($text-xs + 3); // 40px
+
+
+.app-heading-h1 {
+  font-size: 3.6rem;
+  font-weight: $font-weight-bold;
+ //heading 1 property for mobile device
+  @media (max-width: $screen-md) {
+    font-size: 2rem;
+  }
+}
+
+.app-heading-h2 {
+  font-size: 1.8rem;
+  font-weight: $font-weight-medium;
+}
+
+.app-heading-h3 {
+  font-size: $text-xl;
+  font-weight: $font-weight-bold;
+}
+
+.app-heading-h4 {
+  font-size: $text-lg;
+  font-weight: $font-weight-bold;
+}
+
+.app-basic-text-md {
+  font-size: $text-md;
+  font-weight: $font-weight-semi-bold;
+}
+
+.app-basic-text-md-regular {
+  font-size: $text-md;
+  font-weight: $font-weight-regular;
+}
+
+.app-basic-text-sm-regular {
+  font-size: $text-sm;
+  font-weight: $font-weight-regular;
+}
+
+.app-basic-text-sm {
+  font-size: $text-sm;
+  font-weight: $font-weight-semi-bold;
+}
+
+.is-extra-bold {
+  font-weight: $font-weight-extra-bold;
+}
+
+.is-bold {
+  font-weight: $font-weight-bold;
+}
+
+.is-semi-bold {
+  font-weight: $font-weight-semi-bold;
+}
+
+.is-regular {
+  font-weight: $font-weight-regular;
+}
+.is-medium{
+  font-weight: $font-weight-medium;
+}
+
+.text-error {
+  color: $error;
+}
+
+.text-success {
+  color: $gray1;
+}
+.app-text-button{
+  font-size: 1.6rem;
+  font-weight: $font-weight-bold;
+}
+.app-text{
+  font-size: 1.6rem;
+  @media (max-width: $screen-md) {
+    font-size: 1.2rem;
+  }
+}
+.app-heading-caption{
+  font-size: 1.6rem;
+  @media (max-width: $screen-md) {
+    font-size: 1.4rem;
+  }
+}
+%form-label{
+  font-size: $text-md;
+  font-weight: $font-weight-medium;
+}

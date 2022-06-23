@@ -1,0 +1,754 @@
+@use "../abstracts" as *;
+@use "../framework/button" as *;
+
+.app-btn {
+  @include button;
+  @extend %inline-flex-all-center;
+  font-family: $body-font;
+  font-size: $text-lg;
+  font-weight: $font-weight-bold;
+  color: $app-theme-primary;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: $field-btn-radius;
+  background-color: transparent;
+  background-clip: padding-box; /* prevents background overflowing transparent border color */
+  transition: border-color $animation-duration3;
+  position: relative;
+  @extend %touch-tap-none;
+  line-height: 1.1em;
+  &:disabled,
+  &.disabled {
+    color: rgba($color: $app-theme-primary, $alpha: 0.5);
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: rgba(59, 65, 182, 0.21);
+    //temporary until themed based is recieved
+  }
+  // button -- primary
+  &-primary {
+    display: block;
+    margin: 0;
+    background-clip: border-box;
+    border: 1px solid;
+    background-color: $app-theme-primary;
+    border-color: $app-theme-primary;
+    border-radius: 16px;
+    color: $white;
+
+    transition: border-color $animation-type1 $animation-duration3,
+      background-color $animation-type1 $animation-duration3,
+      box-shadow $animation-type1 $animation-duration3;
+
+    &:hover {
+      background-color: $app-theme-primary-dark;
+      border-color: $app-theme-primary-dark;
+      box-shadow: 0 0 0 3px transparentize($color: $gray-shadow, $amount: 0.7);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: $gray4;
+      border-color: $gray4;
+      color: $gray2;
+
+      &:hover {
+        border-color: transparent;
+        box-shadow: none;
+      }
+    }
+
+    .ripple-wrapper {
+      color: rgba(169, 169, 169, 0.4);
+    }
+
+    &:not(.cdk-focused):focus {
+      box-shadow: 0 0 0 3px rgba(19, 37, 58, 0.2);
+    }
+  }
+
+  // button -- secondary
+  &-secondary {
+    background-color: transparent;
+    border-color: $app-theme-primary;
+    color: $app-theme-primary;
+    transition: border-color $animation-type1 $animation-duration3,
+      background-color $animation-type1 $animation-duration3,
+      box-shadow $animation-type1 $animation-duration3;
+    &.-with-icon {
+      padding: 10px 20px;
+      font-size: $text-md;
+      font-weight: $font-weight-medium;
+      color: $app-theme-primary-green;
+      height: 41px;
+      border: 1px solid $app-theme-primary-green;
+      border-radius: 8px;
+      background-color: $white;
+      svg {
+        margin-right: 8px;
+      }
+      &:not(:disabled):hover,
+      &:not(.disabled):hover {
+        color: $app-theme-primary-green-dark;
+        border-color: $app-theme-primary-green-dark;
+        box-shadow: 0 0 0 3px transparentize($color: $gray6, $amount: 0.8);
+      }
+      &:disabled,
+      &.disabled {
+        border-color: $gray3;
+        color: $gray3;
+        &:hover {
+          box-shadow: none;
+          border-color: $gray3;
+          color: $gray3;
+        }
+      }
+    }
+
+    /* cannot combine these as IE11 doesnt support complex :not selectors */
+    &:not(:disabled):hover,
+    &:not(.disabled):hover {
+      color: $app-theme-primary-dark;
+      border-color: $app-theme-primary-dark;
+      box-shadow: 0 0 0 3px transparentize($color: $gray6, $amount: 0.8);
+    }
+
+    &:disabled,
+    &.disabled {
+      border-color: $gray2;
+      color: $gray2;
+      &:hover {
+        box-shadow: none;
+        border-color: $gray2;
+        color: $gray2;
+      }
+    }
+
+    &:not(.cdk-focused):focus {
+      background-color: $white;
+      border-color: rgba(59, 65, 182, 0.21);
+    }
+
+    .ripple-wrapper {
+      color: rgba($color: $gray3, $alpha: 0.5);
+    }
+  }
+
+  // button -- tertiary
+  &-tertiary {
+    background-color: $gray6;
+    border-color: transparent;
+    color: $gray2;
+    transition: border-color $animation-type1 $animation-duration3,
+      background-color $animation-type1 $animation-duration3,
+      box-shadow $animation-type1 $animation-duration3;
+
+    /* cannot combine these as IE11 doesnt support complex :not selectors */
+    &:not(:disabled):hover,
+    &:not(.disabled):hover {
+      color: $gray1;
+      border: 1px solid $gray6;
+      box-shadow: 0 0 0 3px transparentize($color: $gray6, $amount: 0.8);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: transparent;
+
+      &:hover {
+        background-color: $white;
+        color: rgba($color: $app-theme-primary, $alpha: 0.5);
+        border: 1px solid transparent;
+        box-shadow: none;
+      }
+    }
+
+    &:not(.cdk-focused):focus {
+      background-color: $gray5;
+    }
+
+    .ripple-wrapper {
+      color: rgba($color: $gray6, $alpha: 0.2);
+    }
+    &--web {
+      background-color: $app-theme-primary-green;
+      border-color: $app-theme-primary-green;
+      color: $white;
+      &.-lighter-themed {
+        background-color: $app-theme-secondary-green;
+        border-color: $app-theme-secondary-green;
+        color: $app-theme-primary;
+      }
+      transition: border-color $animation-type1 $animation-duration3,
+        background-color $animation-type1 $animation-duration3,
+        box-shadow $animation-type1 $animation-duration3;
+      padding: 14px 31px;
+      height: 56px;
+      border-radius: $icon-radius;
+      &.-with-icon {
+        padding: 10px 20px;
+        font-size: $text-md;
+        font-weight: $font-weight-medium;
+        color: $app-theme-primary-green;
+        height: 41px;
+        border: 1px solid $app-theme-primary-green;
+        border-radius: 8px;
+        background-color: $white;
+        svg {
+          margin-right: 8px;
+        }
+        &:not(:disabled):hover,
+        &:not(.disabled):hover {
+          color: $white;
+          border-color: $app-theme-primary-green;
+        }
+        &:disabled,
+        &.disabled {
+          border-color: $gray3;
+          color: $gray3;
+          &:hover {
+            box-shadow: none;
+            border-color: $app-theme-primary-green;
+            color: $app-theme-primary-green;
+          }
+        }
+      }
+
+      /* cannot combine these as IE11 doesnt support complex :not selectors */
+      &:not(:disabled):hover,
+      &:not(.disabled):hover {
+        background-color: rgba($color: $app-theme-primary-green, $alpha: 0.8);
+        color: $white;
+        border-color: $app-theme-primary-green;
+      }
+
+      &:disabled,
+      &.disabled {
+        border-color: $gray2;
+        color: $gray2;
+        &:hover {
+          box-shadow: none;
+          border-color: $white;
+          color: $white;
+        }
+      }
+
+      &:not(.cdk-focused):focus {
+        background-color: $app-theme-primary-green;
+        border-color: rgba(59, 65, 182, 0.21);
+      }
+
+      .ripple-wrapper {
+        color: rgba($color: $gray3, $alpha: 0.5);
+      }
+    }
+  }
+
+  // social media login button
+  &-outline {
+    background-color: $gray5;
+    border-color: $gray3;
+
+    /* cannot combine these as IE11 doesnt support complex :not selectors */
+    &:not(:disabled):hover,
+    &:not(.disabled):hover {
+      border-color: $gray1;
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: $white;
+      border-color: $gray3;
+      color: $gray3;
+      svg {
+        color: $gray3;
+        filter: opacity(0.05);
+      }
+      &:hover {
+        border-color: $gray3;
+      }
+    }
+    .ripple-wrapper {
+      color: rgba($color: $gray3, $alpha: 0.5);
+    }
+
+    &:not(.cdk-focused):focus {
+      border-color: rgba(59, 65, 182, 0.21);
+    }
+  }
+
+  //button -- title + button icon
+
+  &-addon-primary {
+    padding: 0;
+    border: none;
+    transition: color $animation-duration3 $animation-type3;
+    color: $app-theme-primary-green;
+    &.app-btn-icon-only {
+      min-width: $btn-with-icon-w-h;
+      height: $btn-with-icon-w-h;
+      border-radius: $circle-radius;
+    }
+    .app-btn-partial--iconfirst {
+      margin-right: 6px;
+
+      + .app-btn-partial--title {
+        font-size: $text-lg;
+        font-weight: $font-weight-semi-bold;
+      }
+    }
+    .app-btn-partial {
+      color: $black;
+      &--title {
+        font-weight: $font-weight-semi-bold;
+        font-size: $text-md;
+        transition: color $animation-duration3 $animation-type3;
+        @media (max-width: $screen-md) {
+          font-size: $text-sm;
+        }
+        & + .app-btn-partial--icon {
+          margin-left: 8px;
+        }
+      }
+
+      &--icon {
+        position: relative;
+        padding: 1px;
+        background-color: $black;
+        border-radius: $circle-radius;
+        width: $btn-with-icon-w-h;
+        height: $btn-with-icon-w-h;
+        color: $white;
+        border-color: $app-theme-primary-dark;
+        @extend %flex-all-center;
+        transition: box-shadow $animation-type1 $animation-duration3,
+          border-color $animation-type1 $animation-duration3,
+          background-color $animation-type1 $animation-duration3;
+      }
+    }
+
+    &:hover {
+      color: $app-theme-primary-green-dark;
+      .app-btn-partial {
+        &--icon {
+          border-color: rgba(19, 37, 58, 0.3);
+          @extend %form-item-shadow;
+          box-shadow: 0 0 0 3px
+            transparentize($color: $gray-shadow, $amount: 0.7);
+        }
+      }
+    }
+
+    &:not(.cdk-focused):focus {
+      .app-btn-partial {
+        color: $app-theme-primary-green-dark;
+        &--icon {
+          border-color: rgba(19, 37, 58, 0.3);
+          @extend %form-item-shadow;
+          box-shadow: 0 0 0 3px
+            transparentize($color: $gray-shadow, $amount: 0.7);
+        }
+      }
+    }
+
+    &.disabled,
+    &:disabled {
+      cursor: not-allowed;
+
+      &:hover {
+        color: $gray2;
+        .app-btn-partial {
+          &--icon {
+            box-shadow: none;
+          }
+        }
+      }
+
+      .app-btn-partial {
+        &--icon {
+          background: $gray2;
+          border: 1px solid $gray2;
+          box-shadow: none;
+
+          .ripple-wrapper {
+            color: transparent;
+          }
+        }
+        &--iconfirst {
+          color: $gray2;
+          box-shadow: none;
+
+          .ripple-wrapper {
+            color: transparent;
+          }
+        }
+
+        &--title {
+          color: $gray2;
+        }
+      }
+    }
+
+    .ripple-wrapper {
+      color: rgba($color: $black, $alpha: 0.4);
+    }
+  }
+
+  //button -- text only no border
+
+  &-tertiary-textonly {
+    padding: 0;
+    color: $gray1;
+    .app-btn-partial {
+      &--title {
+        font-weight: $font-weight-regular;
+        font-size: $text-md;
+        transition: $animation-duration3 $animation-type2 color;
+        @media (max-width: $screen-md) {
+          font-size: $text-sm;
+        }
+      }
+    }
+
+    &:hover {
+      color: $app-theme-primary;
+    }
+
+    &:not(.cdk-focused):focus {
+      border-color: transparent;
+      color: $app-theme-primary;
+      .app-btn-partial {
+        &--text {
+          border: 1px solid $app-theme-primary-dark;
+        }
+      }
+    }
+
+    &.disabled,
+    &:disabled {
+      cursor: not-allowed;
+
+      &:hover {
+        .app-btn-partial {
+          &--text {
+            color: $gray2;
+          }
+        }
+      }
+
+      .app-btn-partial {
+        &--title {
+          color: $gray2;
+        }
+      }
+    }
+    &.btn--green-theme {
+      &.disabled,
+      &:disabled {
+        cursor: not-allowed;
+
+        &:hover {
+          .app-btn-partial {
+            &--text {
+              color: $gray2;
+            }
+          }
+        }
+
+        .app-btn-partial {
+          &--title {
+            color: $gray2;
+          }
+        }
+      }
+      .app-btn-partial {
+        &--title {
+          color: $app-theme-primary-green;
+          font-weight: $font-weight-semi-bold;
+          font-size: $text-lg;
+          line-height: 2.4rem;
+          @media (max-width: $screen-md) {
+            font-size: $text-md;
+          }
+        }
+      }
+
+      &:hover:not(:disabled):not(.disabled) {
+        .app-btn-partial {
+          &--title {
+            color: $app-theme-primary-green-dark;
+          }
+        }
+      }
+    }
+  }
+
+  // button -- primary green theme
+  &-primary-green {
+    display: block;
+    margin: 0;
+    background-clip: border-box;
+    border: 1px solid;
+    background-color: $app-theme-primary-green;
+    border-color: $app-theme-primary-green;
+    border-radius: 16px;
+    color: $white;
+
+    transition: border-color $animation-type1 $animation-duration3,
+      background-color $animation-type1 $animation-duration3,
+      box-shadow $animation-type1 $animation-duration3;
+
+    &:hover {
+      background-color: $app-theme-primary-green-dark;
+      border-color: $app-theme-primary-green-dark;
+      box-shadow: 0 0 0 3px transparentize($color: $gray-shadow, $amount: 0.7);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: $app-theme-primary-green-dark-1;
+      border-color: $app-theme-primary-green-dark-1;
+
+      &:hover {
+        border-color: transparent;
+        box-shadow: none;
+      }
+    }
+
+    .ripple-wrapper {
+      color: rgba(169, 169, 169, 0.4);
+    }
+
+    &:not(.cdk-focused):focus {
+      box-shadow: 0 0 0 3px rgba(19, 37, 58, 0.2);
+    }
+  }
+  &.transparent-primary {
+    color: $app-theme-secondary-green;
+    padding: 14px 23px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0.9;
+    box-shadow: 0px 22.4329px 61.1806px rgba(255, 255, 255, 0.04),
+      inset 0px 12.2361px 85.6528px rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(69.338px);
+  }
+  //button -- sizes
+
+  &-sm {
+    height: $field-btn-sm-h; /* 36px */
+    padding: $field-btn-sm-p; /* 9px 16px */
+  }
+
+  &-md {
+    height: $field-btn-md-h; /* 40px */
+    padding: $field-btn-md-py 32px; /* 9px 32px */
+  }
+
+  &-lg {
+    height: ($field-btn-md-h + 16); /* 56px */
+    padding: ($field-btn-md-py + 7) 40px; /* 16px 40px */
+  }
+
+  .app-btn-icon {
+    margin-right: 10px;
+  }
+
+  .app-btn-icon-text {
+    padding-top: 2px;
+  }
+}
+
+//button -- plain button
+.app-btn-plain {
+  @include button;
+  @extend %inline-flex-all-center;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+//tags--
+.app-tag {
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 12px;
+  .app-tag-check {
+    @extend .visually-hidden;
+    &:disabled,
+    &.disabled {
+      background-color: $gray4;
+      border-color: $gray4;
+      color: $gray2;
+      &:hover {
+        background-color: $gray4;
+        border-color: $gray4;
+        color: $gray2;
+      }
+    }
+    &:checked {
+      ~ .app-tag-container {
+        background-color: $app-theme-primary-green;
+        color: $white;
+        border-color: $app-theme-primary-green;
+        &:hover {
+          background-color: $app-theme-primary-green;
+          color: $white;
+        }
+      }
+      ~ .app-tag-container__withInput {
+        background-color: $white;
+        color: $app-theme-primary;
+        font-weight: $font-weight-semi-bold;
+        border-color: $app-theme-primary-green;
+        &:hover {
+          background-color: $white;
+        }
+      }
+      &:not(:disabled):focus,
+      &:not(.disabled):focus {
+        ~ .app-tag-container,
+        ~ .app-tag-container__withInput {
+          border-color: rgba($color: $app-theme-secondary-blue, $alpha: 0.5);
+        }
+      }
+    }
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.app-tag-container {
+  background-color: $gray4;
+  color: $app-theme-primary;
+  border: 1px solid $gray4;
+  padding: 10px 20px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: $text-md;
+  font-weight: $font-weight-medium;
+  min-height: 41px;
+  transition: border-color $animation-duration3,
+    background-color $animation-duration3;
+  @extend %flex-all-center;
+  line-height: 1.5;
+  &:hover {
+    background: $gray4;
+    border: 1px solid $gray2;
+  }
+  .ripple-wrapper {
+    color: rgba($color: $gray3, $alpha: 0.5);
+  }
+  &.dark-theme{
+    background-color: $app-theme-primary;
+    color: $gray4;
+    border: 1px solid $app-theme-primary;
+  }
+}
+//tag with visible radio button
+.app-tag-container__withInput {
+  background-color: $white;
+  color: $gray1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid $white;
+  padding: 10px 20px 10px 54px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: $text-lg;
+  font-weight: $font-weight-medium;
+  min-height: 50px;
+  transition: border-color $animation-duration3,
+    background-color $animation-duration3;
+  @extend %flex-all-center;
+  &:after {
+    @extend %ie11-min-h-flex-center-fix;
+  }
+  @include screen-lg {
+    font-size: $text-md;
+  }
+  &:hover {
+    border: 1px solid $app-theme-primary-green;
+  }
+  .ripple-wrapper {
+    color: rgba($color: $gray3, $alpha: 0.5);
+  }
+}
+.app-tag-container__withlabel{
+  padding: 0px 0px 0px 30px;
+  font-weight: $font-weight-medium;
+  font-size: $text-lg;
+  line-height: 1.5;
+  color: $gray1;
+  @include screen-lg{
+    font-size: $text-md;
+  }
+}
+.app-tag-check {
+  &:disabled,
+  &.disabled {
+    ~ .app-tag-container {
+      cursor: not-allowed;
+      color: $gray2;
+      &:hover {
+        border-color: $gray4;
+        color: $gray2;
+      }
+    }
+    ~ .app-tag-container__withInput {
+      cursor: not-allowed;
+      color: $gray2;
+      &:hover {
+        border-color: $gray4;
+        color: $gray2;
+      }
+    }
+  }
+
+  &:not(:disabled):focus,
+  &:not(.disabled):focus {
+    ~ .app-check-radio--title {
+      border-color: $gray6;
+    }
+  }
+
+  &:not(:disabled):not(:checked):hover {
+    background: $gray4;
+    border: 1px solid $gray2;
+  }
+  &:not(.cdk-focused):focus {
+    ~ .app-tag-container {
+      border-color: rgba(123, 97, 255, 0.2);
+      outline: none;
+    }
+    ~ .app-tag-container__withInput {
+      border-color: rgba(123, 97, 255, 0.2);
+      outline: none;
+    }
+  }
+}
+
+.dark-theme {
+  .app-btn-addon-primary {
+    color: $app-theme-secondary-green;
+    &:hover {
+      color: $app-theme-tertiary-green;
+    }
+    &:not(.cdk-focused):focus {
+      color: $app-theme-tertiary-green;
+    }
+  }
+}
+.button-reset{
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  background: transparent;
+  font-size: inherit;
+  color: inherit;
+}

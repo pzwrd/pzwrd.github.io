@@ -1,0 +1,591 @@
+@use "../abstracts" as *;
+:host {
+  @extend %flex-col;
+  height: calc(100% - 123px);
+  @include screen-xxlprocess {
+    height: auto;
+  }
+  @include screen-lap-sm {
+    height: calc(100% - 80px);
+  }
+}
+%common-card-coding {
+  background: $light-green;
+  border: 0.5px solid $app-theme-secondary-blue;
+  border-radius: $card-radius;
+  box-shadow: 0px 8px 30px rgba(102, 176, 216, 0.15);
+}
+.app-l-dashboard {
+  @extend %flex;
+  height: 100%;
+  @include screen-lg {
+    @include flex-direction(column);
+    padding-bottom: 20px;
+  }
+  &-list {
+    width: 100%;
+    overflow: auto;
+    @media (min-width: $screen-lg) {
+      padding: 0 30px;
+    }
+  }
+  &-companies {
+    &--header {
+      width: 100%;
+      padding: 20px 0 0;
+      @extend %flex-vert-center;
+      margin-bottom: 20px;
+      @include screen-lap-sm {
+        padding: 15px 0 0;
+        margin-bottom: 10px;
+      }
+      @include screen-lg {
+        margin-bottom: 16px;
+        padding: 0 20px;
+      }
+      .companies-pane-item--header {
+        width: 100%;
+        @extend %flex-vert-center;
+      }
+      .companies-pane--header {
+        &.-title {
+          font-weight: $font-weight-semi-bold;
+          font-size: $text-xl;
+          line-height: 1.5;
+          color: $app-theme-primary;
+          @include screen-lg {
+            font-size: $text-lg;
+          }
+        }
+        &.-action {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+  &-right-pane {
+    overflow: auto;
+    flex: 1 0 360px;
+    @extend %flex-col;
+    padding: 20px 30px 20px 29px;
+    border-left: 1px solid $border-shade-1;
+    @include screen-lap-sm {
+      padding: 15px 30px 10px 29px;
+    }
+    @include screen-lg {
+      padding: 20px;
+      overflow: visible;
+    }
+  }
+
+  .right-pane-item {
+    padding-top: 0px;
+    + .right-pane-item {
+      margin-top: 40px;
+      @include screen-lap-sm {
+        margin-top: 20px;
+      }
+    }
+    &--header {
+      @extend %flex-vert-center;
+      margin-bottom: 20px;
+      @include screen-lap-sm {
+        margin-bottom: 15px;
+      }
+      @include screen-lg {
+        margin-bottom: 16px;
+      }
+      .right-pane--header {
+        &.-title {
+          font-weight: $font-weight-semi-bold;
+          font-size: $text-xl;
+          line-height: calc(27 / 18);
+          color: $app-theme-primary;
+          @include screen-lg {
+            font-size: $text-md;
+          }
+        }
+        &.-action {
+          margin-left: auto;
+        }
+      }
+    }
+    &--body {
+      @extend %flex-col;
+      background: $white;
+      box-shadow: 4px 8px 20px rgba(198, 207, 216, 0.25);
+      border-radius: $card-radius;
+    }
+  }
+}
+
+.app-c-ngx-masonry-wrapper.app-c-masonary-code--all {
+  width: 33.33%;
+  transition: top 0.4s ease-in-out, left 0.4s ease-in-out;
+  &.app-l-width--half {
+    width: 50%;
+    @media screen and (max-width: $screen-md) {
+      width: 100%;
+    }
+    @media screen and (max-width: $screen-xxl) {
+      width: 50%;
+    }
+    @media screen and (max-width: $screen-md) {
+      width: 100%;
+    }
+  }
+  &.app-c-masonary-code--all {
+    width: calc(100% - 60px);
+    @include screen-lg {
+      width: 100%;
+    }    
+  }
+  @media screen and (max-width: $screen-xxl) {
+    width: 50%;
+  }
+  @media screen and (max-width: $screen-md) {
+    width: 100%;
+  }
+}
+
+.app-c-ngx-masonry-wrapper.app-c-masonary-code {
+  width: 33.33%;
+  transition: top 0.4s ease-in-out, left 0.4s ease-in-out;
+  &.app-l-width--half {
+    width: 50%;
+    @media screen and (max-width: $screen-md) {
+      width: 100%;
+    }
+    @media screen and (max-width: $screen-xxl) {
+      width: 50%;
+    }
+    @media screen and (max-width: $screen-md) {
+      width: 100%;
+    }
+  }
+  &.app-c-masonary-code--all {
+    width: calc(100% - 40px);
+    @include screen-lg {
+      width: 100%;
+    }    
+  }
+  @media screen and (max-width: $screen-xxl) {
+    width: 50%;
+  }
+  @media screen and (max-width: $screen-md) {
+    width: 100%;
+  }
+}
+
+.app-l-dashboard {
+  @include screen-xxlprocess {
+    flex-direction: column;
+  }
+  .app-l-dashboard-list {
+    overflow: auto;
+    @include screen-xxlprocess {
+      overflow: inherit;
+    }
+    .app-l-tab-slider--container {
+      @include screen-xxlprocess {
+        padding: 0px 0px;
+      }
+      @include screen-lg {
+        padding: 0px 20px;
+        margin-bottom: 17px;
+      }
+    }
+    .app-l-dashboard-companies--header {
+      margin-bottom: 20px;
+      margin-top: 5px;
+      @include screen-xxlprocess {
+        margin-top: 20px;
+      }
+      &.app-l-companies--header-coding {
+        margin-bottom: 30px;
+        .app-c-header-link {
+          position: relative;
+          top: 55px;
+          cursor: pointer;
+          z-index: 1;
+          right: 0;
+          margin-left: auto;
+          color: $app-theme-primary-green;
+          font-size: $text-lg;
+          font-weight: $font-weight-semi-bold;
+          line-height: 1.5;
+          text-decoration: none;
+          white-space: nowrap;
+          &.no-nav{
+            top: 0;
+          }
+          @include screen-xxlprocess {
+            top: 0px;
+            font-size: $text-md;
+          }
+        }
+        .app-c-view--ipad {
+          @include screen-xllap {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .app-l-dashboard-companies {
+    .app-c-process--card {
+      @extend %flex-vert-center;
+      margin: 0px;
+      padding: 30px;
+      @include screen-xxlprocess {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+    .app-c-process-card--item {
+      @extend %flex-vert-col;
+      flex: 1 1 100%;
+      margin-right: 10px;
+      &:last-child {
+        margin-right: 0px;
+      }
+      @include screen-xxlprocess {
+        margin-top: 10px;
+        &:first-child {
+          margin-top: 0px;
+        }
+      }
+      @include screen-xxlprocess {
+        flex-direction: row;
+        flex: 1 1 21px;
+      }
+      .app-c-process-item--text {
+        max-width: 100px;
+        text-align: center;
+        font-size: $text-md;
+        font-weight: $font-weight-medium;
+        color: $app-theme-primary;
+        line-height: 1.5;
+        white-space: nowrap;
+        word-break: break-all;
+        @include screen-xxlprocess {
+          max-width: 100%;
+        }
+        .app-c-block-text {
+          display: block;
+          @include screen-xxlprocess {
+            display: inline;
+          }
+        }
+      }
+      .app-c-icon--container {
+        min-width: 60px;
+        height: 60px;
+        padding: 10px;
+        margin-bottom: 12px;
+        margin-left: 12px;
+        border-radius: $icon-radius;
+        background: $gray5;
+        @extend %flex-all-center;
+        @include screen-xxlprocess {
+          margin-right: 12px;
+          min-width: 44px;
+          height: 44px;
+          border-radius: $card-radius;
+          margin-left: 0;
+          margin-bottom: 5px;
+        }
+      }
+      .dotted {
+        background-image: linear-gradient(
+          90deg,
+          $app-theme-secondary-green 8px,
+          $white 0
+        );
+        background-size: 12px 1px;
+        background-position: 0 100%;
+      }
+      .arrow {
+        height: 1px;
+        background-color: $app-theme-secondary-green;
+        position: relative;
+        width: 100%;
+        top: -25px;
+        &::after {
+          position: absolute;
+          content: "";
+          display: inline-block;
+          right: -8px;
+          top: -2.4px;
+          width: 0;
+          height: 0;
+          border-top: 3px solid transparent;
+          border-bottom: 3px solid transparent;
+          border-right: 3px solid transparent;
+          border-left: 5px solid $app-theme-secondary-green;
+        }
+      }
+      &.app-c-arrow {
+        @include screen-xxlprocess {
+          transform: rotate(90deg);
+          margin-top: 0px;
+        }
+        .arrow {
+          @include screen-xxlprocess {
+            width: 20px;
+            position: relative;
+            top: -12px;
+          }
+        }
+      }
+    }
+  }
+}
+.app-c-card-content {
+  @include screen-lg {
+    border-bottom: 1px solid $gray4;
+  }
+}
+.app-l-listing-section {
+  padding: 30px 45px 30px 30px;
+  @include screen-lap-sm {
+    padding: 15px 52px 20px 30px;
+  }
+  @media screen and (max-width: 1300px) {
+    padding: 17px 30px;
+  }
+  @include screen-lg {
+    padding: 20px;
+  }
+  &.app-listing-section-code {
+    padding: 15px 0px 20px 0px;
+    .app-l-tab-slider--nav {
+      @include screen-xxlprocess {
+        padding: 0px 0px;
+      }
+      @include screen-lg {
+        padding: 0px 20px;
+      }
+    }
+    .app-l-tab-slider--container .app-c-mv-wrapper {
+      @include screen-xxlprocess {
+        display: flex;
+        align-items: flex-start;
+        .app-c-card__title {
+          display: none;
+        }
+        .app-c-logo-wrap img {
+          width: 80px;
+          margin-right: 15px;
+          height: 56px;
+          object-fit: fill;
+        }
+        .app-c-card-header {
+          padding-bottom: 0;
+        }
+        .app-c-card__title-main {
+          font-size: 16px;
+        }
+      }
+    }
+    .app-l-tab-slider--container {
+      .app-c-card-header {
+        padding-right: 0px;
+        border: none;
+        padding-bottom: 20px;
+      }
+      .app-c-logo-wrap {
+        width: 100%;
+        height: auto;
+        padding: 0px;
+        margin: 0;
+        img {
+          min-width: 100%;
+          object-fit: cover;
+          height: 124px;
+          border-radius: 8px;
+          width: 244px;
+        }
+      }
+    }
+    .app-c-header-wrap {
+      margin-bottom: 10px;
+      @include screen-lg {
+        margin-bottom: 0px;
+      }
+      .app-c-card__title-main {
+        font-weight: $font-weight-bold;
+        font-size: $text-xxl;
+        line-height: 1.5;
+        color: $app-theme-primary;
+        margin-bottom: 10px;
+        white-space: normal;
+        word-break: break-word;
+      }
+      .app-c-card__title {
+        font-weight: $font-weight-medium;
+        font-size: $text-sm;
+        color: $gray2;
+        line-height: 1.5;
+        white-space: normal;
+        word-break: break-word;
+      }
+      .app-c-code-submission {
+        margin-bottom: 10px;
+        display: block;
+        font-weight: $font-weight-regular;
+        font-size: $text-xs;
+        color: $app-theme-primary;
+        @include screen-xxlprocess {
+          display: none;
+        }
+        .app-c-code-time {
+          font-weight: $font-weight-bold;
+          font-size: $text-sm;
+          color: $error;
+          margin-left: 5px;
+        }
+      }
+    }
+    .app-c-watching-container {
+      @include screen-lg {
+        border-bottom: 1px solid $gray4;
+        padding-bottom: 1px;
+        margin-top: 10px;
+      }
+      @include screen-lg {
+        order: 2;
+      }
+      .app-c-watching-head {
+        @extend %flex-vert-center;
+        .app-c-title {
+          font-size: $text-md;
+          font-weight: $font-weight-semi-bold;
+          color: $app-theme-primary;
+          line-height: 1.5;
+        }
+        .app-c-count {
+          font-weight: $font-weight-bold;
+          font-size: $text-sm;
+          color: $error;
+          margin-left: auto;
+        }
+      }
+      .app-c-watching-body {
+        @extend %flex-vert-center;
+        margin-top: 13px;
+        margin-bottom: 20px;
+        @include screen-lg {
+          margin-bottom: 15px;
+        }
+        .app-c-logo-wrap {
+          flex: 0 1 40px;
+          margin-right: 16px;
+          min-height: 40px;
+          @extend %flex-all-center;
+          &.light-green-bg {
+            background-color: $green-shade;
+            border-radius: 2px;
+            padding:5px;
+          }
+          &.light-yellow-bg {
+            background-color: $highlight-inner;
+            border-radius: 2px;
+            padding:5px;
+          }
+          img {
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+    }
+    .app-c-card-body {
+      border-bottom: none;
+      @include screen-xxlprocess {
+        padding-bottom: 0px;
+      }
+      @include screen-lg {
+        display: flex;
+        flex-direction: column;
+        .app-c-completion-container{
+          order: 3;
+          margin-top: 15px;
+        }
+      }
+      .app-c-card-body-title {
+        font-weight: $font-weight-semi-bold;
+        color: $app-theme-primary;
+      }
+
+      .app-c-card__item-cntnt {
+        margin-bottom: 20px;
+        @extend %flex-vert-center;
+        @include screen-xxlprocess {
+          margin-bottom: 15px;
+        }
+
+        .app-c-descrptn {
+          font-weight: $font-weight-medium;
+          font-size: $text-md;
+          color: $gray2;
+          line-height: 1.5;
+          &.app-c-day-dcrptn {
+            margin-left: 13px;
+          }
+          @include screen-lg {
+            font-size: $text-md;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+          }
+          .app-c-btn-text {
+            background: transparent;
+            border: none;
+            line-height: 1.5;
+            font-weight: $font-weight-semi-bold;
+            font-size: $text-md;
+            color: $app-theme-primary-green;
+            cursor: pointer;
+            @include screen-lg {
+              display: none;
+            }
+          }
+        }
+        .gt-score-medals {
+          @extend %flex;
+          .medal-section {
+            @extend %flex-vert-center;
+            margin-right: 25px;
+            .medal-score {
+              font-size: $text-sm;
+              font-weight: $font-weight-semi-bold;
+              color: $app-theme-primary;
+              margin-left: 10px;
+              margin-top: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.app-l-dashboard-right-pane{
+  @include screen-xxlprocess {
+    overflow: inherit;
+  }
+  &.mobile-view{
+    display: none;
+    @include screen-lg {
+      display: block;
+      padding-bottom: 5px;
+    }
+  }
+}
+.app-l-dashboard-right-pane.desktop-view{
+  @include screen-lg {
+    display: none;
+  }
+}

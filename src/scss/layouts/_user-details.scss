@@ -1,0 +1,580 @@
+@use "../abstracts" as *;
+
+.app-l-page {
+  &-wrapper {
+    height: 100%;
+    border-radius: 16px;
+    @include screen-lg {
+      flex-direction: column;
+    }
+  }
+  &__left {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    height: 100%;
+    &.stepper-wrapper {
+      justify-content: space-between;
+      overflow: auto;
+    }
+    &.workFlow-wrapper {
+      justify-content: space-between;
+      overflow: auto;
+      transition: opacity 200ms;
+    }
+    @include screen-lg {
+      padding: 25px 21px 27px;
+      background: $white;
+      box-shadow: 13.2653px 1.89505px 13px rgba(158, 162, 169, 0.035);
+      position: relative;
+      height: auto;
+      .app-graphics {
+        display: none;
+      }
+    }
+    .app-logo {
+      position: absolute;
+      left: 10%;
+      top: 4.8%;
+      &.-relative-dv {
+        position: relative;
+        margin-top: 47px;
+        margin-left: 43px;
+        left: auto;
+        top: auto;
+        @include screen-lap-sm {
+          margin-top: 11px;
+        }
+      }
+      &.-relative-dv__flow{
+        position: relative;
+        margin-top: 43px;
+        margin-left: 43px;
+        left: auto;
+        top: auto;
+        @include screen-lg{
+          position: relative;
+          left: auto;
+          top: auto;
+          margin-top: auto;
+          margin-left: 0px;
+        }
+      }
+      @include screen-lg {
+        position: relative;
+        left: auto;
+        top: auto;
+      }
+    }
+    .app-graphics {
+      height: 100%;
+      max-width: 47.62vh;
+    }
+  }
+  &__right {
+    padding: 90px 80px 90px calc(47.67vh + 55px);
+    z-index: 0;
+    width: 100%;
+    min-height: 100%;
+
+    &.resume-builder-header{
+      padding: 0 80px 160px;
+      @include screen-lap-sm {
+        padding: 0 80px 105px;
+     }
+        @include screen-lg {
+          padding: 0;
+          min-height: auto;
+        }
+    }
+    &.app-c-stepper-page {
+      padding: 90px 80px 70px calc(396px + 55px);
+      @include screen-lap {
+        padding: 40px 80px 33px calc(396px + 55px);
+       }
+       @include screen-lap-sm {
+        padding: 30px 80px 33px calc(396px + 55px);
+      }
+      @include screen-lg {
+        padding: 20px 19px 20px 20px;
+      }
+    }
+    &.user-signup{
+      @include screen-lap {
+       padding: 35px 35px 35px calc(47.67vh + 11px);
+      }
+      @include screen-lap-sm {
+        padding: 35px 35px 35px calc(47.67vh + 11px);
+      }
+      @include screen-lg {
+        padding: 20px 19px 20px 20px;
+      }
+    }
+    &.app-c-workflow-page {
+      padding: 90px 80px 90px calc(396px + 80px);
+      @include screen-lap {
+        padding: 40px 80px 35px calc(396px + 80px);
+       }
+       @include screen-lap-sm {
+        padding: 30px 80px 35px calc(396px + 80px);
+      }
+      @include screen-lg {
+        padding: 20px 19px 20px 20px;
+      }
+    }
+    @include screen-lg {
+      padding: 20px 19px 40px 20px;
+      min-height: auto;
+    }
+  }
+}
+
+.app-l-page-wrapper {
+  .app-c-content__main{
+    margin-top: 40px;
+    @include screen-lg {
+      margin-top: 0;
+    }
+
+    @include screen-lap {
+      margin-top: 30px;
+    }
+    @include screen-lap-sm {
+      margin-top: 30px;
+    }
+
+    .button-group {
+      button.app-btn-secondary {
+        &.-with-icon {
+          margin-right: 20px;
+          background-color: $white;
+        }
+        @include screen-lg {
+          margin-bottom: 12px;
+          &.expection-new{
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+    .app-c-label {
+      font-size: $text-md;
+      font-weight: $font-weight-medium;
+      display: block;
+      margin-bottom: 10px;
+      color: $gray1;
+      line-height: 1.14;
+    }
+
+  }
+
+  .app-c-footer_rightsection {
+    @extend %flex-vert-center;
+    margin-top: 40px;
+
+    @include screen-lap-sm{
+      margin-top: 20px;
+    }
+    .app-btn-primary {
+      @media (max-width: $screen-sm) {
+        width: 100%;
+      }
+    }
+    .app-c-footer__descp {
+      font-size: $text-md;
+      font-weight: $font-weight-regular;
+      margin-left: 30px;
+      cursor: pointer;
+      color: $gray1;
+      &:focus{
+        box-shadow: 0 0 0 3px rgb(19 37 58 / 20%);
+      }
+      @media (max-width: $screen-sm) {
+        margin-left: 0px;
+        margin-top: 5px;
+        color: $gray2;
+      }
+    }
+    .app-c-btn__stepper {
+      @media (max-width: $screen-sm) {
+        margin-bottom: 15px;
+      }
+    }
+    @media (max-width: $screen-sm) {
+      @include flex-direction(column);
+    }
+  }
+  .app-c-main-header,
+  .app-c-sub-header {
+    &.desktop {
+      @media (max-width: $screen-sm) {
+        display: none;
+      }
+      @include screen-lg {
+        display: none;
+      }
+    }
+    &.mobile {
+      @media (min-width: $screen-lg) {
+        display: none;
+      }
+    }
+  }
+  .app-c-page-heading {
+    .app-c-main-header {
+      font-size: $text-xxl-large;
+      font-weight: $font-weight-bold;
+      color: $app-theme-primary;
+      margin: 25px 0px;
+      line-height: 40px;
+      @include screen-lap {
+        margin: 20px 0px;
+      }
+      @include screen-lap-sm{
+        margin: 15px 0px;
+        font-size: 3rem;
+      }
+      &.app-l-hdng-only {
+        margin-top: 0px;
+        margin-bottom: 20px;
+        @include screen-lap-sm {
+          margin-bottom: 10px;
+          }
+        @media (max-width: $screen-sm) {
+          margin-left: 0px;
+        }
+      }
+      @media (max-width: $screen-sm) {
+        margin: 0px 0px 20px 20px;
+        font-size: $text-xxl;
+        line-height: 27px;
+      }
+    }
+    .app-c-sub-header {
+      font-size: $text-lg;
+      font-weight: $font-weight-regular;
+      color: $app-theme-primary;
+      line-height: 21px;
+      @media (max-width: $screen-lg) {
+        font-size: $text-md;
+        margin-bottom: 20px;
+      }
+    }
+    .app-c-header__mobile {
+      @extend %flex-col;
+      @media (max-width: $screen-sm) {
+        @include flex-direction(row);
+      }
+      .app-c-icon__back {
+        button {
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          color: $app-theme-primary;
+          &:hover {
+            color: $gray2;
+          }
+          @media (max-width: $screen-sm) {
+            position: relative;
+            top: 5px;
+          }
+        }
+        .icon-back {
+          color: $app-theme-primary;
+        }
+      }
+    }
+  }
+}
+.app-l-info-container {
+  max-width: 584px;
+  h1 {
+    &.app-heading-h1 {
+      margin-bottom: 20px;
+      @include screen-lap{
+        margin-bottom: 15px;
+      }
+      @include screen-lap-sm{
+        margin-bottom: 10px;
+      }
+    }
+  }
+  h6 {
+    &.app-sub-text {
+      font-size: $text-lg;
+      font-weight: $font-weight-regular;
+      line-height: 2.4rem;
+      @media (max-width: $screen-md) {
+        font-size: $text-md;
+        line-height: 2.1rem;
+      }
+    }
+  }
+  .app-l-user-details__form {
+    margin-top: 40px;
+    @include screen-lap-sm {
+      margin-top: 30px;
+      }
+    .app-l-form-wrap {
+      &.app-l-last-field {
+        margin-top: 40px;
+        margin-bottom: 42px;
+        @include screen-lap-sm {
+          margin-top: 30px;
+          margin-bottom: 32px;
+          }
+        @media (max-width: $screen-md) {
+          margin-top: 26px;
+          margin-bottom: 40px;
+        }
+      }
+    }
+    .app-l-confirm__btn {
+      margin-top: 40px;
+    }
+    @media (max-width: $screen-md) {
+      margin-top: 27px;
+      margin-bottom: 20px;
+      &.app-l-password-fm {
+        margin-top: 40px;
+      }
+    }
+  }
+  .app-l-user-details__form-onefield {
+    margin-top: 40px;
+    @include screen-lap-sm {
+      margin-top: 30px;
+      }
+    .app-l-confirm__btn {
+      margin-top: 40px;
+      @include screen-lap-sm {
+        margin-top: 30px;
+      }
+    }
+  }
+  .app-l-fw-mb {
+    @media (max-width: $screen-md) {
+      width: 100%;
+    }
+  }
+  .app-l-lnk_signin {
+    font-size: $text-lg;
+    font-weight: $font-weight-regular;
+    color: $gray1;
+    &.app-l-lnk__space {
+      margin-top: 70px;
+      @include screen-lap {
+        margin-top: 30px;
+      }
+      @include screen-lap-sm {
+        margin-top: 30px;
+      }
+      @media (max-width: $screen-md) {
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+    }
+    &.app-l-vfcn__space {
+      margin-top: 20px;
+    }
+    a {
+      font-weight: $font-weight-bold;
+      color: $app-theme-primary-green;
+      text-decoration: none;
+    }
+    @media (max-width: $screen-md) {
+      font-size: $text-md;
+    }
+  }
+  .app-l-validation-rules {
+    margin-top: 20px;
+    @include screen-lap-sm {
+      margin-top: 10px;
+    }
+    p {
+      font-size: $text-sm;
+      font-weight: $font-weight-medium;
+      color: $gray1;
+      @media (max-width: $screen-md) {
+        line-height: 1.8rem;
+      }
+    }
+    .app-l-password-checks {
+      @extend %flex-vert-center;
+      @extend %flex-wrap;
+      li {
+        @extend %flex;
+        font-size: $text-sm;
+        font-weight: $font-weight-medium;
+        margin-right: 10px;
+        &.text-success {
+          .app-l-pcheck-icons {
+            color: $app-theme-primary-green;
+          }
+        }
+        &.text-warning {
+          .app-l-pcheck-icons {
+            color: $error;
+          }
+        }
+        .check-label {
+          margin-left: 5px;
+          color: $app-theme-primary;
+        }
+        @media (max-width: $screen-md) {
+          margin-bottom: 6px;
+          margin-right: 0px;
+          width: 50%;
+        }
+      }
+    }
+    @media (max-width: $screen-md) {
+      margin-top: 9px;
+    }
+  }
+
+  .app-l-social-groups {
+    margin: 40px 0px 30px;
+    @extend %flex;
+    @media (max-width: $screen-md) {
+      margin: 24px 0px 27px;
+    }
+    @include screen-lap-sm {
+      margin: 30px 0px 20px;
+    }
+    button {
+      @media (max-width: $screen-md) {
+        padding: 16px 29px;
+        font-size: $text-md;
+        flex-grow: 1;
+      }
+      @media (max-width: $screen-xs) {
+        padding: 16px 22px;
+      }
+      + button {
+        margin-left: 20px;
+      }
+    }
+  }
+  .app-l-liner {
+    p.app-line-text {
+      position: relative;
+      font-size: $text-lg;
+      font-weight: $font-weight-medium;
+
+      color: $gray2;
+      span {
+        background-color: $gray6;
+        padding-right: 10px;
+        @media (max-width: $screen-md) {
+          padding-left: 7px;
+          padding-right: 7px;
+        }
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 0.67rem;
+        border-top: 1px solid $gray4;
+        z-index: -1;
+        @media (max-width: $screen-md) {
+          display: none;
+        }
+      }
+      @media (max-width: $screen-md) {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid $gray3;
+        line-height: 0.1em;
+        margin: 10px 0 30px;
+        font-size: $text-md;
+        font-weight: $font-weight-regular;
+      }
+    }
+  }
+  .app-l-sign-form {
+    margin-top: 33px;
+    @include screen-lap-sm {
+      margin-top: 23px;
+    }
+    .app-l-form-wrap {
+      &.app-l-last-field {
+        margin-top: 40px;
+        margin-bottom: 24px;
+        @include screen-lap-sm {
+          margin-top: 30px;
+          margin-bottom: 14px;
+        }
+        @media (max-width: $screen-md) {
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+    .app-l-confirm-scn {
+      margin-bottom: 44px;
+      @include screen-lap-sm {
+        margin-bottom: 33px;
+      }
+      .app-l-sign-chk-terms {
+        .app-check-radio-wrap {
+          .app-check-radio-label {
+            color: $gray1;
+            font-size: 1.2rem;
+            font-weight: 500;
+            @media (max-width: $screen-md) {
+              font-size: 1.3rem;
+            }
+          }
+          input[type="checkbox"]:checked {
+            ~ .app-check-radio-label {
+              color: $app-theme-primary;
+            }
+          }
+        }
+      }
+      @media (max-width: $screen-md) {
+        margin-bottom: 40px;
+      }
+    }
+    @media (max-width: $screen-md) {
+      margin-top: 27px;
+      margin-bottom: 20px;
+      &.app-l-password-fm {
+        margin-top: 40px;
+      }
+    }
+  }
+
+  .app-l-fw-mb {
+    @media (max-width: $screen-md) {
+      width: 100%;
+    }
+  }
+  .app-l-form-wrap {
+    max-width: 470px;
+    @include screen-lg{
+      max-width: 100%;
+    }
+  }
+  .app-l-link__next {
+    margin-bottom: 40px;
+    a {
+      font-size: $text-md;
+      font-weight: $font-weight-medium;
+      color: $app-theme-primary-green;
+      text-decoration: none;
+    }
+  }
+}
+
+.app-l-visibility__lg{
+  @include is-mobile-d-none;
+}
+.app-l-visibility__sm{
+@include is-desktop-d-none;
+}

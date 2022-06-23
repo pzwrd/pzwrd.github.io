@@ -1,0 +1,656 @@
+@use "abstracts" as *;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: $body-font;
+  font-size: $text-lg; /* 16px */
+  font-weight: $font-weight-regular;
+  color: $app-theme-primary;
+  background-color: $gray6;
+  &.web-page{
+    color:$white;
+  }
+}
+button {
+  font-family: $body-font;
+}
+.app-l-main-wrap {
+  height: 100%;
+  @extend %flex-col;
+  position: relative;
+}
+.app-l-highlight-wrap {
+  @extend %flex-horiz-away-vert-center;
+  padding: 10px 20px;
+  background-color: $highlight-inner;
+  border: 1px solid $app-theme-secondary-yellow;
+  border-radius: 8px;
+  align-items: flex-start;
+  .app-l-item {
+    font-size: $text-md;
+    font-weight: $font-weight-medium;
+    word-break: break-word;
+    line-height: 1.5;
+    position: relative;
+    top: 2px;
+    .app-l-action-btn {
+      border: none;
+      padding: 0;
+      background-color: transparent;
+      cursor: pointer;
+      color: $gray1;
+      transition: color $animation-duration3;
+      &:hover {
+        .icon-svg {
+          color: $app-theme-primary;
+        }
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+.pac-item {
+  padding: 5px 4px;
+}
+.app-l-content {
+  height: 100%;
+  &.whitebg {
+    background-color: $white;
+  }
+}
+//icon overrides
+.app-logo-size {
+  width: 44px;
+  height: 44px;
+  @include screen-lg {
+    &.-sm {
+      width: 32px;
+      height: 32px;
+    }
+    width: 30px;
+    height: 30px;
+    color: $app-theme-primary-green;
+  }
+}
+.scoreIcon {
+  width: 40px;
+  height: 40px;
+  @include screen-lg {
+    width: 30px;
+    height: 30px;
+  }
+}
+.app-l-main-info__row {
+  .angular_selectbox {
+    min-width: 160px;
+    @media (max-width: $screen-lg) {
+      min-width: auto;
+    }
+  }
+  &.app-l-primary-skill {
+    .angular_selectbox {
+      min-width: auto;
+    }
+  }
+}
+
+.stepper-section--main-level {
+  .stepper-section--count__icon {
+    svg {
+      transition: stroke-dasharray $animation-duration3 $animation-type3;
+      stroke-dasharray: 0 13px;
+    }
+  }
+  .completed {
+    .stepper-section--count__icon {
+      svg {
+        color: $white;
+        stroke-dasharray: 13px 0;
+      }
+    }
+  }
+}
+
+.popover-open,.overflow-hidden {
+  overflow: hidden;
+  //to disable scrolling in ios
+  position: relative;
+}
+
+.icon {
+  width: 32px;
+}
+.icon svg {
+  width: 100%;
+  height: 32px;
+  @media (max-width: $screen-lg) {
+    max-height: 24px;
+    max-width: 24px;
+  }
+}
+.link {
+  display: flex;
+  padding: 0px 7px;
+  flex-shrink: 0;
+}
+#calIcon {
+  .icon-stroke {
+    stroke: $app-theme-primary;
+  }
+  .icon-fill {
+    fill: $gray8;
+  }
+}
+#calIconExpanded {
+  .iconexp-callendar-head-fill {
+    fill: $app-theme-secondary-green;
+  }
+  .iconexp-callendar-head-stroke {
+    stroke: $white;
+    @media (max-width: $screen-lg) {
+      stroke: $app-theme-primary;
+    }
+  }
+  .iconexp-callendar-body-stroke {
+    stroke: $white;
+  }
+  .iconexp-callendar-body-fill {
+    @media (max-width: $screen-lg) {
+      stroke: $app-theme-primary;
+    }
+  }
+  .iconexp-callendar-dot-stroke {
+    stroke: $white;
+    @media (max-width: $screen-lg) {
+      stroke: $app-theme-primary;
+    }
+  }
+  .iconexp-callendar-bar-stroke {
+    stroke: $white;
+    @media (max-width: $screen-lg) {
+      stroke: $app-theme-primary;
+    }
+  }
+  .hang-cal-active {
+    @media (max-width: $screen-lg) {
+      stroke: $app-theme-primary;
+    }
+  }
+}
+#calIconhoverExpanded {
+  .iconexp-callendar-head-fill {
+    fill: $app-theme-secondary-green;
+  }
+  .iconexp-callendar-head-stroke {
+    stroke: $app-theme-primary;
+  }
+  .iconexp-callendar-body-stroke {
+    stroke: $app-theme-primary;
+  }
+  .iconexp-callendar-dot-stroke {
+    stroke: $app-theme-primary;
+  }
+  .iconexp-callendar-bar-stroke {
+    stroke: $app-theme-primary;
+  }
+}
+#calIconhover {
+  .iconexp-callendar-head-fill {
+    fill: $gray1;
+  }
+  .iconexp-callendar-head-stroke {
+    stroke: $white;
+  }
+  .iconexp-callendar-body-stroke {
+    stroke: $white;
+  }
+  .iconexp-callendar-dot-stroke {
+    stroke: $white;
+  }
+  .iconexp-callendar-bar-stroke {
+    stroke: $white;
+  }
+}
+
+#codeiconhover {
+  .barhighlight {
+    fill: $gray1;
+    stroke: $white;
+  }
+  .barhighlight-second {
+    stroke: $white;
+  }
+}
+#codeiconactive {
+  .barhighlight {
+    fill: $app-theme-secondary-green;
+    @media (max-width: $screen-lg) {
+      stroke: $app-theme-secondary-green;
+    }
+  }
+  .barhighlight-second {
+    fill: $white;
+    @media (max-width: $screen-lg) {
+      fill: $white;
+    }
+  }
+}
+#codeiconactiveexpanded {
+  .barhighlight {
+    fill: $app-theme-secondary-green;
+    stroke: $white;
+  }
+  .barhighlight-second {
+    fill: $app-theme-primary;
+    @media (max-width: $screen-lg) {
+      fill: $white;
+    }
+  }
+}
+
+#normal-graph {
+  .graph-first {
+    stroke: $app-theme-primary;
+  }
+}
+#normal-graph-hover {
+  .graph-first {
+    stroke: $white;
+    fill: $app-theme-primary;
+  }
+}
+#normal-graph-active {
+  .graph-first {
+    stroke: $white;
+    fill: $app-theme-primary;
+  }
+  .graph-second {
+    stroke: $app-theme-secondary-green;
+    fill: $app-theme-secondary-green;
+  }
+}
+#normal-graph-expanded {
+  .graph-first {
+    stroke: $white;
+    fill: $app-theme-primary;
+  }
+  .graph-second {
+    stroke: $app-theme-secondary-green;
+    fill: $app-theme-secondary-green;
+  }
+}
+
+#normal-dashboard-hover {
+  .dashboard-first {
+    stroke: $white;
+    fill: $gray1;
+  }
+  .dashboard-second {
+    stroke: $white;
+    fill: $app-theme-primary;
+  }
+}
+#normal-dashboard-active {
+  .dashboard-first {
+    stroke: $app-theme-secondary-green;
+    fill: $app-theme-secondary-green;
+  }
+  .dashboard-second {
+    stroke: $white;
+    fill: $white;
+    @media (max-width: $screen-lg) {
+      stroke: $white;
+      fill: $white;
+    }
+  }
+}
+#normal-dashboard-expanded {
+  .dashboard-first {
+    stroke: $app-theme-secondary-green;
+    fill: $app-theme-secondary-green;
+  }
+  .dashboard-second {
+    stroke: $app-theme-primary;
+    fill: $app-theme-primary;
+    @include screen-lg {
+      stroke: $white;
+      fill: $white;
+    }
+  }
+}
+.app-l-notfcn__close {
+  .icon-svg {
+    @media screen and (max-width: $screen-lg) {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+.pac-container {
+  &:empty {
+    display: none;
+  }
+}
+.app-c-outer-pic-container {
+  .app-c-upload__btn {
+    .icon-svg {
+      @include screen-lg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
+app-signup {
+  &:first-of-type:not(:only-of-type) {
+    &.animateStopped {
+      .workFlow-wrapper,
+      .stepper-wrapper {
+        opacity: 0;
+      }
+    }
+  }
+}
+.app-c-wrapper__upload-scn {
+  .angular_selectbox {
+    .angular_selectbox--menu-button {
+      background: $gray5;
+      .angular_selectbox--button-text {
+        font-weight: $font-weight-medium;
+        &.-value {
+          color: $app-theme-primary;
+          font-weight: $font-weight-semi-bold;
+        }
+      }
+    }
+  }
+}
+#icon-selected-file {
+  .select-file-tick {
+    stroke: $white;
+  }
+  .select-file-round {
+    stroke: $white;
+    fill: $app-theme-secondary-green;
+  }
+  .select-file-square {
+    stroke: $white;
+  }
+}
+#icon-selectInactive-file {
+  .select-file-tick {
+    stroke: $gray2;
+  }
+  .select-file-round {
+    stroke: $gray2;
+    fill: $gray3;
+  }
+  .select-file-square {
+    stroke: $gray2;
+  }
+}
+#icon-selected-test-code {
+  .brick-square {
+    fill: $white;
+  }
+  .brick-squarefill {
+    stroke: $white;
+    fill: $app-theme-secondary-green;
+  }
+}
+#icon-inactive-test-code {
+  .brick-square {
+    fill: $gray2;
+  }
+  .brick-squarefill {
+    stroke: $gray2;
+    fill: $gray3;
+  }
+}
+#icon-selected-submit-code {
+  .file-box {
+    stroke: $white;
+  }
+  .arrow-circle {
+    stroke: $white;
+    fill: $app-theme-secondary-green;
+  }
+}
+#icon-inactive-submit-code {
+  .file-box {
+    stroke: $gray2;
+  }
+  .arrow-circle {
+    stroke: $gray2;
+    fill: $gray3;
+  }
+}
+
+.app-c-container-menu {
+  transition: ease-out 0.3s;
+  @media (max-width: $screen-lg) {
+    order: 1;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 3;
+    transition: ease-out 0.3s;
+  }
+  @media (max-width: $screen-lg) {
+    &.app-c-panel__show {
+      .app-c-main-menu {
+        width: 305px;
+        left: 0px;
+        transition: ease-out 0.3s;
+
+        &::before {
+          content: "";
+        }
+      }
+      .app-l-sidebar {
+        &::before {
+          content: "";
+          width: 100%;
+          position: fixed;
+          right: 0;
+          bottom: 0;
+          top: 0;
+          left: 0;
+          background: $white;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  &.app-c-panel__hide {
+    .app-c-main-menu {
+      @media (max-width: $screen-lg) {
+        width: 305px;
+        left: -305px;
+        transition: ease-out 0.3s;
+      }
+    }
+  }
+}
+
+.app-c-icon-wrapper {
+  background-color: fade-out($color: $white, $amount: .9);
+  width: 32px;
+  height: 32px;
+  @extend %flex-all-center;
+  border-radius: $circle-radius;
+  margin-right: 12px;
+  cursor: pointer;
+  transition: all $animation-type3 $animation-duration3;
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+  @include screen-lg {
+    width: 24px;
+    height: 24px;
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+  &.-facebook {
+    &:hover {
+      background-color: $facebookblue;
+    }
+    @include screen-lg {
+      background-color: $facebookblue;
+    }
+  }
+  &.-twitter {
+    &:hover {
+      background-color: $twitterblue;
+    }
+    @include screen-lg {
+      background-color: $twitterblue;
+    }
+  }
+
+  &.-instagram {
+    &:hover {
+      background-color: $instapink;
+    }
+    @include screen-lg {
+      background-color: $instapink;
+    }
+  }
+  &.-linkedin {
+    &:hover {
+      background-color: $linkedinblue;
+    }
+    @include screen-lg {
+      background-color: $linkedinblue;
+    }
+  }
+}
+.swiper-pagination-bullets.swiper-pagination-work {
+  .swiper-pagination-bullet {
+    background: rgba($color: $gray3, $alpha: 0.4);
+    width: 10px;
+    height: 10px;
+    margin: 0px 10px;
+    @include screen-lg {
+      margin: 0px 5px;
+    }
+    &.swiper-pagination-bullet-active {
+      width: 12px;
+      height: 12px;
+      background: $app-theme-secondary-green;
+      @include screen-lg {
+        position: relative; 
+      }
+    }
+  }
+  &.zoom-slpagntn{
+    .swiper-pagination-bullet {
+      width: 16px;
+      height: 16px;
+      transition: width $animation-type1 $animation-duration3,
+                  height $animation-type1 $animation-duration3,
+                  border-radius $animation-type1 $animation-duration3;
+      &:not(.swiper-pagination-bullet-active){
+        background: rgba($white, 0.1);
+        box-shadow: 0px 4.42px 15.33px rgba(3, 13, 27, 0.04), inset 0px 2.87px 11px rgba($white, 0.25);
+        backdrop-filter: blur(16px);
+      }
+      @include screen-lg{
+        width:8px;
+        height:8px;
+      }
+    &.swiper-pagination-bullet-active {
+      width: 24px;
+      height: 16px;
+      border-radius: $card-radius;
+      @include screen-lg{
+        width:12px;
+        height:12px;
+        border-radius: $circle-radius;
+      }
+    }
+  }
+  }
+}
+.app-c-swiper-darktheme{
+#swiper-pagination{
+  overflow: visible;
+}
+}
+.stepper-section--main-level.status
+  .completed
+  .stepper-section--count__icon
+  svg {
+  color: $app-theme-primary;
+}
+.icon-sizerd-company{
+  width: 56px;
+  height: 56px;
+  @include screen-lg{
+    width: 37px;
+    height: 38px;
+  }
+}
+.icon-sizerd-developers{
+  width: 48px;
+  height: 54px;
+  @include screen-lg{
+    width: 32px;
+    height: 36px;
+  }
+}
+.icon-sizerd-clockhome{
+  width: 42px;
+  height: 50px;
+  @include screen-lg{
+    width: 28px;
+    height: 33px;
+  }
+}
+.gt-tt-quotes{
+  .icon-svg{
+    @include screen-lg{
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+.home-process-item{
+  .icon-svg{
+    @include screen-md{
+      width: 9.58px;
+      height: 9.58px;
+    }
+  }
+}
+.job-section-quick-preview{
+  .job-section-icon{
+    .icon-svg{
+      @include screen-md{
+      width: 13px;
+      height: 13px;
+      }
+    }
+  }
+}
+
+.hr-divider {
+  font-weight: $font-weight-semi-bold;
+  font-size: $text-md;
+  line-height: 1.28;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $gray3;
+  margin-bottom: 16px;
+}

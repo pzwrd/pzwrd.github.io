@@ -1,0 +1,35 @@
+// Reset default styles (remove this if using bootstrap)
+@use "framework/reset";
+
+//ngx bootstrap components
+
+@use "components/datepicker";
+@use "components/drag-drop";
+@use "components/modal";
+@use "components/accordion";
+@use "components/progress-bar";
+
+
+// Components in project
+@use "components/buttons";
+@use "components/stepper";
+@use "components/dropdown";
+@use "components/custom-popover";
+@use "components/icon-overides";
+@use "components/badges";
+@use "components/custom-dropdown-menu";
+@use "components/custom-toaster";
+@use "components/ripple";
+@use "components/textfields";
+@use "components/check-radio";
+@use "components/notification.scss";
+@use "components/sidepanel";
+@use "components/swiperJs";
+@use "components/tooltip";
+
+// Common styles in project
+@use "common";
+@use "./layouts/resume-builder";
+
+//plugin
+@import 'swiper/swiper-bundle.min.css';

@@ -1,0 +1,1065 @@
+@use "../abstracts" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+$poppins-font: "Poppins", sans-serif;
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+.search-box {
+  position: relative;
+  width: 288px;
+  .search-input {
+    font-family: $body-font;
+    border: 1px solid rgba($color: $gray2, $alpha: 0.8);
+    border-radius: 34px;
+    padding: 14px 50px 14px 20px;
+    background-color: transparent;
+    color: $white;
+    font-size: $text-md;
+    height: 48px;
+    font-weight: $font-weight-medium;
+    width: 100%;
+    transition: $animation-type2 $animation-duration3;
+    outline: none;
+    &:focus {
+      border-color: $white;
+    }
+    &:hover {
+      border-color: $gray2;
+    }
+    &::placeholder{
+      color: $gray3;
+    }
+  }
+  .search-icon-right {
+    cursor: pointer;
+    background-color: $app-theme-secondary-green;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    position: absolute;
+    right: 6px;
+    @extend %flex-all-center;
+    transition: $animation-type2 $animation-duration3;
+    top: 6px;
+    .ripple-wrapper {
+      color: rgba(169, 169, 169, 0.4);
+    }
+
+    &:not(.cdk-focused):focus {
+      box-shadow: 0 0 0 3px rgba(19, 37, 58, 0.2);
+    }
+    &:hover {
+      background-color: $app-theme-primary-green;
+    }
+  }
+  &.-icon-left {
+    max-width: 220px;
+    @include screen-lg {
+      max-width: calc(100% - 40px);
+      width: auto;
+    }
+    .search-input {
+      height: 42px;
+      padding: 11px 11px 11px 48px;
+    }
+  }
+  .search-icon-left {
+    position: absolute;
+    left: 18px;
+    @extend %flex-all-center;
+    transition: $animation-type2 $animation-duration3;
+    top: 14px;
+    color: $gray2;
+  }
+}
+
+.app-c-hover-show__footer button {
+  &.app-btn-tertiary--web.-lighter-themed {
+    background-color: $app-theme-secondary-green;
+
+    &:hover {
+      color: $black;
+    }
+    &:disabled {
+      border-color: $app-theme-secondary-green;
+      color: rgba($color: $white, $alpha: 0.5);
+    }
+  }
+}
+
+.app-c-card__item {
+  background: transparent;
+  border-radius: 8px;
+  box-shadow: none;  
+  .app-c-card-header {
+    border-color: rgba($color: $bordergraytint, $alpha: 0.6);
+    .app-c-card__title-main {
+      color: $white;
+    }
+    .app-c-card__title {
+      color: $gray3;
+    }
+  }
+  .app-c-card-body {
+    border-color: rgba($color: $bordergraytint, $alpha: 0.6);
+    .app-c-card-body-title {
+      color: $gray4;
+    }
+    .app-c-card-content {
+      border: 0;
+      .app-c-card__item-details {
+        color: $gray2;
+        .app-c-icon-info {
+          color: $gray2;
+        }
+      }
+    }
+  }
+  .app-c-card-footer {
+    .app-c-card--description {
+      color: $gray4;
+    }
+    .button-group {
+      button.app-tag-container {
+        background-color: $primarytint2;
+        color: $gray4;
+        border: 0;
+      }
+    }
+  }
+  &:hover {
+    box-shadow: none;
+  }
+}
+.filter-toggle {
+  background: rgba($color: $gray1, $alpha: 0.5);
+  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  @extend %flex-all-center;
+  color: $gray4;
+  position: relative;
+  &.filter-applied {
+    &:before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      background-color: $app-theme-secondary-green;
+      border-radius: 50%;
+      top: 11px;
+      right: 11px;
+      position: absolute;
+    }
+  }
+}
+.filter-panel-home {
+  .sidepanel {
+    background: $app-theme-primary;
+    box-shadow: 0px -7px 20px rgba(56, 77, 102, 0.3);
+    border-radius: 16px;
+    .panel-sub-footer {
+      .button-group {
+        border-color: rgba($color: $white, $alpha: 0.3);
+        .btn-cancel-filter {
+          border-right: 1px solid rgba($color: $white, $alpha: 0.3);
+        }
+        .btn-apply-filter {
+          color: $app-theme-secondary-green;
+        }
+      }
+    }
+    .sidepanel-heading-action-mv {
+      margin: 0 20px;
+      padding: 16px 0;
+      border-color: $gray1;
+      .sidepanel-heading-action-title {
+        color: $gray3;
+        font-family: $poppins-font;
+        font-weight: $font-weight-medium;
+      }
+    }
+    .sidepanel-body {
+      padding: 28px 0;
+    }
+  }
+  .sidepanel-heading-action-mv .app-c-close{
+    height: 32px;
+    width: 32px;
+    @extend %flex-all-center;
+  }
+} 
+
+.app-item-tint {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 0;
+  z-index: 0;
+  opacity: 0.4;
+  .app-item-tint-img{
+    background-size: cover; 
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+  }
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    opacity: 0.4;
+  }
+  > svg {
+    border-radius: 16px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: 0;
+  }
+}
+
+.app-item-wrapper {
+  z-index: 1;
+  position: relative;
+  width: 100%;
+}
+
+.gt-listing-page {
+  @extend %flex-vert-start;
+  margin-top: 72px;
+  @include screen-lg {
+    margin-top: 0;
+  }
+}  
+
+.main-title {
+  font-weight: $font-weight-semi-bold;
+  font-size: $text-xxl;
+  line-height: 1.3;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $gray3;
+  margin-bottom: 32px;
+  @include screen-lg {
+    font-size: $text-md;
+    margin-bottom: 16px;
+  }
+}
+
+.app-c-secondary-title {
+  font-family: $poppins-font;
+  font-weight: $font-weight-semi-bold;
+  font-size: 5.6657vh;
+  line-height: 1.3;
+  text-align: center;
+  color: $white;
+  margin-bottom: 3.1959vh;
+  @include screen-lg {
+    font-size: $text-xxl-small;
+    margin-bottom: 24px;
+  }
+}
+.app-c-primary-title { 
+  font-weight: $font-weight-regular;
+  font-size: $text-lg;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: $gray4;
+  
+  margin: 0px auto;
+  margin-bottom: 56px;
+  
+  @include screen-lg {
+    width: 100%;
+    font-size: $text-md; 
+  }
+}
+
+
+//home page common styles
+.gt-hero{
+  &-sub-title {
+    font-size: $text-xxl;
+    line-height: 1.3;
+    margin-bottom: 32px;
+    font-weight: $font-weight-semi-bold;
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $gray3;
+    @include screen-lg {
+      font-size: $text-md;
+      margin-bottom: 16px;
+    }
+  }
+  &-text {
+    text-align: center;
+    font-size: 5.77915vh;
+    margin-bottom: 3.1959vh;
+    line-height: 1.3;
+    color: $white;
+    font-family: $poppins-font;
+    font-weight: $font-weight-semi-bold;
+    &.-default-m-w{
+      max-width: 84.98vh;
+      margin: 0 auto 6.48vh;
+      @include screen-lg{
+        margin-bottom: 40px;
+        max-width: 100%;
+      }
+    }
+    span,
+    div {
+      font-family: $poppins-font;
+    }
+
+    &.-md {
+      font-size: 5.6657vh;
+      @include screen-lg {
+        font-size: $text-xxl-small;
+      }
+    }
+   
+    @include screen-lg {
+      font-size: 3.2rem;
+      margin-bottom: 32px;
+      &.main-hero {
+        margin-bottom: 16px;
+      }
+    }
+  }
+  &-subText {
+      text-align: center;
+      font-size: $text-lg;
+      line-height: 1.5;
+      color: $gray4;
+      font-weight: $font-weight-normal;
+      letter-spacing: 0.03em;
+      max-width: 84.98vh;
+      margin: 0 auto 5.779vh;
+      @include screen-lg {
+        font-size: $text-md;
+        margin-bottom: 24px;
+      }
+    }
+  &-highlight {
+    color: $app-theme-secondary-green;
+    font-weight: $font-weight-bold;
+    font-family: inherit;
+  }
+  &-actions {
+      text-align: center;
+    }
+}
+//event card css
+.app-c-card__item{
+  &.app-c-card-et{
+      border-radius:$icon-radius;
+      margin: 0px 12px 30px;
+      padding: 20px 20px 40px 20px;
+      cursor: initial;
+      @include screen-lg {
+        margin-bottom: 20px;
+      }
+      .app-c-logo-wrap{
+        .bn-image{
+          width: 100%;
+        }
+      }
+      .app-c-tag-wrap{
+        margin: 20px 0px;
+        @include screen-lg {
+          margin: 16px 0px;
+        }
+        .app-c-card__title-main{
+          font-size: $text-md;
+          font-weight: $font-weight-medium;
+          line-height: 1;
+          padding: 8px 16px;
+          backdrop-filter: blur(16px);
+          border-radius: $icon-radius;
+          display: inline-block;
+          @include screen-lg {
+            font-size: $text-sm;
+          }
+          &.blue-sd{
+            background: rgba(7, 118, 153, 0.3);
+            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.04), inset 0px 4px 16px rgba(255, 255, 255, 0.15);
+          }
+          &.brown-sd{
+            background: rgba(251, 162, 1, 0.2);
+            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.04), inset 0px 4px 16px rgba(255, 255, 255, 0.15);
+          }
+          &.green-sd{
+            background: rgba(4, 210, 175, 0.2);
+            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.04), inset 0px 4px 16px rgba(255, 255, 255, 0.15);
+          }
+        }
+      }
+      .app-c-card-et-body{
+        .app-c-card-body-title{
+          font-weight: $font-weight-bold;
+          font-size: $text-xxl-small;
+          line-height: 1.3;
+          margin-bottom: 20px;
+          @include screen-lg {
+            font-size: $text-xxl;
+            margin-bottom: 16px;
+          }
+        }
+        .app-c-card-content{
+          font-size: $text-lg;
+          line-height: 1.3;
+          color: $gray3;
+          margin-bottom: 30px;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          @include screen-lg {
+            border-bottom: none;
+            font-size: $text-md;
+            margin-bottom: 24px;
+          }
+
+        }
+        .app-c-card-icons-wrapper{
+          .app-c-double-ic{
+            @extend %flex;
+            @include screen-lg {
+              flex-direction: column;
+            }
+            .app-c-card-details{
+                flex-basis: 50%;
+            
+            }
+          }
+          .app-c-card-details{
+            @extend %flex-vert-start;
+            color: $gray3;
+            margin-bottom: 20px;
+            @include screen-lg {
+              margin-bottom: 16px;
+            }
+            .app-c-icon-info{
+              margin-left: 16px;
+              font-size: $text-md;
+             line-height: 1.4;
+             color: $gray3;
+             @include screen-lg {
+               margin-left: 10px;
+             }
+            }
+          }
+        }
+        .app-btn-rgt{
+          margin-top: 10px;
+          font-weight: $font-weight-bold;
+          font-size: $text-lg;
+          line-height: 1.5;
+          color: $app-theme-secondary-green;
+          transition: color $animation-type3 $animation-duration3;
+          &:hover,&:focus{
+              color: $app-theme-primary-green;
+          }
+          @include screen-lg {
+            margin-top: 8px;
+          }
+         
+        }
+      }
+      .app-c-evt-warning{
+        padding: 12px 16px;
+        border: 1px solid $gray1;
+        margin: 20px 0px;
+        border-radius: $border-radius2;
+        .app-c-evnt-dt{
+          .app-c-evnt-dt-left{
+            font-weight: $font-weight-medium;
+            font-size: $text-lg;
+            line-height: 1;
+            @include screen-lg {
+              font-size: $text-md;
+            }
+          }
+          .app-c-evnt-dt-right{
+            font-weight: $font-weight-bold;
+            font-size: $text-xxl-small;
+            line-height: 1;
+            color: $app-theme-tertiary-red;
+            padding-left: 8px;
+            @include screen-lg {
+              font-size: $text-xxl;
+            }
+          }
+        }
+      }
+}
+}
+.app-l-tab-slider--nav{
+  &.app-l-dark-theme-tabSlider{
+    position: static;
+     &.sticky-top {
+      background-color: $lightblackweb1;
+      position: fixed;
+      top: 0;
+      left: 108px;
+      right: 108px;
+      max-width: 100%;
+      z-index: 11;
+      padding-top: 20px;
+      @include screen-lg{
+        padding-top: 10px;
+      }
+      .app-l-tab-slider--tabs{
+        @include screen-lg{
+        margin-left: 20px;
+        }
+      }
+      @include screen-lap-sm {
+        padding-top: 20px;
+      }
+      @include screen-lg{
+        overflow-x: auto;
+      }
+    }
+    .app-l-tab-slider--tabs{
+      justify-content: space-between;
+      background-clip: text;
+     
+        &.scrollActive {
+          background-color: rgba($color: $gray1, $alpha: 0.6);
+          &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            box-shadow: inset 0 0 6px $gray5;
+            background-color: inherit;
+          }
+          
+        }
+        &.scrollInactive {
+          background-color: rgba($color: $gray1, $alpha: 0);
+        }
+        &::-webkit-scrollbar {
+          background-color: $gray1;
+          height: 3px;
+        }
+        
+      .app-l-tab-slider--trigger{
+        @include screen-lg{
+          font-size: $text-md;
+          margin-bottom: 0px;
+        }
+        @include screen-sm{
+          margin-right: 24px;
+          min-width: 133px;
+        }
+        @media screen and (max-width: $screen-xm){
+          min-width: auto;
+        }
+        &.active{
+          color: $app-theme-secondary-green;
+          &:after{
+            width: 38px;
+            background: $app-theme-secondary-green;
+            @include screen-lg{
+            width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.button-group{
+  &.gt-mt-hiring{
+  @include screen-lg{
+    margin-bottom: 14px;
+  }
+.app-tag{
+  .app-tag-container{
+    padding: 10px 19px;
+  }
+  &:last-child{
+    margin-right: 0px;
+  }
+  @include screen-lg{
+    margin-right: 8px;
+    margin-bottom: 10px;
+    
+  }
+}
+}
+}
+
+.dv-only {
+  @include screen-lg {
+    display: none;
+  }
+}
+.mv-only {
+  @media (min-width: $screen-lg) {
+    display: none;
+  }
+}
+
+//vertical slider style
+.gt-section {
+  background: $app-theme-primary;
+  .gt-container {
+    padding: 16.2vh 20px 0;
+    max-width: 1020px;
+    margin: 0 auto;
+    @include screen-lap-sm{
+      padding-top: 8.6vh;
+    }
+    &.container{
+      max-width: 1440px;
+      width: 100%;
+    }
+    &.gt-verticalSlider-container{
+      @include screen-lg {
+        padding-top: 44px;
+      }
+    }
+   
+    @include screen-lg {
+      padding: 70px 20px 0;
+    }
+  }
+}
+
+
+.swiperPR-container{
+   height: 87vh;
+   overflow: hidden;
+   position: relative;
+   @include screen-lap-sm{
+     height: 75vh;
+   }
+   @include screen-lg{
+     height: auto;
+   }
+  #swiper-pagination{
+     position: absolute;
+     top: 50%;
+     right: 12.48vh;
+     transform: translateY(-50%);
+    @extend %flex-vert-col;
+    z-index: 7;
+    @include screen-lg{
+      position: static;
+     transform: none;
+      display: block;
+     overflow: hidden;
+     margin-left: 15px;
+    }
+    
+   }
+}
+.vslider-details-wrapper{
+  max-width: 70%;
+  margin-left: 32px;
+  @include screen-lg{
+    max-width: 100%;
+    margin: 0px 20px 0px 20px;
+  }
+  .vslider-main-title{
+    font-weight:$font-weight-bold;
+    font-size: 3.7vh;
+    line-height: 1.5;
+    color: $white;
+    margin-bottom: 24px;
+    font-family: $poppins-font;
+    @include screen-lg{
+      font-size: $text-xxl;
+      margin-bottom: 16px;
+    }
+  }
+  .vslider-description{
+    font-size: 14px;
+    line-height: 1.5;
+    color: $gray4;
+    margin-bottom: 40px;
+    @include screen-lg{
+      margin-bottom: 16px;
+    }
+  }
+  .app-btn-secondary {
+    background: transparent;
+    color: $app-theme-secondary-green;
+    border-color: $app-theme-secondary-green;
+    height: 56px;
+    border-radius: 16px;
+    font-weight: $font-weight-bold;
+    font-size: $text-lg;
+    padding: 16px 32px;
+    @include screen-lg{
+      margin-bottom: 32px;
+    }
+    .-mv{
+      margin-left: 2px;
+      @include screen-lg {
+        display: none;
+      }
+    }
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+
+
+.gt-dataSliderPrc{
+  @extend %flex;
+  align-items: center;
+  height: 100%;
+  @include screen-lg{
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .gt-list-demo {
+    position: relative;
+    @extend %flex;
+    height: 100%;
+    .gt-list-demo-image {
+      max-width: 100%;
+      width: auto;
+      height: 100%;
+      @include screen-lg {
+        max-width: 375px;
+        height: auto;
+      }
+    }
+    .more-challenges-button {
+      position: absolute;
+      bottom: 50px;
+      right: 60px;
+      @include screen-lap-sm {
+        bottom: 20px;
+        right: 20px;
+      }
+      @include screen-lg {
+        bottom: 26px;
+        right: 28px;
+        padding: 6px 10px;
+        font-size: 8px;
+      }
+    }
+  }
+  .gt-slide-title {
+    color: $gray3;
+    font-size: $text-lg;
+    letter-spacing: 0.03em;
+    max-width: 600px;
+    line-height: 1.5;
+    margin-top: 5.88vh;
+  }
+  .slidr-left-part{
+    flex-basis: 60%;
+    height: 100%;
+    @include screen-lap-sm{
+      flex-basis: 50%;
+    }
+    @media screen and (-ms-high-contrast: active),
+            (-ms-high-contrast: none) {
+              min-width: 60%;
+              flex-basis: auto;
+            }
+    @include screen-lg{
+      flex-basis: 100%;
+      margin-bottom: 24px;
+    }
+  }
+  .slidr-right-part{
+    flex-basis: 40%;
+    @media screen and (-ms-high-contrast: active),
+    (-ms-high-contrast: none) {
+      min-width: 40%;
+      flex-basis: auto;
+    }
+    @include screen-lg{
+      flex-basis: 100%;
+    }
+  }
+  
+}
+
+ //////////////////////////counter scn
+ .gt-cmpny-dt-section{
+  padding: 5.5vh 108px 16.2vh 108px;
+  position: relative;
+  @include screen-lg{
+    padding: 48px 0px 0px 0px;
+   }
+  
+  .gt-counter-scn{
+    max-width: 1224px;
+    margin: 0 auto;
+    @include screen-lg{
+      padding: 0px 20px;
+    }
+    .mn-counter-block{
+      @extend %flex-horiz-away;
+      padding: 8.3vh 0px 10.2vh 0px;
+      position: relative;
+      &:after{
+        background: linear-gradient(135.15deg, rgba(23, 248, 238, 0.84) 1.17%, rgba(32, 228, 219, 0.84) 31.88%, rgba(18, 189, 181, 0.84) 65.46%);
+        mix-blend-mode: overlay;
+        filter: blur(140px);
+        border-radius: 16px;
+        position: absolute;
+        content: "";
+        width: 598px;
+        height: 569px;
+        left: 63%;
+        top: -67%;
+        @media screen and (-ms-high-contrast: active),
+        (-ms-high-contrast: none) {
+          opacity: 0;
+        }
+        @media(max-width:1510px){
+          left: auto;
+          right: 0;
+        }
+        @include screen-lg{
+          background: linear-gradient(135.15deg, rgba(23, 248, 238, 0.84) 1.17%, rgba(32, 228, 219, 0.84) 31.88%, rgba(18, 189, 181, 0.84) 65.46%);
+          mix-blend-mode: overlay;
+          filter: blur(140px);
+          width: 295px;
+          height: 281px;
+          left: auto;
+          right: 0;
+          bottom: 0;
+          top: auto;
+        }
+        
+      }
+      &:before{
+        background: linear-gradient(135.15deg, rgba(161, 99, 223, 0.7) 1.17%, rgba(107, 246, 246, 0.7) 31.88%, rgba(127, 131, 227, 0.7) 65.46%);
+        mix-blend-mode: overlay;
+        filter: blur(140px);
+        border-radius: 8px;
+        position: absolute;
+        content: "";
+        bottom: -100px;
+        width: 514px;
+        height: 480.77px;
+        left: -118px;
+        @media screen and (-ms-high-contrast: active),
+        (-ms-high-contrast: none) {
+          opacity: 0;
+        }
+        @include screen-lg{
+          background: linear-gradient(135.15deg, rgba(161, 99, 223, 0.7) 1.17%, rgba(107, 246, 246, 0.7) 31.88%, rgba(127, 131, 227, 0.7) 65.46%);
+          left: -84px;
+          top: 0;
+          width: 368px;
+          height: 344px;
+        }
+      }
+      @include screen-lg{
+        display: block;
+        padding-bottom: 0px;
+      }
+      .mn-cntr-bx{
+        @extend %flex-all-center-col;
+        z-index: 1;
+        @include screen-lg{
+          flex-direction: row;
+          justify-content: left;
+          align-items: flex-start;
+        }
+        .mn-cntr-icon{
+          width: 120px;
+          height: 120px;
+          @extend %flex-all-center;
+          background: rgba(4, 210, 175, 0.2);
+          border-radius: $icon-radius;
+          margin-bottom: 20px;
+          z-index: 1;
+          @include screen-lg{
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+            margin-bottom: 52px;
+          }
+          
+        }
+        .mn-cntr-nmbr{
+          font-family: $poppins-font;
+          font-weight: $font-weight-semi-bold;
+          font-size: $text-xxxl;
+          line-height: 1.3;
+          text-align: center;
+          color: $white;
+          margin-bottom: 12px;
+          z-index: 1;
+          @include screen-lg{
+            font-size: 32px;
+          }
+          .mn-cntr-nval{
+            font-family: inherit;
+          }
+          .mn-cntr-icn{
+            font-family: inherit;
+          }
+        }
+        .mn-cntr-desc{
+          font-weight: $font-weight-medium;
+          font-size: $text-lg;
+          line-height: 1.5;
+          text-align: center;
+          color: $gray4;
+          z-index: 1;
+          @include screen-lg{
+            font-size: $text-md;
+          }
+        }
+        &:last-child{
+          .mn-cntr-icon{
+          @include screen-lg{
+            margin-bottom: 0px;
+          }
+        }
+        }
+      }
+    }
+  }
+}
+.gt-tt-link{
+  text-decoration: none;
+  font-weight: $font-weight-semi-bold;
+  color: $app-theme-secondary-green;
+}
+//counter
+.mn-counter-block {
+  @extend %flex-horiz-away;
+  @include screen-lg {
+    flex-wrap: wrap;
+  }
+  .mn-cntr-bx {
+    @extend %flex-vert-col;
+    @include screen-lg {
+      flex: 1 1 50%;
+      margin-bottom: 40px;
+    }
+    .mn-cntr-nmbr {
+      font-weight: $font-weight-semi-bold;
+      font-size: 5.6rem;
+      line-height: 1.3;
+      text-align: center;
+      color: $app-theme-secondary-green;
+      font-family: $poppins-font;
+      @include screen-lg {
+        font-size: $text-xxl-plus;
+      }
+    }
+    .mn-cntr-desc {
+      font-weight: $font-weight-medium;
+      font-size: $text-xxl-small;
+      line-height: 1.5;
+      text-align: center;
+      color: $gray4;
+      @include screen-lg {
+        font-size: $text-xl;
+      }
+    }
+  }
+}
+
+.gt-hero-50{
+  @extend %flex-vert-center;
+  @include screen-lg{
+    flex-direction: column;
+  }
+  &-left{
+    .coding-replaced-img{
+      width: 100%; 
+      @include screen-lap-sm{
+        height: 76vh;
+        object-fit: contain;
+      }
+      @include screen-lg{
+        height: auto;
+      }
+    }
+  }
+  &-right{
+    &.code-replaced-section{
+      @include screen-lg{
+        padding: 0px 20px;
+        margin-top: 8px;
+      }
+      @media (min-width:$screen-lg){
+        max-width: 408px;
+      }
+    }
+  }
+}
+.gt-hero-sub-title{
+  &--heading{
+    font-family: $poppins-font;
+    font-size: 3.2rem;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    font-weight: $font-weight-medium;
+    @include screen-lg{
+      font-size: 2.1rem;
+      margin-bottom: 16px;
+    }
+  }
+  &--caption{
+    font-size: $text-lg;
+   letter-spacing: 0.03em;
+   color: $gray4;
+   line-height: 1.5;
+   margin-bottom: 35px;
+   @include screen-lg{
+     font-size: $text-md;
+     margin-bottom: 24px;
+   }
+  }
+}
+.outline-secondary-btn{ 
+  &.app-btn-secondary {
+    background: transparent;
+    color: $app-theme-secondary-green;
+    border-color: $app-theme-secondary-green;
+    height: 56px;
+    border-radius: 16px;
+    font-weight: $font-weight-bold;
+    font-size: $text-lg;
+    padding: 16px 32px;
+    @include screen-lg{
+      padding: 16px 24px;
+    }
+    
+
+    .-mv{
+      margin-left: 2px;
+      @include screen-lg {
+        display: none;
+      }
+    }
+   
+    &.white-btn{
+      color: $white;
+      border-color: $white;
+    }
+  }
+}
+.al-left{
+  text-align: left;
+}
+.gt-t-inherit{
+  font-family: $poppins-font;
+}
+
+

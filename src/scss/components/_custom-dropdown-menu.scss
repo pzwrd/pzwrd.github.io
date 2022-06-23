@@ -1,0 +1,83 @@
+@use "../abstracts" as *;
+.menu-dropdown {
+  max-width: 254px;
+  width: 100%;
+  background: $white;
+  box-shadow: 2px 0px 32px 0px #8898AA40;
+  border-radius: 8px;
+  position: fixed;
+  transform: translateY(0);
+  padding: 10px 0;
+  transition: transform $animation-type3 $animation-duration3;
+  right: 40px;
+  z-index: 3;
+  @include screen-lg{
+    right: 20px;
+  }
+  &.dp--header-dropdown{
+    position: absolute;
+  }
+  &.pop-up {
+    transform: translateY(10px);
+  }
+  a{
+    text-decoration: none;
+  }
+  &-item {
+    padding: 9px 22px;
+    @extend %flex-vert-center;
+    &.item--logout{
+      .menu-dropdown-title{
+        border: 0;
+        background: transparent;
+        width: 100%;
+        text-align: left;
+        &.item--delete{
+          color: $app-theme-tertiary-red;
+        }
+      }
+    }
+    &--divider{
+      height: 1px;
+      background-color: $border-shade-1;
+      width: calc(100% - 40px);
+      margin: 10px auto;
+    }
+    &:hover{
+      background-color: $gray6;
+      .menu-dropdown-title{
+       color: $app-theme-primary;
+      }
+    }
+  }
+  &.dropdown-up{
+    transform: translateY(10px);
+  }
+  &.dropdown-down{
+    transform: translateY(-10px);
+  }
+  &-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    @media (max-width: $screen-md){
+      width: 20px;
+      height: 20px;
+      svg{
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  &-title {
+    line-height: 2.1rem;
+    font-size: $text-md;
+    font-weight: $font-weight-medium;
+    color: $gray1;
+    cursor: pointer;
+    @media (max-width: $screen-md){
+      line-height: 1.8rem;
+      font-size: $text-md;
+    }
+  }
+}

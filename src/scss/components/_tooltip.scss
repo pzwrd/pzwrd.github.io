@@ -1,0 +1,72 @@
+@use "../abstracts" as *;
+@use "../abstracts" as *;
+.app-l-tooltip-infocontainer{
+    position: relative;
+  display: inline-block;
+ .tooltip-datacontainer{
+    font-size: $text-sm;
+    line-height: 1.5;
+    color:$app-theme-primary;
+    visibility: hidden;
+    background: $app-theme-tertiary-yellow;
+    border: 1px solid $app-theme-secondary-yellow;
+    box-shadow: 4px 8px 20px rgba(198, 207, 216, 0.25);
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+    width: 281px;
+    opacity: 0;
+    transition: opacity  $animation-type3 $animation-duration3;
+    @include screen-lg{
+        left: auto;
+        right: 0;
+    }
+    @media (max-width: $screen-xs) {
+        width: auto;
+    }
+   
+  &:before{
+    content: "";
+    position: absolute;
+    bottom: -11px;
+    left: 20px;
+    z-index: 2;
+    width: 0;
+    height: 0;
+    border-left: 7.5px solid transparent;
+    border-right: 7.5px solid transparent;
+    border-top: 11px solid $app-theme-tertiary-yellow;
+    @include screen-lg{
+        left: auto;
+        right: 70px;
+    }
+  }
+  &:after{
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 20px;
+    z-index: 0;
+    width: 0;
+    height: 0;
+    border-left: 7.5px solid transparent;
+    border-right: 7.5px solid transparent;
+    border-top: 11px solid $app-theme-secondary-yellow;
+    @include screen-lg{
+        left: auto;
+        right: 70px;
+    }
+  }
+  }
+  &:hover{
+    .tooltip-datacontainer{
+        visibility: visible;
+        opacity: 1;
+    } 
+  }
+}

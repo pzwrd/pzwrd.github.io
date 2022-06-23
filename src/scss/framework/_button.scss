@@ -1,0 +1,17 @@
+@use "../abstracts" as *;
+
+@mixin button() {
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  @extend %user-select-none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+%button {
+  @include button;
+}

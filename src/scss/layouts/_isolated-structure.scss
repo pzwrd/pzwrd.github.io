@@ -1,0 +1,483 @@
+@use "../abstracts" as *;
+
+.isolate-bg {
+  @extend %flex-col;
+  height: 100%;
+  &.-center {
+    @extend %flex-all-center;
+    height: 100%;
+    .isolate-card {
+      height: 100%;
+      justify-content: center;
+      @extend %flex-col;
+      @include screen-lg {
+        padding: 0 20px;
+      }
+    }
+  }
+}
+.isolate-card {
+  max-width: 1224px;
+  box-shadow: 4px 8px 60px rgba(70, 84, 100, 0.15);
+  border-radius: 16px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  @extend %flex;
+  &.-white {
+    background-color: $white;
+  }
+  @include screen-lg {
+    box-shadow: none;
+    border-radius: 0;
+    flex-direction: column;
+  }
+  .isolate-left-panel {
+    @extend %flex-col;
+    height: 100%;
+    border-radius: 16px 0 0 16px;
+    &.floating {
+      position: absolute;
+      top: 0;
+    }
+    &.primary-theme {
+      background: rgba($color: $app-theme-primary, $alpha: 0.95);
+      backdrop-filter: blur(80px);
+    }
+    @include screen-lg {
+      display: none;
+    }
+    @include screen-iPad {
+      max-width: 240px;
+      overflow: hidden;
+      .app-guy-svg {
+        max-width: 250px;
+        margin-bottom: -90px;
+      }
+    }
+    .app-guy-svg {
+      margin-top: auto;
+      border-radius: 16px;
+    }
+    .app-logo {
+      padding: 35px;
+    }
+  }
+  .isolate-right-panel {
+    border-radius: 0 16px 16px 0;
+    width: 100%;
+    @include screen-lg {
+      // display: flex;
+      // flex-direction: column;
+      // height: 100%;
+    }
+  }
+  .isolate-form {
+    padding: 0 40px 0 56px;
+    border-radius: 0 16px 16px 0; 
+    background-color: rgba(246, 247, 250, 0.8);
+    animation: 1s fadingIn forwards;
+    @keyframes fadingIn{
+        100%{
+          background-color: $white;
+        }
+    }
+    @include screen-lg {
+      padding: 0 20px;
+    }
+  }
+}
+.isolate-header-action {
+  .app-c-close {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  &.dv-only {
+    position: absolute;
+    top: 37px;
+    right: 37px;
+  }
+  @include screen-lg {
+    &.dv-only {
+      display: none;
+    }
+  }
+  @media (min-width: $screen-lg) {
+    &.mv-only {
+      display: none;
+    }
+  }
+  &.mv-only {
+    @extend %flex-vert-center;
+    padding: 20px 24px 20px 23px;
+    border-bottom: 1px solid $border-shade-1;
+    position: sticky;
+    top: 0;
+    z-index: 13;
+    background-color: $white;
+    .app-c-icon__back {
+      button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: $app-theme-primary;
+        padding-left: 0;
+        position: relative;
+        top: 1px;
+        &:hover {
+          color: $gray2;
+        }
+      }
+      .icon-back {
+        color: $app-theme-primary;
+      }
+    }
+  }
+}
+
+.form-wrapper-isolate {
+  padding: 40px 0px 30px 0px;
+  border-bottom: 1px solid rgba($color: $border-shade-1, $alpha: 0.6);
+  @extend %flex;
+  @media (max-width: $screen-md-down) {
+    padding: 20px 0px;
+  }
+  .app-c-container__img {
+    margin-right: 25px;
+    @media (max-width: $screen-md-down) {
+      margin-right: 10px;
+    }
+    .app-c-avatar {
+      background: $green-shade;
+      border-radius: 8px;
+      width: 80px;
+      height: 80px;
+      @extend %flex-horiz-center;
+      img {
+        align-self: center;
+        object-fit: contain;
+        max-width: 50px;
+      }
+    }
+  }
+  .app-c-container__details {
+    width: 100%;
+    .app-c-detail-name {
+      @extend %flex-col;
+      .app-c-title {
+        font-weight: $font-weight-bold;
+        color: $app-theme-primary;
+        font-size: $text-xl;
+        margin-bottom: 12px;
+        word-break: break-word;
+        line-height: 1.2;
+        padding-right: 40px;
+        @media (max-width: $screen-md-down) {
+          font-size: $text-lg;
+          margin-bottom: 10px;
+        }
+      }
+      .app-c-role-details {
+        @extend %flex-vert-start;
+        margin-bottom: 15px;
+        @media (max-width: $screen-md-down) {
+          margin-bottom: 12px;
+        }
+        .app-c-role {
+          font-size: $text-lg;
+          font-weight: $font-weight-semi-bold;
+          color: $app-theme-primary;
+          margin-right: 20px;
+          line-height: 1.2;
+          @media (max-width: $screen-md-down) {
+            font-size: $text-md;
+            flex: 1 1 auto;
+            padding-right: 10px;
+            min-width: 150px;
+            max-width: 150px;
+          }
+        }
+        .app-c-complete {
+          color: $gray2;
+          font-weight: $font-weight-medium;
+          font-size: $text-sm;
+          line-height: 1.2;
+          margin-top: 4px;
+          @media (max-width: $screen-md-down) {
+            margin-top: 2px;
+          }
+        }
+      }
+      .app-c-duration-container {
+        @extend %flex;
+        .app-c-duration {
+          @extend %flex-vert-center;
+          @media (max-width: $screen-md-down) {
+            margin-right: 30px;
+          }
+          .app-c-icon {
+            margin-right: 10px;
+          }
+          .app-c-years {
+            font-size: $text-sm;
+            color: $gray1;
+            margin-right: 50px;
+            @media (max-width: $screen-md-down) {
+              margin-right: 0px;
+            }
+          }
+        }
+        .app-c-location {
+          color: $gray1;
+          font-size: $text-sm;
+          font-size: $text-sm;
+          color: $gray1;
+          @extend %flex-vert-center;
+          .app-c-icon {
+            margin-right: 10px;
+          }
+          .app-c-years {
+            font-size: $text-sm;
+            color: $gray1;
+            margin-right: 50px;
+            @media (max-width: $screen-md-down) {
+              margin-right: 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.app-c-avatar-dsb {
+  border-radius: $card-radius;
+  width: 80px;
+  height: 80px;
+  @extend %flex-all-center;
+  @include screen-lg {
+    width: 60px;
+    height: 60px;
+    .avatar-company-logo {
+      max-width: 36px;
+      width: 100%;
+    }
+  }
+  &.app-c-blue-bg {
+    background-color: $light-green;
+  }
+}
+.app-c-container__details {
+  .app-c-detail-name {
+    .app-c-role-details {
+      .app-c-complete {
+        margin-top: 3px;
+      }
+    }
+  }
+}
+.isolate-footer {
+  @include screen-lg {
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+    margin: 0 -20px;
+    .button-group {
+      .app-btn {
+        flex: 1 1 100%;
+        border: 0;
+        border-radius: 0;
+        font-weight: $font-weight-semi-bold;
+        height: 64px;
+      }
+    }
+  }
+  .button-group {
+    @extend %flex;
+  }
+}
+.app-c-browse-btn {
+  @include screen-lg {
+    .dv-only {
+      display: none;
+    }
+  }
+}
+@include screen-lg {
+  .app-l-form-items_single .app-c-dragdrop-container .icon__right {
+    left: -50px;
+    top: -8px;
+  }
+}
+.app-c-isolate-form {
+  padding: 20px 0 40px;
+  .app-c-form__hd {
+    font-size: $text-md;
+    font-weight: $font-weight-bold;
+    line-height: 1.5;
+    color: $app-theme-primary;
+    margin-bottom: 30px;
+    @media (max-width: $screen-md-down) {
+      margin-bottom: 20px;
+    }
+  }
+  .app-l-form-items_single {
+    margin-bottom: 30px;
+    padding: 0px 15px;
+    @media (max-width: $screen-md-down) {
+      margin-bottom: 20px;
+    }
+  }
+  .app-l-form-items__wrapper {
+    @extend %flex;
+    margin-bottom: 30px;
+    &.app-l-cstm-mrgn {
+      margin-bottom: 13px;
+    }
+    &.app-l-cstm-mrgnchkbox {
+      margin-bottom: 33px;
+    }
+    @media (max-width: $screen-md-down) {
+      @include flex-direction(column);
+      margin-bottom: 20px;
+    }
+    .app-l-form-items {
+      &.app-l-form-stretch {
+        flex: 0 1 100%;
+        .app-textfield-lg {
+          border-color: $gray5;
+        }
+      }
+    }
+    .app-l-form-items {
+      padding: 0px 15px;
+      flex: 0 1 50%;
+      &.app-c-form-checkbox {
+        @extend %flex;
+      }
+      .angular_selectbox {
+        .angular_selectbox--menu-button {
+          background-color: $gray5;
+        }
+      }
+      .app-c-period--odd {
+        .app-c-label {
+          font-size: $text-md;
+          font-weight: $font-weight-medium;
+          color: $gray1;
+          display: block;
+          margin-bottom: 10px;
+          @media (max-width: $screen-md-down) {
+            font-size: $text-sm-plus;
+          }
+        }
+      }
+      .app-check-radio-label {
+        font-size: $text-sm;
+        font-weight: $font-weight-medium;
+        color: $app-theme-primary;
+      }
+      &.app-c-item-odd {
+        @media (max-width: $screen-md-down) {
+          margin-top: 20px;
+        }
+      }
+      &.app-c-odd-field {
+        margin-top: 23px;
+      }
+    }
+  }
+  .app-l-form-details-row {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  .app-textfield-lg {
+    background-color: $gray5;
+  }
+  .app-l-file__drag {
+    background-color: $gray5;
+    height: 85px;
+  }
+  @include screen-lg {
+    padding-bottom: 0;
+  }
+}
+.isolate-app-guy {
+  max-width: 252px;
+  width: 100%;
+  margin-bottom: 40px;
+  .app-guy-svg {
+    &.ie-isolate-image {
+      display: none;
+      img {
+        max-width: 253px;
+        width: 100%;
+      }
+    }
+    @media all and (-ms-high-contrast: active),
+      all and (-ms-high-contrast: none) {
+      &:not(.ie-isolate-image) {
+        display: none;
+      }
+      &.ie-isolate-image {
+        display: block;
+      }
+    }
+  }
+}
+.isolate-center-section {
+  @extend %flex-all-center;
+  @extend %flex-col;
+  line-height: 1.5;
+  color: $app-theme-primary;
+  text-align: center;
+}
+.isolate-message {
+  margin-bottom: 16px;
+  font-weight: $font-weight-bold;
+  font-size: 2.8rem;
+  @include screen-lap-sm {
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+  }
+  @include screen-lg {
+    font-size: $text-xxl;
+  }
+}
+.isolate-message-details {
+  margin-bottom: 32px;
+  font-weight: $font-weight-regular;
+  font-size: $text-lg;
+  @include screen-lap-sm {
+    font-size: $text-lg;
+    margin-bottom: 16px;
+  }
+  @include screen-lg {
+    font-size: $text-md;
+  }
+  &.-split-rows {
+    max-width: 390px;
+  }
+}
+.isolate-action {
+  @extend %flex;
+  .button-group {
+    @extend %flex;
+    @include screen-lg {
+      flex-direction: column;
+    }
+    button {
+      margin-right: 20px;
+      height: auto;
+      @include screen-lg {
+        margin: 0 auto 15px;
+      }
+      &:last-child {
+        margin-right: 0;
+        @include screen-lg {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}

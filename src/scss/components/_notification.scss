@@ -1,0 +1,192 @@
+@use "../abstracts" as *;
+.app-l-notification__container{
+    padding: 18px 20px;
+      background-color: $light-green;
+      border: 1px solid $app-theme-secondary-blue;
+      border-radius: $card-radius;
+      min-height: 86px;
+      align-items: center;
+      margin-bottom: 30px;
+      margin-top: -10px;
+      @extend %flex-vert-center;
+      position: relative;
+      @include screen-lap-sm {
+        margin-top: 0px;
+        margin-bottom: 20px;
+      }
+      &:before,&:after{
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.1;
+        background-repeat: no-repeat;
+        z-index: 0;
+      }
+      &:after{
+        @include screen-lg {
+          display: none;
+        }
+      }
+      &.-dark-mode{
+        background: $app-theme-primary;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        padding: 21px 24px;
+        @include screen-lg{
+          margin-top: 0;
+        }
+        .app-l-right__notification-dts{
+          @extend %flex;
+          button{
+            margin-left: auto;
+          }
+        }
+        &:before{
+          background-image: url('/assets/images/pattern-dark-desktop-2.svg');
+          background-position: 65px 5px;
+          @include screen-lg {
+            background-image: url('/assets/images/pattern-dark.svg');
+          background-position: -10px 0;
+          }
+        }
+
+        &:after{
+          background-image: url('/assets/images/pattern-dark-2.svg');
+          background-position: 100% 25%;
+        }
+
+        .app-btn-code__chlng{
+          background-color: $app-theme-primary;
+          color: $white;
+          border: 1px solid $white;
+        }
+        .app-l-notificn__content {
+          &-title{
+            color: $app-theme-secondary-yellow;
+            font-size: $text-xxl;
+          }
+          &-subtitle{
+            color: $white;
+            font-size: $text-md;
+          }
+
+        }
+        @include screen-lg{
+          .app-l-notfcn-inner__wrap{
+            margin-bottom: 20px;
+        }
+        }
+      }
+      @include screen-lg {
+        display: block;
+        padding: 20px;
+      }
+      &:not(.-dark-mode){
+        &:before{
+          background-image: url('/assets/images/pattern.svg');
+          background-position: 100% 0%;
+          @include screen-lg {
+           background-position: 20% -31%;
+          }
+        }
+        &:after{
+          background-image: url('/assets/images/pattern.svg');
+          background-position: 13% 0%;
+        }
+      }
+
+    .app-l-notfcn-inner__wrap{
+      @extend %flex-vert-start;
+      width: 100%;
+      z-index: 1;
+      @include screen-lg {
+        align-items: flex-start;
+        margin-bottom: 10px;
+      }
+
+    }
+    .app-l-item__logo{
+      width: 50px;
+      height: 50px;
+
+    }
+    .app-l-notificn__content{
+      padding-left: 18px;
+      padding-right: 18px;
+      flex-grow: 1;
+      @media screen and (max-width: $screen-md){
+        padding-right: 0px;
+        padding-left: 20px;
+      }
+      &-title{
+        font-size: $text-xxl;
+        font-weight: $font-weight-bold;
+        line-height: 1.5;
+        @include screen-lg {
+          font-size: $text-lg;
+          line-height: 2.4rem;
+       }
+       }
+       &-subtitle{
+        color:$gray1;
+        font-size: $text-md;
+        font-weight: $font-weight-medium;
+        line-height: 1.5;
+        @include screen-lg {
+          font-size: $text-sm;
+       }
+       }
+    }
+    .app-l-right__notification-dts{
+      flex: 0 0 293px;
+      margin-left: auto;
+      @include screen-lg {
+        min-width: auto;
+        flex: none;
+      }
+      .app-l-notfcn__close{
+        color:$gray1;
+        margin-left: 24px;
+        z-index: 1;
+        @media screen and (max-width: $screen-md){
+          margin-left: 0px;
+          position: absolute;
+          position: absolute;
+          top: 17px;
+          right: 12px;
+
+        }
+        &:hover{
+          color:$app-theme-primary;
+        }
+        &:focus{
+          border-color: transparent;
+          color: $app-theme-primary;
+        }
+        .icon-svg {
+          @media screen and (max-width: $screen-md){
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+    .app-btn-code__chlng{
+      padding: 10px 20px;
+      background: $light-green;
+      border-radius: $field-btn-radius;
+      font-size: $text-lg;
+      line-height: 1.5;
+      z-index: 1;
+      &.app-l--lg-visible{
+        @include is-mobile-d-none;
+      }
+      &.app-l--sm-visible{
+        @include is-desktop-d-none;
+      }
+    }
+  }

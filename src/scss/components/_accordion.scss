@@ -1,0 +1,222 @@
+@use "../abstracts" as *;
+.app-c-accordion{
+    .app-c-acc-group{
+        &:nth-child(odd){
+            .app-c-accordion--panel-header{
+              background: $gray5;
+            }
+            .acc-content{
+               
+               background-color: $gray5;
+                @include screen-lg {
+                    font-size: $text-sm;
+                    
+                }
+            }
+            
+        }
+        &:nth-child(even){
+            .app-c-accordion--panel-header{
+              background: transparent;
+            }
+        }
+    }
+    .app-c-accordion--panel-header{
+        border-radius: $border-radius2;
+        box-shadow: none;
+        border: none;
+        width: 100%;
+        padding: 20px;
+        text-align: left;
+        font-size: $text-md;
+        font-weight: $font-weight-regular;
+        color: $gray1;
+        @extend %flex-horiz-away;
+        word-break: break-word;
+        align-items: center;
+        cursor: pointer;
+        transition: padding $animation-type1 $animation-duration3;
+        @include screen-lg {
+            font-size: $text-sm;
+            padding: 12px;
+        }
+        .app-c-accordion-title{
+            padding-right: 20px;
+        }
+    }  
+    .acc-content{
+        font-size: $text-md;
+        font-weight: $font-weight-regular;
+        color: $app-theme-primary;
+        line-height: 1.6;
+        padding: 0px 64px 20px 20px;
+        word-break: break-word;
+        border-radius: 0px 0px 4px 4px;
+        @include screen-lg {
+            font-size: $text-sm;
+            padding: 0px 12px 12px 12px;
+        }
+    }
+    .app-c-toggle-icon-minus{
+        display: none;
+    }
+    .app-c-toggle-icon-plus{
+        display: block;
+    }
+    .accordion-toggle{
+        
+        &[aria-expanded="true"]{
+        .app-c-toggle-icon-minus{
+            display: block;
+        }
+        .app-c-toggle-icon-plus{
+            display: none;
+        }
+        .app-c-accordion--panel-header{
+            padding-bottom: 10px;
+            @include screen-lg {
+                padding-bottom: 6px;
+            }
+        }
+       }
+       .app-c-accordion--panel-header{
+           &:focus{
+            outline: none;
+           }
+       }
+    }
+}
+.app-c-details-accordion{
+    max-width: 569px;
+    &.app-c-detail-coding-acc{
+        .acc-content{
+        padding-right: 60px;
+        }
+    }
+    .app-c-accordion--panel-header{
+        @extend %flex;
+        padding: 15px 20px;
+        background-color:$white;
+        border: 1px solid rgba(181, 194, 218, 0.5);
+        border-bottom: none;
+        width: 100%;
+        cursor: pointer;
+        @include screen-lg {
+            padding: 15px;
+        }
+        .app-c-icon-wrapper{
+            width: 20px;
+            height: 20px;
+            border-radius: $circle-radius;
+            @extend %flex-all-center;
+            color:$white;
+            margin-right: 15px;
+            &.green-bgc{
+                background-color: $app-theme-primary-green;
+            }
+            &.yellow-bgc{
+                background-color: $app-theme-secondary-yellow;
+            }
+            &.red-bgc{
+                background-color: $app-theme-tertiary-red;
+            }
+        }
+        .app-c-accordion-title{
+            font-size: $text-md;
+            font-weight: $font-weight-semi-bold;
+            color: $app-theme-primary;
+            word-break: break-word;
+        }
+        .app-c-acc-open-close{
+            margin-left: auto;
+            color: $gray2;
+            transition: transform $animation-type1 $animation-duration3;
+        }
+        
+    }
+    .acc-content{
+        padding: 5px 46px 15px 15px;
+        border: 1px solid rgba(181, 194, 218, 0.5);
+        border-top: none;
+        border-bottom: none;
+        font-size: $text-sm;
+        font-weight: $font-weight-medium;
+        color: $gray1;
+        line-height: 18px;
+        @include screen-lg {
+            padding-top: 0px;
+        }
+        .highlight-text{
+            color: $app-theme-primary-green;
+            cursor: pointer;
+            font-weight: $font-weight-semi-bold;
+        }
+    }
+    .app-c-acc-group{
+        &:first-child{
+            .app-c-accordion--panel-header{
+            border-radius:4px 4px 0px 0px; 
+            }
+        }
+        &:last-child{
+            .app-c-accordion--panel-header{
+            border-bottom: 1px solid rgba(181, 194, 218, 0.5); 
+            border-radius:0px 0px 4px 4px;
+            }
+            .acc-content{
+                border-bottom: 1px solid rgba(181, 194, 218, 0.5); 
+                border-radius: 0px 0px 4px 4px;
+            }
+            .accordion-toggle{
+                &[aria-expanded="true"]{
+                .app-c-accordion--panel-header{
+                    border-radius: 0px;
+                }
+            }
+            }
+        }
+    }
+    .accordion-toggle{
+        
+        &[aria-expanded="true"]{
+            .app-c-acc-open-close{
+                transform: rotate(-180deg);
+            }
+            .app-c-accordion--panel-header{
+               border-bottom: none; 
+            }
+       }
+       .app-c-accordion--panel-header{
+           &:focus{
+            outline: none;
+           }
+       }
+    }
+    
+}
+
+.app-c-pr-arr-wrapper{
+    margin-left: auto;
+    @extend %flex;
+    .app-c-progressbar-percentage{
+        @extend %flex-vert-center;
+    .progress{
+        width: 118px;
+        margin-right: 20px;
+        @include screen-lg {
+            width: 58px;
+            margin-right: 6px;
+        }
+    }
+    .app-c-upload-percentage{
+        font-size: $text-sm;
+      font-weight:$font-weight-semi-bold;
+      line-height: 1.5;
+      color: $app-theme-primary;
+      margin-right: 20px;
+      @include screen-lg {
+          margin-right: 13px;
+      }
+    }
+    }
+}

@@ -1,0 +1,229 @@
+@use "./palette" as *;
+@use "./variables" as *;
+@use "./breakpoints" as *;
+
+%flex {
+  display: flex;
+}
+%grid {
+  display: grid;
+  display: -ms-grid;
+}
+%flex-inline {
+  display: inline-flex;
+}
+%inline-flex-all-center {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%inline-flex-vert-center {
+  display: inline-flex;
+  align-items: center;
+}
+
+%flex-vert-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+%flex-col {
+  display: flex;
+  flex-direction: column;
+}
+%flex-row {
+  display: flex;
+  flex-direction: row;
+}
+%flex-center {
+  display: flex;
+  justify-content: center;
+}
+%inline-flex-horiz-away-vert-center {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+%flex-all-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+%flex-all-center-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+%flex-horiz-center {
+  display: flex;
+  justify-content: center;
+}
+
+
+%flex-horiz-center-col {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+%flex-vert-center {
+  display: flex;
+  align-items: center;
+}
+
+%flex-vert-start {
+  display: flex;
+  align-items: flex-start;
+}
+
+%flex-vert-end {
+  display: flex;
+  align-items: flex-end;
+}
+
+%flex-vert-center-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+%flex-horiz-away-vert-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+%flex-horiz-away {
+  display: flex;
+  justify-content: space-between;
+}
+
+%flex-horiz-end-vert-end {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+%flex-horiz-end-vert-center {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+%flex-wrap {
+  flex-wrap: wrap;
+}
+// Flex direction (Firefox needs vendor prefix)
+@mixin flex-direction($value) {
+  -moz-flex-direction: $value;
+  flex-direction: $value;
+}
+
+// IE11 fix for min height parent with flex align center
+%ie11-min-h-flex-center-fix {
+  content: "";
+  display: block;
+  min-height: inherit;
+  font-size: 0;
+}
+
+%user-select-none {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+%touch-tap-none {
+  -webkit-tap-highlight-color: transparent;
+}
+
+%absolute-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+%form-item-shadow {
+  box-shadow: 0 0 0 3px transparentize($color: $app-theme-primary, $amount: 0.8);
+}
+%form-item-shadow-iconround {
+  box-shadow: 0 0 0 3px transparentize($color: $app-theme-primary, $amount: 0.8);
+}
+%form-error-shadow {
+  box-shadow: 0 0 0 3px transparentize($color: $error, $amount: 0.8);
+}
+
+%truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+%card-hover-white {
+  box-shadow: 0px 0px 20px -4px rgb(18 50 81 / 15%);
+  background-color: $white;
+  transition: transform $animation-duration2 ease-out,
+    box-shadow $animation-duration2 ease-out;
+  transform: scale(1) translateZ(0);
+  &:hover {
+    box-shadow: 0px 0px 40px -6px rgb(18 50 81 / 15%);
+  }
+  @media (min-width: $screen-md) {
+    &:hover {
+      transform: scale(1.04) translateZ(10px);
+    }
+  }
+}
+%no-events-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+%all-events-shown {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+}
+
+%user-select-none {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+@mixin columns($value: row) {
+  columns: $value;
+-webkit-columns: $value;
+-moz-columns: $value;
+}
+@mixin iconwidth($value) {
+  height: $value;
+  width:$value;
+} 
+@mixin equalDimension($web,$mobile){ 
+  height: $web;
+  width:$web;
+  @include screen-lg(){
+    height: $mobile;
+    width:$mobile;
+  }
+}
+@mixin positioningElement($top,$left,$topMob,$leftMob) {
+  top: $top;
+  left:$left;
+  @include screen-lg(){
+    top: $topMob;
+    left:$leftMob;
+  }
+} 
+@mixin blockWidth($width,$widthMob) {
+  max-width: $width; 
+  @include screen-lg(){
+    max-width: $widthMob; 
+  }
+} 

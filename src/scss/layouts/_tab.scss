@@ -1,0 +1,129 @@
+@use "../abstracts" as *;
+.app-l-tab-slider--nav {
+        width: 100%;
+        margin-bottom: 20px;
+        &.app-l-dark-theme-tabSlider{
+          .app-l-tab-slider--trigger {
+            color: $gray3;
+          }
+        }
+        @include screen-lap-sm {
+          margin-bottom: 10px;
+        }
+        @include screen-lg {
+          margin-bottom: 2px;
+        }
+        .app-l-tab-slider--tabs { 
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          position: relative;
+          @extend %user-select-none;
+          @extend %flex;
+          overflow-x: auto;
+          scrollbar-width: thin;
+          flex-wrap: wrap;
+          @media screen and (max-width: $screen-md) {
+            flex-wrap: nowrap;
+          }
+          &::-webkit-scrollbar {
+            width: 5px;
+          }
+        }
+        .app-l-tab-slider--trigger {
+          font-weight: $font-weight-semi-bold;
+          font-size: $text-xl;
+          color: $app-theme-primary;
+          text-align: center;
+          margin-right: 52px;
+          position: relative;
+          z-index: 2;
+          cursor: pointer;
+          display: inline-block;
+          transition: all $animation-type3 $animation-duration3;
+          @extend %user-select-none;
+          flex-shrink: 0;
+          margin-bottom: 10px;
+          &:last-child{
+            margin-right: 0px;
+          }
+          @include screen-lap-sm {
+            margin-right: 35px;
+          }
+          @include screen-lg {
+            flex-shrink: 0;
+            font-size: $text-lg;
+            margin-right: 40px;
+          }
+          @media screen and (max-width: $screen-sm) {
+            margin-right: 15px;
+          }
+          @media screen and (max-width: $screen-xs) {
+            margin-right: 25px;
+          }
+      
+          .app-l-item-number {
+            margin-left: 10px;
+            background: $gray4;
+            border-radius: $border-radius2;
+            font-size: $text-xl;
+            font-weight: $font-weight-medium;
+            min-width: 36px;
+            height: 27px;
+            line-height: 2.7rem;
+            padding: 0px 8px;
+            color: $gray1;
+            @extend %inline-flex-all-center;
+            transition: color $animation-type3 $animation-duration3,
+              background $animation-type3 $animation-duration3;
+              @include screen-lap-sm {
+                font-size: $text-md-plus;
+              }
+            @include screen-lg {
+              font-size: $text-lg;
+              min-width: 28px;
+              height: 24px;
+              line-height: 2.4rem;
+            }
+          }
+          &:after {
+            content: "";
+            width: 0px;
+            opacity: 0;
+            background: $app-theme-primary-green;
+            height: 3px;
+            border-radius: $border-radius1;
+            margin-top: 10px;
+            position: relative;
+            display: flex;
+            left: 0;
+            bottom: 0;
+            z-index: 2;
+            transition: opacity $animation-duration3 $animation-type3,
+              width $animation-duration3 $animation-type3;
+            @include screen-lg {
+              width: 0px;
+            }
+          }
+          &.active {
+            color: $app-theme-primary-green;
+            &:after {
+              content: "";
+              width: 64px;
+              opacity: 1;
+              @include screen-lg {
+                width: 48px;
+              }
+            }
+            .app-l-menu-item {
+              font-weight: $font-weight-bold;
+              word-break: break-word;
+            }
+            .app-l-item-number {
+              background-color: $app-theme-primary-green;
+              color: $green-shade;
+              font-weight: $font-weight-bold;
+            }
+          }
+        }
+      }

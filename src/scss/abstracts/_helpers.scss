@@ -1,0 +1,254 @@
+@use "./variables" as *;
+@use "./breakpoints" as *;
+@use "./typography" as *;
+@use "./palette" as *;
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+.is-block {
+  display: block;
+}
+
+.is-d-none {
+  width: 0;
+  height: 0;
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@mixin is-mobile-d-none {
+  @media (max-width: $screen-md) {
+    display: none;
+  }
+}
+
+@mixin is-desktop-d-none {
+  @media (min-width: $screen-md) {
+    display: none;
+  }
+}
+
+.img-auto {
+  max-width: 100%;
+  height: auto;
+}
+
+.form-error-text {
+  visibility: hidden;
+  padding-top: 10px;
+  font-size: $text-sm;
+  font-weight: $font-weight-medium;
+  color: $app-theme-tertiary-red;
+  opacity: 0;
+  transform: translateY(-0.6666em);
+  transition: opacity $animation-type1 $animation-duration3,
+    transform $animation-type1 $animation-duration3;
+  min-height: 12px;
+  display: flex;
+  align-items: center;
+  .error-label {
+    padding-top: 2px;
+    font-size: 1.5rem;
+  }
+}
+
+.form-error {
+  border-color: $app-theme-tertiary-red;
+
+  & ~ .form-error-text {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .app-btn-plain {
+    .icon-svg {
+      color: $app-theme-tertiary-red;
+    }
+    &:hover {
+      .icon-svg {
+        &.icon-theme2 {
+          color: $app-theme-tertiary-red;
+        }
+      }
+    }
+  }
+}
+
+.icon-fill-transparent {
+  fill: transparent;
+}
+.icon-svg {
+  display: block;
+  pointer-events: none;
+  transition: color $animation-type1 $animation-duration3;
+
+  &.icon-theme1 {
+    color: $gray1;
+  }
+
+  &.icon-theme2 {
+    color: $gray1;
+
+    .app-btn-plain:hover &,
+    .addon-info:focus-within &,
+    .app-btn-mini-action:hover & {
+      color: $gray1;
+    }
+    .app-btn-mini-action-deselect:hover &,
+    .app-btn-mini-action-active:hover & {
+      color: $white;
+    }
+    //for action button
+    .app-btn-mini-action:disabled & {
+      color: $gray6;
+      background-color: transparent;
+    }
+  }
+
+  &.icon-theme-secondary {
+    color: $app-theme-primary;
+  }
+  &.icon-theme3 {
+    color: $gray2;
+  }
+  &.icon-theme4 {
+    color: $black;
+  }
+  &.icon-theme5 {
+    color: $gray2;
+  }
+  &.icon-theme6 {
+    color: $white;
+  }
+  &.icon-theme7 {
+    color: $gray1;
+  }
+  &.icon-theme8 {
+    color: $gray5;
+  }
+  &.icon-success {
+    color: $app-theme-secondary-green;
+    button:hover & {
+      color: $app-theme-secondary-green;
+    }
+  }
+  &.icon-error {
+    color: $error;
+    margin-right: 8px;
+  }
+  &.icon-arrow {
+    width: 100%;
+    color: $app-theme-secondary-green;
+    height: 6px;
+  }
+  &.icon-size-40 {
+    width: 40px;
+    height: 40px;
+    @include screen-xxlprocess {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+@for $i from 8 through 50 {
+  .icon-size-#{$i} {
+    width: #{$i}px;
+    height: #{$i}px;
+
+    .icon-svg {
+      @extend .icon-size-#{$i};
+    }
+  }
+
+  .addon-size-#{$i} {
+    .app-btn-addon {
+      @extend .icon-size-#{$i};
+    }
+  }
+}
+
+.icon-stroke {
+  stroke: currentColor;
+}
+
+.icon-fill {
+  fill: currentColor;
+}
+
+.icon-fill-duo-green {
+  fill: $app-theme-secondary-green;
+}
+.icon-fill-white,
+.icon-stroke-white {
+  fill: $white;
+}
+
+.icon-toggle-pass {
+  display: none;
+
+  &.hide-pass-icon {
+    &::before {
+      content: "";
+      width: 1.5px;
+      height: 0;
+      position: absolute;
+      top: 1.5px;
+      left: 2px;
+      background: $gray2;
+      transform: rotate(-45deg);
+      border-radius: 10px;
+      transform-origin: 0 0;
+      display: block;
+      transition: background $animation-type1 $animation-duration3,
+        height $animation-type2 $animation-duration3;
+    }
+  }
+
+  &.active {
+    display: block;
+
+    &.hide-pass-icon {
+      &::before {
+        animation: fadeIn $animation-duration3 $animation-delay1 forwards;
+      }
+    }
+
+    &:hover {
+      &.hide-pass-icon {
+        &::before {
+          background: $gray1;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    height: 29px;
+  }
+}
+
+.icon-svg-inherit{
+  width: inherit;
+  height: inherit;
+}
+.sr-only{
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}

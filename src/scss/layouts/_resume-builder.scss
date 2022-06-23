@@ -1,0 +1,560 @@
+@use "../abstracts" as *;
+
+%image-md {
+  width: 198px;
+  height: 198px;
+  @include screen-lap-sm {
+    width: 130px;
+    height: 130px;
+  }
+}
+%image-sm {
+  @include screen-lg {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.rb-wrapper {
+  background-color: $white;
+  box-shadow: 0px 14px 40px rgba(0, 0, 0, 0.06);
+  @media (min-width: $screen-lg) {
+    overflow: hidden;
+    border-radius: 20px;
+    .rb-name-mv-only {
+      display: none;
+    }
+    .rb-mv-only {
+      display: none;
+    }
+  }
+  .rb-mv-only {
+    .rb-item-content {
+      .rb-item-title {
+        color: $app-theme-primary;
+        font-size: $text-md;
+        line-height: 1.2;
+        font-weight: $font-weight-semi-bold;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  @include screen-lg {
+    padding-bottom: 20px;
+    .rb-dv-only {
+      display: none;
+    }
+  }
+  .app-c-icon__back {
+    position: absolute;
+    top: 30px;
+    left: 28px;
+    @include screen-lg {
+      top: auto;
+      left: auto;
+      position: relative;
+      margin-bottom: 25px;
+    }
+    button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: $white;
+      &:hover {
+        color: $gray2;
+      }
+      @media (max-width: $screen-sm) {
+        position: relative;
+        top: 5px;
+      }
+    }
+  }
+  .rb-title {
+    font-size: 2.4rem;
+    line-height: 1.5;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    @extend %flex;
+    @include screen-lap-sm {
+      font-size: 1.8rem;
+    }
+    @include screen-lg {
+      font-size: $text-lg;
+    }
+    .app-btn {
+      margin-left: auto;
+    }
+  }
+  .rb-right {
+    .rb-title {
+      max-width: 410px;
+      @include screen-lg {
+        max-width: 100%;
+      }
+    }
+  }
+  .rb-row {
+    position: relative;
+    @extend %flex;
+
+    @include screen-lg {
+      flex-direction: column;
+    }
+    .rb-left {
+      width: 444px;
+      background: $gray1;
+      padding: 80px 34px 80px 80px;
+      flex-shrink: 0;
+      @extend %flex-col;
+      @include screen-lap-sm {
+        padding: 42px 34px 80px 80px;
+      }
+      @include screen-lg {
+        width: 100%;
+        padding: 20px 20px 40px;
+      }
+      .rb-header {
+        margin-bottom: 72px;
+        @include screen-lap-sm {
+          margin-bottom: 30px;
+        }
+        @include screen-lg {
+          margin-bottom: 20px;
+        }
+      }
+      .rb-profile-image {
+        @extend %flex-vert-center;
+        .rb-name-mv-only {
+          margin-left: 20px;
+          font-weight: $font-weight-bold;
+          font-size: $text-xxl;
+          line-height: 1.5;
+          color: $app-theme-secondary-green;
+        }
+        .rb-prof-svg{
+          @extend %image-md;
+          @extend %image-sm;
+        }
+        .rb-prof-pic {
+          object-fit: cover;
+          -webkit-clip-path: url(#clip-path-profile);
+          clip-path: url(#clip-path-profile);
+          @include screen-lap-sm {
+            -webkit-clip-path: url(#clip-path-profile-lap);
+            clip-path: url(#clip-path-profile-lap);
+          }
+          @include screen-lg {
+            -webkit-clip-path: url(#clip-path-profile-mob);
+            clip-path: url(#clip-path-profile-mob);
+          }
+        }
+      }
+      .rb-item.rb-dv-only {
+        + .rb-item.rb-dv-only {
+          margin-top: 50px;
+          @include screen-lap-sm {
+            margin-top: 30px;
+          }
+        }
+        .rb-title {
+          color: $app-theme-secondary-green;
+          margin-bottom: 10px;
+          @include screen-lap-sm {
+            margin-bottom: 7px;
+          }
+        }
+        .rb-item-title {
+          color: $white;
+          font-size: $text-xxl;
+          line-height: 1.5;
+          font-weight: $font-weight-semi-bold;
+          margin-bottom: 10px;
+          @include screen-lap-sm {
+             font-size: $text-lg;
+          }
+        }
+      }
+    }
+    .rb-right {
+      padding: 80px 80px 36px 100px;
+      width: 100%;
+      @include screen-lap-sm {
+        padding-top: 30px;
+       }
+      @include screen-lg {
+        padding: 0 20px;
+      }
+      .rb-name {
+        font-size: 4rem;
+        line-height: 1.375;
+        color: $app-theme-primary-green;
+        font-weight: $font-weight-bold;
+        margin-bottom: 20px;
+        @include screen-lap-sm {
+          font-size: 3rem;
+          margin-bottom: 10px;
+        }
+      }
+      .rb-item {
+        padding-bottom: 25px;
+        @include screen-lap-sm {
+          padding-bottom: 20px;
+        }
+        @include screen-lg{
+          padding: 40px 0 0;
+        }
+        .rb-title {
+          color: $app-theme-primary-green;
+          margin-bottom: 30px;
+          @include screen-lap-sm {
+            margin-bottom: 20px;
+          }
+          @include screen-lg {
+            margin-bottom: 20px;
+          }
+        }
+        + .rb-item {
+          padding: 25px 0;
+          border-top: 1px solid rgba($color: $gray3, $alpha: 0.7);
+          @include screen-lap-sm {
+            padding: 17px 0px;
+          }
+          @include screen-lg {
+            border: 0;
+            padding: 40px 0 0;
+          }
+        }
+      }
+      .work-timeline {
+        .rb-timeline-row {
+          &::after {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: $circle-radius;
+            top: 2px;
+            left: 4px;
+            border: 1px solid $gray2;
+            @media (max-width: $screen-lg) {
+              display: none;
+            }
+          }
+          &::before {
+            content: "";
+            position: absolute;
+            border-left: 1px solid $gray3;
+            top: 13px;
+            left: 9px;
+            height: calc(100% + 19px);
+            @include screen-lap-sm {
+              height: calc(100% + 15px);
+            }
+            @media (max-width: $screen-lg) {
+              display: none;
+            }
+          }
+          &:last-child {
+            &::before {
+              content: none;
+            }
+          }
+          &:only-child {
+            &::after {
+              content: none;
+            }
+          }
+          &:not(:only-child) {
+            padding-left: 36px;
+            @include screen-lg {
+              padding-left: 0;
+            }
+          }
+        }
+      }
+      .rb-timeline-row {
+        @extend %flex-vert-start;
+        position: relative;
+        + .rb-timeline-row {
+          margin-top: 30px;
+          @include screen-lap-sm {
+            margin-top: 25px;
+          }
+        }
+        .rb-timeline-icon {
+          background: $gray5;
+          border-radius: 8px;
+          min-width: 48px;
+          width: 48px;
+          height: 48px;
+          @extend %flex-all-center;
+          margin-right: 20px;
+          &.logo-img {
+            background-color: $green-shade;
+            img {
+              height: 100%;
+              max-height: 27px;
+            }
+          }
+        }
+        .rb-timeline-details {
+          width: 100%;
+          &-company-date {
+            @extend %flex-col;
+            @include screen-lg {
+              flex-direction: row;
+            }
+          }
+          &-title-date {
+            @extend %flex;
+          }
+          &--title {
+            font-weight: $font-weight-semi-bold;
+            font-size: $text-lg;
+            line-height: 1.2;
+            color: $app-theme-primary;
+            margin-bottom: 10px;
+            word-break: break-word;
+            @include screen-lap-sm {
+              font-size: $text-md;
+              margin-bottom: 7px;
+            }
+            @include screen-lg{
+              font-size: $text-md;
+            }
+          }
+          &--company {
+            font-weight: $font-weight-medium;
+            font-size: $text-md;
+            line-height: 1.2;
+            color: $gray1;
+            word-break: break-word;
+            @include screen-lap-sm {
+              font-size: $text-sm;
+              margin-bottom: 6px;
+            }
+            @media (min-width: $screen-lg) {
+              margin-bottom: 8px;
+            }
+          }
+          &--time {
+            @extend %flex-vert-center;
+            font-weight: $font-weight-medium;
+            font-size: $text-md;
+            color: $gray1;
+            @include screen-lap-sm {
+              font-size: $text-sm;
+            }
+            @include screen-lg {
+              &.rb-dv-only {
+                display: none;
+              }
+            }
+            @media (min-width: $screen-lg) {
+              &.rb-mv-only {
+                display: none;
+              }
+            }
+            @include screen-lg {
+              margin-left: auto;
+              flex-shrink: 0;
+              padding-left: 3px;
+            }
+            .rb-date-splitter {
+              margin: 0 16px;
+              @include screen-lg {
+                margin: 0 10px 0 13px;
+              }
+            }
+          }
+        }
+      }
+      .rb-item-content {
+        @media screen and (min-width: $screen-lg) {
+          .rb-item-role-row {
+            + .rb-item-role-row {
+              margin-top: 35px;
+            }
+          }
+        }
+        @include screen-lap-sm {
+          .rb-item-role-row {
+            + .rb-item-role-row {
+              margin-top: 25px;
+            }
+          }
+        }
+        @include screen-lg {
+          &:not(.rb-timeline) {
+            .rb-item-role-row {
+              display: flex;
+              align-items: flex-start;
+              flex-wrap: wrap;
+              + .rb-item-role-row {
+                margin-top: 30px;
+              }
+            }
+            .rb-item-role {
+              width: 50%;
+              flex: 1 0 50%;
+              + .rb-item-role {
+                margin-top: 0;
+                padding-left: 30px;
+              }
+            }
+          }
+        }
+        .rb-item-role {
+          font-weight: $font-weight-semi-bold;
+          line-height: 1.2;
+          .rb-item-role-title {
+            color: $gray1;
+            font-size: $text-xxl;
+            margin-bottom: 10px;
+            @include screen-lap-sm {
+              font-size: $text-lg-plus;
+            }
+            @include screen-lg {
+              font-size: $text-md;
+              margin-bottom: 11px;
+              color: $app-theme-primary;
+            }
+          }
+          .rb-item-role-answer {
+            color: $app-theme-primary;
+            font-size: $text-lg;
+            word-break: break-word;
+            @include screen-lap-sm {
+              font-size: $text-sm-plus;
+            }
+            @include screen-lg {
+              font-size: $text-md;
+              line-height: 1.5;
+              font-weight: $font-weight-medium;
+            }
+          }
+          + .rb-item-role {
+            margin-top: 35px;
+            @include screen-lap-sm {
+              margin-top: 25px;
+            }
+            @include screen-lg {
+              margin-top: 30px;
+            }
+          }
+        }
+      }
+    }
+
+    .rb-description {
+      font-size: 3rem;
+      line-height: 1.5;
+      letter-spacing: 0.03em;
+      color: $gray1;
+      font-weight: $font-weight-light;
+      .rb-highlight {
+        font-weight: $font-weight-regular;
+      }
+      @include screen-lap-sm {
+        font-size:$text-xl;
+      }
+      @include screen-lg {
+        color: $white;
+        font-size: $text-xxl;
+      }
+    }
+
+    .rb-item-row {
+      display: block;
+      .rb-item-desc {
+        color: $white;
+        font-size: $text-lg;
+        line-height: 1.5;
+        font-weight: $font-weight-medium;
+        word-break: break-word;
+        @include screen-lap-sm {
+          font-size: $text-md;
+        }
+        @include screen-lg {
+          color: $gray1;
+          font-size: $text-md;
+          &.rb-mv-skills {
+            color: $app-theme-primary;
+          }
+        }
+        &.rb-item__link{
+          text-decoration: none;
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+      }
+      + .rb-item-row {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+.rb-floating-action {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  @extend %flex-vert-center;
+  justify-content: flex-end;
+  background: rgba($color: $white, $alpha: 0.4);
+  backdrop-filter: blur(84px);
+  bottom: 0;
+  padding: 36px 112px;
+  @include screen-lap-sm {
+    padding: 15px 112px;
+  }
+  @include screen-lg {
+    position: relative;
+    padding: 12px;
+    justify-content: center;
+  }
+  .button-group {
+    @extend %flex-vert-center;
+    .app-btn {
+      @include screen-lap-sm {
+        height: 48px;
+        padding: 15px 40px;
+      }
+      + .app-btn {
+        margin-left: 20px;
+      }
+    }
+  }
+}
+.rb-item-spotted{
+  margin-top: auto;
+  @extend %flex-vert-center;
+  &.rb-mv-only{
+    padding-top: 30px;
+    margin-top: 30px;
+    padding-bottom: 40px;
+    border-top: 1px solid $gray4;
+    .rb-item-spotted-text{
+      color: $gray2;
+    }
+  }
+  .rb-item-spotted-text{
+    font-weight: $font-weight-medium;
+    font-size: $text-md;
+    line-height: 1.5;
+    color: $gray3;
+    margin-right: 4px;
+  }
+  .rb-item-spotted-icon{
+    height: 16px;
+    .rb-logo{
+      height: 16px;
+    }
+    .logo-full-spotted{
+      width: 90px;
+      height: 16px;
+      color: $app-theme-secondary-green;
+    }
+  }
+}

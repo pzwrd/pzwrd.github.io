@@ -1,0 +1,302 @@
+@use "../abstracts" as *;
+.app-c-popover__container {
+  position: fixed;
+  max-width: 856px;
+  z-index: -1;
+  transform: translateY(0);
+  transition: transform $animation-type3 $animation-duration3,
+    opacity $animation-type3 $animation-duration3,
+    visibility $animation-type3 $animation-duration3,
+    z-index $animation-type3 $animation-duration3;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  width: 100%;
+  svg {
+    &.loading {
+      display: none;
+    }
+  }
+  &.pos-up {
+    transform: translateY(10px);
+  }
+  &.pos-down {
+    transform: translateY(-10px);
+  }
+  &.detailactive {
+    z-index: 11;
+    visibility: visible;
+    pointer-events: auto;
+    animation: $animation-duration3 $animation-type3 opacityForward forwards;
+    @keyframes opacityForward {
+      100% {
+        opacity: 1;
+      }
+    }
+    @include screen-lg {
+      top: 30px;
+      width: 100%;
+      padding: 20px;
+      height: calc(100% - 30px);
+      max-width: 100%;
+      animation: $animation-duration3 $animation-type3 slideUpPopover forwards;
+      transform: translateY(-10px);
+      @keyframes slideUpPopover {
+        100% {
+          opacity: 1;
+          transform: translateY(0px);
+        }
+      }
+    }
+    &.popover-full-wh {
+      top: 30px;
+      width: 100%;
+      padding: 20px;
+      height: calc(100% - 30px);
+      .app-c-details__popup {
+        max-height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+  .app-c-details__popup {
+    position: relative;
+    background: $white;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 4px 8px 20px rgba(198, 207, 216, 0.25);
+    z-index: 1;
+    @media (max-width: $screen-xl) {
+      height: auto;
+    }
+    @include screen-lg {
+      max-height: 100%;
+      display: flex;
+      flex-direction: column;
+      top: 50%;
+      transform: translateY(-50%);
+      &.expectation {
+        .app-c-popup-body {
+          padding: 20px 30px 40px;
+        }
+      }
+    }
+    .app-c-popup-header {
+      padding: 20px 30px;
+      border-bottom: 1px solid $gray4;
+      @extend %flex-vert-center;
+      @include screen-lg {
+        flex-shrink: 0;
+      }
+
+      @media (max-width: $screen-xl) {
+        padding: 20px;
+      }
+      h5 {
+        font-size: $text-xl;
+        font-weight: $font-weight-semi-bold;
+        line-height: 27px;
+        color: $app-theme-primary;
+      }
+      .app-c-close {
+        margin-left: auto;
+        cursor: pointer;
+        color: $gray1;
+        &:hover {
+          color: $gray2;
+        }
+      }
+    }
+    .app-c-popup-footer {
+      padding: 20px 30px;
+      @media (max-width: $screen-xl) {
+        padding: 20px;
+      }
+    }
+    .app-c-popup-body {
+      padding: 20px 30px 30px 30px;
+      overflow: auto;
+      @media (max-width: $screen-sm) {
+        padding: 20px;
+      }
+      .app-l-btn-group {
+        margin-bottom: 10px;
+        @extend %flex;
+        .app-c-btn-stepper {
+          @media (max-width: $screen-sm) {
+            order: 2;
+            margin-top: 0px;
+            max-width: 50%;
+          }
+        }
+        @media (max-width: $screen-sm) {
+          @include flex-direction(column);
+        }
+        button.app-btn.app-btn-secondary {
+          margin-right: 20px;
+        }
+        .app-c-container__chkbox {
+          margin-left: auto;
+          @media (max-width: $screen-sm) {
+            margin-left: 0;
+            margin-bottom: 20px;
+          }
+          .app-check-radio-label {
+            font-size: 12px;
+            color: $gray1;
+            font-weight: $font-weight-medium;
+          }
+        }
+      }
+      .app-c-field__content {
+        @extend %flex-vert-center;
+        flex-wrap: wrap;
+        margin: 0 -10px;
+        position: relative;
+        align-items: flex-start;
+        @media (max-width: $screen-md) {
+          @include flex-direction(column);
+          align-items: flex-start;
+          width: 100%;
+        }
+        .app-c-field__list {
+          width: calc((100% / 4) - 20px);
+          @extend %flex;
+          @include flex-direction(column);
+          margin: 0 10px;
+          flex-grow: 1;
+          @media (max-width: $screen-xl) {
+            width: calc((100% / 2) - 20px);
+          }
+          @media (max-width: $screen-md) {
+            width: 100%;
+          }
+          &:last-child {
+            margin-right: 0px;
+          }
+          label {
+            font-size: $text-md;
+            font-weight: $font-weight-medium;
+            margin-bottom: 10px;
+            display: block;
+            + .app-c-container__chkbox {
+              margin-top: 15px;
+            }
+          }
+          .app-textfield__modal {
+            background: $gray5;
+            @media (max-width: $screen-lg) {
+              font-size: $text-md;
+            }
+          }
+          .angular_selectbox {
+            min-width: 124px;
+            .angular_selectbox--menu-button {
+              background: $gray5;
+            }
+          }
+          &.app-c-field__btn--link {
+            flex-grow: 0;
+            margin-left: auto;
+            margin-top: 15px;
+            @media (max-width: $screen-sm) {
+              margin-left: 5px;
+              margin-top: 0;
+            }
+            .app-c-btn-stepper {
+              max-width: 110px;
+              margin-left: auto;
+              @media (max-width: $screen-sm) {
+                margin-left: 0;
+              }
+            }
+          }
+          .app-c-container__chkbox {
+            margin-left: 3px;
+          }
+          .app-check-radio-label {
+            font-size: 12px;
+            color: $gray1;
+            font-weight: $font-weight-medium;
+          }
+        }
+      }
+    }
+    &.detailinactive {
+      display: none;
+    }
+  }
+  &.pos-down {
+    .popover-arrow {
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: -9px;
+        left: inherit;
+        z-index: 2;
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 15px solid $white;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -11px;
+        left: inherit;
+        z-index: 0;
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 15px solid $gray7;
+      }
+    }
+  }
+  &.pos-up {
+    .popover-arrow {
+      &:before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: inherit;
+        z-index: 2;
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid $white;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: inherit;
+        z-index: 0;
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid $gray7;
+      }
+    }
+  }
+}
+
+.app-popover-backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: rgba($color: $white, $alpha: 0.5);
+  top: 0;
+  opacity: 0;
+  animation: $animation-duration3 $animation-type3 opacityForward forwards;
+  @keyframes opacityForward {
+    100% {
+      opacity: 1;
+    }
+  }
+}

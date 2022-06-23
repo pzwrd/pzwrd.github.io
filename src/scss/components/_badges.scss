@@ -1,0 +1,15 @@
+@use "../abstracts" as *;
+
+.badge-pills{
+  padding: 4px 8px;
+  font-size: $text-xs;
+  font-weight: $font-weight-medium;
+  color: $white;
+  border-radius: 16px;
+  &--pending{
+    background-color: $app-theme-orange;
+  }
+  &--upcoming{
+    background-color: $app-theme-teal;
+  }
+}

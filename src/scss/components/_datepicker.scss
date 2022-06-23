@@ -1,0 +1,226 @@
+@use "../abstracts" as *;
+
+
+  bs-datepicker-container {
+      z-index: 1080;
+      .bs-datepicker {
+        @extend %flex;
+        align-items: stretch;
+        flex-flow: row wrap;
+        background: $white;
+        box-shadow: 4px 8px 20px rgba(198, 207, 216, 0.25);
+        border-radius: 8px;
+        position: relative;
+        z-index: 1;
+        padding: 23px 18px 16px 18px;
+        table {
+          width: 100%;
+          thead {
+            color: $gray2;
+            font-weight:$font-weight-medium;
+            font-size: $text-sm;
+            text-transform: uppercase;
+          }
+        }
+        .bs-media-container {
+          .bs-datepicker-head {
+            bs-datepicker-navigation-view {
+              position: relative;
+              margin-bottom: 35px;
+              @extend %flex;
+              button {
+                cursor: pointer;
+                &:nth-child(1) {
+                  background: transparent;
+                  border: 0;
+                  &:disabled{
+                    cursor: not-allowed;
+                    &:before {
+                      opacity: 0.4;
+                    }
+                  }
+                  span {
+                    display: none;
+                  }
+                  &:before {
+                    position: absolute;
+                    content: url("../../assets/icons/datepicker-left.svg");
+                    top: 3px;
+                    left: 0px;
+                    padding: 5px;
+                    border-radius: $circle-radius;
+                    min-width: 26px;
+                    min-height: 26px;
+                  }
+                }
+                &:nth-child(2) {
+                  font-weight: $font-weight-semi-bold;
+                  font-size:$text-md;
+                  line-height: 24px;
+                  color: $app-theme-primary;
+                  background: transparent;
+                  border: 0;
+                  position: absolute;
+                  right: 50%;
+                  transform: translateX(50%);
+
+                }
+                &:nth-child(3) {
+                  background: transparent;
+                  border: 0;
+                  position: absolute;
+                  right: 0;
+                  &:disabled{
+                    cursor: not-allowed;
+                    &:before {
+                      opacity: 0.4;
+                    }
+                  }
+                  &:before {
+                    content: url("../../assets/icons/datepicker-right.svg");
+                    position: absolute;
+                    top: 3px;
+                    right: 0px;
+                    padding: 5px;
+                    border-radius: $circle-radius;
+                    min-width: 26px;
+                    min-height: 26px;
+                    color:$gray2;
+                  }
+                  span {
+                    display: none;
+                  }
+
+                }
+                &:nth-child(4) {
+                  background: transparent;
+                  border: 0;
+                  position: absolute;
+                  right: 0;
+                  &:disabled{
+                    cursor: not-allowed;
+                    &:before {
+                      opacity: 0.4;
+                    }
+                  }
+                  &:before {
+                    content: url("../../assets/icons/datepicker-right.svg");
+                    position: absolute;
+                    top: 3px;
+                    right: 0px;
+                    padding: 5px;
+                    border-radius: $circle-radius;
+                    min-width: 26px;
+                    min-height: 26px;
+                    color:$gray2;
+                  }
+                  span {
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+          .bs-datepicker-body {
+            .days.weeks {
+              th {
+                width: 24px;
+                text-align: center;
+                height: 24px;
+                padding: 5px;
+                cursor: pointer;
+                border-radius: $circle-radius;
+              }
+              td {
+                span {
+                  width: 36px;
+                  text-align: center;
+                  height: 36px;
+                  font-weight: $font-weight-semi-bold;
+                  color: $black;
+                  cursor: pointer;
+                  max-width: 36px;
+                  padding: 6px 4px;
+                 font-size: $text-md;
+                  font-weight: $font-weight-medium;
+                  color:$app-theme-primary;
+                  border-radius: $circle-radius;
+                  @extend %flex-all-center;
+                  transition: background-color $animation-duration3
+                  $animation-type3,color $animation-duration3 $animation-type3;
+
+                  @media (max-width:$screen-md){
+                    margin: 5px auto;
+                    width: 20px;
+                    height: 20px;
+                    max-width: 20px;
+                  }
+                  &.is-highlighted {
+                    &:hover {
+                      background-color: $gray2;
+                      color:$white;
+                    }
+                  }
+                  &.today-class {
+                    background-color: $app-theme-tertiary-green;
+                  }
+                  &.is-other-month,
+                  &.disabled {
+                    cursor: not-allowed;
+                    color: $gray4;
+                  }
+                  &.selected {
+                    background-color: $app-theme-primary;
+                    color: $white;
+                    &:hover {
+                      background-color: $app-theme-primary;
+                    }
+                  }
+                }
+              }
+            }
+            .months,
+            .years {
+              td {
+
+                transition: background-color $animation-duration3
+                    $animation-type3, color $animation-duration3 $animation-type3;
+                  color:$app-theme-primary;
+                  width: 64px;
+
+                &.is-highlighted:not(.disabled) {
+                  span {
+                    background-color: $gray2;
+                    color:$white;
+                   }
+                }
+
+                &.is-other-month,
+                &.is-other-year,
+                &.disabled {
+                  color: $gray4;
+                  cursor: not-allowed;
+                }
+                span {
+                 @extend %flex-all-center;
+                  cursor: pointer;
+                  height: 36px;
+                  padding: 0px 10px;
+                  font-size: $text-md;
+                  font-weight: $font-weight-medium;
+                  border-radius: 8px;
+                  line-height: 2.1rem;
+                  margin: 2px;
+                  transition: background-color $animation-duration3
+                  $animation-type3,color $animation-duration3 $animation-type3;
+                  &.selected{
+                    color: $white;
+                    background: $app-theme-primary;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }

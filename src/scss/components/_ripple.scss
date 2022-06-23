@@ -1,0 +1,63 @@
+@use "../abstracts" as *;
+
+.app-btn {
+  &:active .ripple {
+    animation: none;
+  }
+}
+
+.ripple-wrapper {
+  position: absolute;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  top: 0;
+  left: 0;
+  //safari issue for overhidden and border-radius combo not clipping content
+  -webkit-mask-image: -webkit-radial-gradient($white, $black);
+
+  .ripple {
+    display: inline-block;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 50%;
+    top: 50%;
+    animation: ripple-anim 0.7s ease-out;
+    transform: translate(-50%, -50%) scale(0);
+
+    &.animation-paused {
+      animation-play-state: paused;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      left: 0;
+      top: 0;
+      background-color: currentColor;
+      width: 100%;
+      height: 100%;
+      border-radius: $circle-radius;
+    }
+
+    &::before {
+      transform: scale(1);
+    }
+
+    &::after {
+      transform: scale(0.3);
+    }
+  }
+}
+
+@keyframes ripple-anim {
+  to {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}

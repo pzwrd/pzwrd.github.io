@@ -1,0 +1,367 @@
+@use "../abstracts" as *;
+
+.app-c-card__maincontainer {
+  margin: 0px -15px;
+  padding-bottom: 20px;
+  transition: height $animation-duration3;
+}
+.app-c-ngx-masonry-wrapper {
+  width: 25%;
+  transition: top 0.4s ease-in-out, left 0.4s ease-in-out;
+  &.app-l-width--half {
+    width: 50%;
+    @include screen-lg {
+      width: 100%;
+    }
+  }
+  &.app-l-width--onebythird {
+    width: 33.33%;
+    @media screen and (max-width: $screen-lg) {
+      width: 50%;
+    }
+    @include screen-lg {
+      width: 100%;
+    }
+  }
+  &.app-l-width--full {
+    width: 100%;
+  }
+  @media screen and (max-width: $screen-xl) {
+    width: 33.33%;
+  }
+  @media screen and (max-width: $screen-lg) {
+    width: 50%;
+  }
+  @include screen-lg {
+    width: 100%;
+  }
+}
+.app-c-card__item {
+  background: $white;
+  box-shadow: 4px 8px 20px rgba(198, 207, 216, 0.25);
+  border-radius: $card-radius;
+  margin: 0px 15px 30px;
+  padding: 20px;
+  position: relative;
+  transition: box-shadow $animation-duration3;
+  cursor: pointer;
+  @include screen-lap-sm {
+    margin: 0px 8px 16px;
+  }
+  @include screen-lg {
+    margin-bottom: 20px;
+  }
+  .app-c-card-header {
+    @extend %flex;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(229, 229, 237, 0.6);
+    padding-right: 30px;
+    .app-c-logo-wrap {
+      width: 50px;
+      height: 50px;
+      border-radius: $border-radius3;
+      padding: 10px 11px;
+      @extend %flex-all-center;
+      margin-right: 10px;
+      &.yellow-bg {
+        background: $app-theme-tertiary-yellow;
+      }
+      &.blue-bg {
+        background-color: $light-green;
+      }
+      &.green-bg {
+        background-color: $app-theme-tertiary-green;
+      }
+      &.black-bg{
+        background-color: $primarytint;
+      }
+      &.app-c-lgo-cn{
+        &.black-bg{
+          position: relative;
+          background-color: transparent;
+          .app-c-lgo-background{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            .svg-bg{
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+      }
+}
+    .app-c-card__title-main {
+      font-size: $text-lg;
+      line-height: 2rem;
+      color: $app-theme-primary;
+      font-weight: $font-weight-bold;
+      margin-bottom: 10px;
+      word-break: break-word;
+    }
+    .app-c-card__title {
+      color: $gray2;
+      font-weight: $font-weight-medium;
+      font-size: $text-sm;
+    }
+    .app-c-header-wrap {
+      .app-c-card-content {
+        @extend %flex;
+        .app-c-card__item-details {
+          @extend %flex-vert-center;
+          margin-right: 23px;
+          color: $gray1;
+          .app-c-icon-info {
+            margin-left: 5px;
+            font-size: $text-sm;
+            font-weight: $font-weight-medium;
+            color: $gray1;
+          }
+        }
+      }
+      .app-c-card__title.cstm-offeredtab {
+        display: none;
+      }
+    }
+  }
+  .app-c-card-body {
+    padding: 10px 0px;
+    border-bottom: 1px solid rgb(229, 229, 237, 0.6);
+    &.cstm-offeredtab {
+      border-bottom: none;
+      padding-bottom: 0;
+      .app-c-card-content {
+        display: none;
+      }
+    }
+    .app-c-card-body-title {
+      font-weight: $font-weight-bold;
+      font-size: $text-md;
+      line-height: 2rem;
+      word-break: break-word;
+      margin-bottom: 10px;
+      &.app-c-card-descrptn{
+        @include screen-xxlprocess {
+          display: none;
+        }
+      }
+    }
+    .app-c-card-content {
+      @extend %flex;
+      .app-c-card__item-details {
+        margin-right: 23px;
+        @extend %flex-vert-start;
+        &:first-child {
+          flex-shrink: 0;
+        }
+        color: $gray1;
+        .icon-svg {
+          color: $gray1;
+        }
+        .app-c-icon-info {
+          margin-left: 5px;
+          margin-top: 4px;
+          font-size: $text-sm;
+          font-weight: $font-weight-medium;
+          color: $gray1;
+          word-break: break-word;
+        }
+      }
+    }
+    &.app-c-card-for-emptydata {
+      padding-bottom: 0px;
+      border-bottom: none;
+    }
+  }
+  .app-c-card-footer {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    @include screen-lg {
+      margin-bottom: 0px;
+    }
+
+    .app-c-card-status {
+      font-weight: $font-weight-semi-bold;
+      font-size: $text-md;
+      color: $app-theme-primary-green;
+      line-height: 1.5;
+      .cstm-offeredtab {
+        display: none;
+      }
+    }
+  }
+  .app-c-card__badge {
+    position: absolute;
+    @extend %flex-horiz-center;
+    align-items: flex-end;
+    top: 0;
+    right: 20px;
+    width: 24px;
+    height: 32px;
+    background-color: $app-theme-primary-green;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    .app-c-ico-box {
+      width: 18px;
+      height: 18px;
+      background-color: $green-shade;
+      border-radius: $circle-radius;
+      @extend %flex-all-center;
+      margin-bottom: 3px;
+      .icon-svg {
+        color: $app-theme-primary;
+      }
+    }
+  }
+  .app-c-status-divider {
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+}
+.app-c-hover-show__footer {
+  margin: 10px -20px -20px -20px;
+  opacity: 0;
+  height: 0;
+  @extend %flex;
+  transition: opacity $animation-duration3 $animation-type3,
+    height $animation-duration3 $animation-type3;
+  @include screen-lg {
+    display: flex;
+    opacity: 1;
+    height: auto;
+  }
+
+  button {
+    height: auto;
+    min-height: 48px;
+    padding: 12px 40px;
+    font-weight: $font-weight-semi-bold;
+    width: 100%;
+    background-color: $app-theme-primary;
+    border-radius: 0;
+    &:only-child {
+      border-radius: 0px 0px 6px 6px;
+    }
+    &:first-child:not(:only-of-type) {
+      border-radius: 0 0 0 6px;
+      &:after {
+        content: "";
+        width: 1px;
+        position: absolute;
+        height: 70%;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: $gray1;
+      }
+      @include screen-lg {
+        font-size: $text-md;
+      }
+      &:hover {
+        box-shadow: none;
+      }
+    }
+    &:last-child:not(:only-of-type) {
+      border-radius: 0 0 6px 0;
+      @include screen-lg {
+        font-size: $text-md;
+      }
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+}
+.app-c-card__item:hover {
+  box-shadow: 4px 8px 20px rgba(198 207 216 / 85%);
+  .app-c-hover-show__footer {
+    opacity: 1;
+    height: auto;
+  }
+  .app-c-card-footer {
+    margin-bottom: 0px;
+  }
+}
+
+.app-l-srch__result {
+  @include is-mobile-d-none;
+  @extend %flex-vert-center;
+  justify-content: space-between;
+  padding: 10px 14px 10px 20px;
+  background: $gray4;
+  border-radius: $card-radius;
+  min-height: 41px;
+  min-width: 120px;
+  margin-top: 10px;
+  margin-right: 20px;
+  .app-l-srch__value {
+    color: $app-theme-primary;
+    font-size: $text-md;
+    font-weight: $font-weight-medium;
+    word-break: break-word;
+  }
+  .app-l-rmv {
+    margin-left: 4px;
+    cursor: pointer;
+    color: $gray1;
+    &:hover {
+      color: $app-theme-primary;
+    }
+    &:focus {
+      border-color: transparent;
+      color: $app-theme-primary;
+    }
+  }
+}
+
+.app-l-card-outer__wrapper {
+  .app-l-empty__data {
+    @extend %flex-all-center;
+    @include flex-direction(column);
+    padding-top: 43px;
+    @include screen-lg {
+      padding: 20px 37px 20px 37px;
+    }
+
+    .app-l-empty__indication {
+      margin-bottom: 20px;
+      width: 363px;
+      height: 293px;
+      @include screen-lg {
+        width: 185px;
+        height: auto;
+      }
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    h3 {
+      font-size: 2.4rem;
+      font-weight: $font-weight-semi-bold;
+      color: $app-theme-primary;
+      line-height: 3.6rem;
+      margin-bottom: 8px;
+      text-align: center;
+      @include screen-lg {
+        font-size: $text-lg;
+        line-height: 2.4rem;
+      }
+    }
+    p {
+      font-size: $text-lg;
+      font-weight: $font-weight-medium;
+      line-height: 2.4rem;
+      color: $gray1;
+      text-align: center;
+      @include screen-lg {
+        font-size: $text-md;
+        font-weight: $font-weight-regular;
+        line-height: 2.1rem;
+      }
+    }
+  }
+}

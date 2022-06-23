@@ -1,0 +1,240 @@
+@use "../abstracts" as *;
+
+.app-l-main-wrap{
+  padding-bottom: 0px;
+}
+.app-l-data-container{
+    @extend %flex-col;
+    min-height: calc(100% - 126px);
+    box-sizing: border-box;
+    @media (max-width: $screen-lg) {
+      min-height: calc(100% - 128px);
+      
+    }
+}
+.app-l-code-wrapper{
+    padding: 30px 105px 30px 30px;
+    padding-bottom: 142px;
+    flex: 1 1 auto;
+   @extend %flex-col;
+ 
+ 
+   @media (max-width: $screen-lg) {
+     padding: 30px 20px;
+     padding-bottom: 260px;
+   
+    }
+    .app-l-maincontent{
+        &--title{
+            font-size: $text-xxl-small;
+            font-weight: $font-weight-semi-bold;
+            margin-bottom: 20px;
+        }
+    }
+    .app-l-main__desc{
+        background-color: $white;
+        padding: 30px 40px 30px 30px;
+        border-radius: $card-radius;
+        height: 100%;
+        flex: 1 1 auto;
+        box-sizing: border-box;
+        @media (max-width: $screen-lg) {
+          padding: 30px 20px 22px 20px;
+         
+         
+        }
+    }
+    
+}
+.app-l-dtfooter{
+   @extend %flex-horiz-away;
+    position: fixed;
+    width: calc(100% - 110px);
+    bottom: 0;
+    background-color:$white;
+    padding: 28px 105px 28px 30px;
+    flex-shrink: 0;
+    z-index: 2;
+    box-shadow: 0px -4px 31px rgba(157, 167, 176, 0.2);
+    align-items: center;
+    .app-c-note--txt{
+      color: $gray1;
+      font-size: $text-lg;
+      font-weight: $font-weight-medium;
+      line-height: 1.5;
+      @include screen-lg{
+        margin-bottom: 20px;
+        font-size: $text-md;
+      }
+    }
+    @media (max-width: $screen-lg) {
+        width: 100%;
+        bottom: 70px;
+        box-shadow: 0px -4px 31px rgba(157, 167, 176, 0.2);
+        flex-direction: column;
+        padding: 20px 20px 23px 20px;
+        justify-content: center;
+        align-items: center;
+    }
+    &--right{
+        @extend %flex;
+        flex-shrink: 0;
+        @include screen-lg {
+          width: 100%;
+        }
+        .app-btn-primary{
+            margin-left: 20px;
+            &.app-btn-trf{
+              @include screen-lg {
+              margin-left: 11px;
+              }
+            }
+        }
+        .app-btn-lg{
+          padding: 16px 35px;
+        }
+    }
+    &--left{
+      .app-l-cd-wrapper{
+        border: 1px solid $app-theme-tertiary-red;
+        padding: 10px 20px;
+        border-radius:$card-radius;
+        .app-l-cd-data{
+          font-size: $text-md;
+          font-weight: $font-weight-regular;
+          color: $app-theme-primary;
+          margin-bottom: 4px;
+          @include screen-lg {
+            margin-right: 10px;
+          }
+        }
+        .app-l-cd-counter{
+          font-size: $text-md;
+          font-weight: $font-weight-bold;
+          color: $app-theme-tertiary-red;
+          span{
+            margin-right: 3px;
+            + span{
+              margin-left: 3px;
+            }
+          }
+         
+        }
+        @include screen-lg {
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+      @include screen-lg {
+        width: 100%;
+        margin-bottom: 20px;
+       }
+    }
+    .label-text{
+      margin-right: 4px;
+      @include screen-lg {
+        display: none;
+     }
+    }
+    .app-c-text-desktop{
+      @include screen-lg {
+        display: none;
+      }
+    }
+    .app-c-text-mobile{
+      display: none;
+      @include screen-lg {
+        display: block;
+      }
+    }
+    .label-icon{
+      display: none;
+     
+      @include screen-lg {
+        display: inline;
+        margin-right: 10px;
+      }
+      @media (max-width:$screen-xs) {
+        margin-right: 7px;
+      }
+    }
+    .label-text-right{
+      text-transform: lowercase;
+      @include screen-lg {
+        text-transform: initial;
+      }
+    }
+    .app-btn-primary{
+     @include screen-lg {
+        padding: 16px 10px;
+        flex: 1 1 50%;
+      }
+      @media (max-width: 375px) {
+        padding: 12px;
+      }
+      @media (max-width:$screen-xs) {
+        padding: 10px;
+        font-size: $text-md;
+      }
+    }
+    .app-btn-secondary{
+      @include screen-lg {
+        padding: 16px 10px;
+        flex: 1 1 50%;
+      }
+      @media (max-width: 375px) {
+        padding: 12px;
+      }
+      @media (max-width: $screen-xs) {
+        padding: 10px;
+        font-size: $text-md;
+      }
+    }
+}
+.app-c-submit-ft-wrapper{
+  @extend %flex-vert-center;
+  flex-grow: 1;
+  @include screen-lg {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 19px;
+  }
+  .app-c-note--txt{
+    @include screen-lg {
+      margin-bottom: 0px;
+    }
+  }
+}
+
+.app-c-score-dt{
+  @extend %flex;
+  font-size: $text-lg;
+    font-weight: $font-weight-medium;
+    color: $gray1;
+    line-height: 1.5;
+  padding-right: 40px;
+  margin-left: auto;
+  @include screen-lg {
+    padding-right: 0px;
+    font-size: $text-md;
+  }
+  .score-label{
+    padding-right: 15px;
+    padding-top: 4px;
+    
+  }
+  .score-value{
+    font-weight: $font-weight-semi-bold;
+    @include screen-lg {
+      font-weight: $font-weight-medium;
+    }
+    .score-numerator{
+      font-size:$text-xxl;
+      font-weight: $font-weight-bold;
+      color: $app-theme-primary-green;
+      @include screen-lg {
+        font-size: $text-xl;
+      }
+    }
+  }
+}

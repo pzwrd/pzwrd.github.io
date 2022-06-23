@@ -1,0 +1,552 @@
+@use "../abstracts" as *;
+@use "../framework/dropdown" as *;
+
+.angular_selectbox {
+  @include dropdown;
+  min-width: 140px;
+  @media (max-width: $screen-md) {
+    min-width: auto;
+  }
+  &.overlay-dropdown {
+    min-width: 180px;
+    .angular_selectbox--menu-button {
+      min-height: auto;
+      background-color: transparent;
+      padding: 1px 21px 1px 16px;
+      max-width: 310px;
+      @media (max-width: $screen-md) {
+        padding: 4px 19px 4px 16px;
+        margin-bottom: 10px;
+      }
+    }
+
+    @media (max-width: $screen-md) {
+      min-width: auto;
+      margin-top: 8px;
+      .angular_selectbox--button-text {
+        margin-right: 13px;
+        color: $gray2;
+      }
+      .angular_selectbox--menu-icon {
+        margin-top: 4px;
+      }
+    }
+    .angular_selectbox--menu-button {
+      &:focus,
+      &.has-focus,
+      &:hover {
+        outline: none;
+        border: 1px solid transparent;
+        box-shadow: none;
+      }
+    }
+  }
+  &.notice-period-date {
+    min-width: 133px;
+    .angular_selectbox--menu-button {
+      justify-content: center;
+      .angular_selectbox--menu-icon {
+        margin-left: 10px;
+        @media (max-width: $screen-md) {
+          margin-left: 8px;
+        }
+        svg {
+          color: $black;
+        }
+      }
+      .angular_selectbox--button-text {
+        color: $black;
+        font-weight: $font-weight-medium;
+      }
+      @media (max-width: $screen-md) {
+        width: auto;
+        .angular_selectbox--button-text {
+          margin-right: 10px;
+          min-width: 16px;
+          font-size: $text-lg;
+        }
+      }
+    }
+  }
+  &--menu-button {
+    width: 100%;
+    background: $white;
+    border-radius: 8px;
+    padding: 12px 21px 12px 16px;
+    min-height: auto;
+    height: 48px;
+    border: 1px solid transparent;
+    transition: box-shadow $animation-duration3 $animation-type3,
+      border-color $animation-duration3 $animation-type3;
+    color: $gray2;
+    @media (max-width: $screen-sm) {
+      height: 38px;
+      padding: 8px 21px 8px 16px;
+    }
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+      .angular_selectbox--button-text {
+        color: $gray1;
+        &.-value {
+          color: $gray1;
+        }
+      }
+    }
+    .angular_selectbox--button-text {
+      font-size: $text-lg;
+      color: $gray1;
+      @extend %truncate;
+      @media (max-width: $screen-sm) {
+        font-size: $text-md;
+      }
+      &.-value {
+        color: $gray1;
+        font-weight: $font-weight-regular;
+        text-transform: capitalize;
+      }
+    }
+    .angular_selectbox--menu-icon {
+      .clear-selection {
+        margin-right: 10px;
+      }
+      .dropdown-caret {
+        transition: transform $animation-duration3 $animation-type3;
+        svg {
+          color: $gray1;
+          @media (max-width: $screen-md) {
+            width: 10px;
+            height: 10px;
+          }
+        }
+      }
+      .clear-selection {
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        .icon-svg {
+          color: $gray1;
+        }
+        &:hover {
+          .icon-svg.icon-theme2 {
+            color: $app-theme-primary;
+          }
+        }
+      }
+    }
+    &:focus,
+    &.has-focus {
+      outline: none;
+      border: 1px solid $app-theme-primary-green;
+    }
+    &:hover:not(.form-error) {
+      border: 1px solid $app-theme-primary-green;
+    }
+    &.disabled {
+      &:hover,
+      &:focus,
+      &.has-focus {
+        &:not(.form-error) {
+          box-shadow: none;
+          border: 1px solid transparent;
+        }
+      }
+    }
+    &.form-error {
+      border: 1px solid $error;
+    }
+    &:active {
+      color: $gray2;
+    }
+  }
+  &--dropdown-panel {
+    &.angular_selectbox--menu {
+      box-shadow: 4px 8px 20px rgba(198, 207, 216, 0.25);
+      border-radius: 8px;
+      border: 1px solid $white;
+      background-color: $white;
+      padding: 16px 5px;
+      transition: transform $animation-duration3 $animation-type3,
+        opacity $animation-duration3 $animation-type3,
+        visibility $animation-duration3 $animation-type3;
+      @media (max-width: $screen-sm) {
+        padding: 10px 10px 10px 0px;
+      }
+      .angular_selectbox--menu-item {
+        font-size: $text-md;
+        padding: 8px 19px;
+        cursor: pointer;
+        transition: background-color $animation-duration3 $animation-type3;
+        border-radius: 0px;
+        min-height: auto;
+        height: 36px;
+        color: $gray1;
+        font-weight: $font-weight-medium;
+        text-transform: capitalize;
+        @media (max-width: $screen-sm) {
+          font-size: $text-sm;
+        }
+        &.disabled {
+          opacity: 0.6;
+          pointer-events: none;
+        }
+        &.no-item-choose {
+          pointer-events: none;
+          &:hover {
+            background-color: transparent;
+            border: 0;
+          }
+        }
+        & + .angular_selectbox--menu-item {
+          margin-top: 5px;
+        }
+
+        &.selected {
+          color: $app-theme-primary;
+          font-weight: $font-weight-medium;
+        }
+        &.option-highlight:not(.disabled) {
+          background-color: rgba($color: $gray5, $alpha: 0.5);
+        }
+        &:hover {
+          background-color: rgba($color: $gray5, $alpha: 0.5);
+        }
+      }
+      &.down-angular_selectbox {
+        transform: translateY(15px);
+        &.open-angular_selectbox--dropdown-open {
+          animation: $animation-duration3 $animation-type3 slidedown forwards;
+          @keyframes slidedown {
+            100% {
+              opacity: 1;
+              transform: translateY(6px);
+            }
+          }
+        }
+      }
+      &.up-angular_selectbox {
+        transform: translateY(-15px);
+        &.open-angular_selectbox--dropdown-open {
+          animation: $animation-duration3 $animation-type3 slideUp forwards;
+          @keyframes slideUp {
+            100% {
+              transform: translateY(-6px);
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      @include dropdownPanel;
+    }
+  }
+
+  &.open-angular_selectbox {
+    .angular_selectbox--menu-button {
+      .angular_selectbox--menu-icon {
+        .dropdown-caret {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+  ~ .form-error-text {
+    @extend %flex-vert-center;
+    .form-error-icon {
+      padding-right: 5px;
+    }
+    .form-error-message {
+      font-size: $text-md-plus;
+      margin-top: 3px;
+    }
+  }
+}
+.app-selectbox__grey {
+  .angular_selectbox--menu-button {
+    background: $gray5;
+    color: $gray1;
+    @media (max-width: $screen-md) {
+      margin-bottom: 15px;
+    }
+    .angular_selectbox--button-text {
+      @media (max-width: $screen-lg) {
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+.app-selectbox__period {
+  width: 100%;
+  .angular_selectbox--menu-button {
+    color: $gray1;
+    @media (max-width: $screen-md) {
+      min-height: auto;
+      height: 47px;
+    }
+    .angular_selectbox--button-text {
+      @media (max-width: $screen-lg) {
+        font-size: $text-md;
+        font-weight: $font-weight-medium;
+      }
+    }
+  }
+}
+.app-c-select__phonecode {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  @extend %flex;
+  &:hover {
+    border: 1px solid $app-theme-primary-green;
+  }
+  .angular_selectbox {
+    min-width: 70px;
+  }
+  .angular_selectbox--menu-button {
+    border-radius: 8px 0px 0px 8px;
+    color: $app-theme-primary;
+    padding: 12px 0px 12px 15px;
+    @media (max-width: $screen-md) {
+      height: 47px;
+      min-height: auto;
+    }
+    &:focus,
+    &:hover {
+      border: 1px solid transparent;
+    }
+  }
+  &.borderActive {
+    border: 1px solid $app-theme-primary-green;
+    border-radius: 8px;
+  }
+  .app-l-form-wrap {
+    .angular_selectbox--menu-button {
+      border-radius: 8px 0px 0px 8px;
+    }
+  }
+  .app-textfield {
+    border-radius: 0px 8px 8px 0px;
+    padding-left: 10px;
+    &:focus:not(.form-error),
+    &:hover:not(.form-error) {
+      border: 1px solid transparent;
+    }
+    &:focus,
+    &:hover {
+      border: 1px solid transparent;
+    }
+  }
+}
+.app-c-select-simple {
+  .angular_selectbox--menu {
+    padding: 5px;
+  }
+  .angular_selectbox--menu-button {
+    background: $white;
+    border: 1px solid $gray4;
+    border-radius: 32px;
+    height: 42px;
+    min-height: auto;
+    padding: 10.5px 20px 10.5px 20px;
+    .angular_selectbox--menu-icon {
+      position: relative;
+      top: 2px;
+    }
+    @include screen-lg {
+      height: 31px;
+      padding: 8px 13px 8px 29px;
+      .angular_selectbox--menu-icon {
+        top: 0;
+      }
+    }
+  }
+  .angular_selectbox--button-text.-value {
+    font-size: $text-sm;
+    margin-left: 20px;
+    margin-right: 10px;
+    width: 107px;
+    @extend %truncate;
+    font-weight: $font-weight-medium;
+    @include screen-lg {
+      font-size: $text-xs;
+      margin: 0 3px;
+      width: 90px;
+      line-height: 1.5rem;
+    }
+  }
+  .angular_selectbox--menu-item {
+    &.active-search,
+    &.passive-search {
+      padding-left: 40px;
+      position: relative;
+      &:before {
+        top: 14px;
+      }
+    }
+  }
+  .active-search::before,
+  .passive-search::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: 21px;
+    border-radius: $circle-radius;
+    top: 16px;
+
+    @include screen-lg {
+      top: 12px;
+      left: 14px;
+    }
+  }
+  .active-search::before {
+    background: $app-theme-secondary-green;
+  }
+  .passive-search::before {
+    background: $gray3;
+  }
+  &.app-c-select-sort {
+    .angular_selectbox--menu-button {
+      @include screen-lg {
+        height: 31px;
+        min-height: auto;
+        padding: 8px 13px 8px 13px;
+      }
+    }
+    .angular_selectbox--button-text.-value {
+      margin-left: 0px;
+      width: 116px;
+      font-size: $text-md;
+      @include screen-lg {
+        font-size: $text-sm-plus;
+        margin: 0 3px;
+        line-height: 1.5rem;
+      }
+    }
+  }
+  &.app-c-select-sm {
+    @media (min-width: $screen-lg) {
+      .sort-icon-button {
+        display: none;
+      }
+    }
+    @include screen-lg {
+      .angular_selectbox {
+        min-width: auto;
+      }
+      .angular_selectbox--menu-icon {
+        display: none;
+      }
+      .angular_selectbox--button-text.-value {
+        display: none;
+      }
+      .angular_selectbox--menu-button {
+        padding: 0;
+        border: none;
+        background-color: transparent;
+        min-height: auto;
+      }
+      .angular_selectbox--dropdown-panel {
+        min-width: 175px;
+        right: 0;
+      }
+      button {
+        color: $gray1;
+      }
+      .toggleOl {
+        color: $app-theme-primary-green-dark;
+      }
+    }
+  }
+}
+.app-l-form-items,.app-l-gray-items {
+  .angular_selectbox {
+    .angular_selectbox--menu-button {
+      background-color: $gray5;
+    }
+  }
+  .app-selectbox__location {
+    .angular_selectbox--menu-button {
+      background-color: $gray5;
+      height: 48px;
+      @media (max-width: $screen-md) {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+.angular_selectbox--grey-button {
+  .angular_selectbox--menu-button {
+    background: #f6f7fa;
+  }
+  &.app-c-darktheme-select{
+    .angular_selectbox--menu-button {
+      background: $app-theme-primary;
+      @media (max-width: $screen-sm) {
+        height: 48px;
+      }
+      .angular_selectbox--button-text{
+        color: $gray4;
+      }
+      .angular_selectbox--menu-icon{
+        .dropdown-caret svg{
+        color: $gray4;
+        }
+      }
+    }
+  }
+}
+/*-------------multidata dropdown list----------*/
+.app-l-dropdowngroup-list{
+ 
+  .app-l-dropdowngroup-list-row{
+    @extend %flex;
+    flex-wrap: wrap;
+    .app-l-dropdowngroup-list-item{
+       flex: 50%;
+       margin-bottom: 13px;
+       padding-right: 43px;
+       &:last-child{
+         margin-bottom: 0px;
+       }
+       .dropdown-sub-title{
+        font-weight: $font-weight-medium;
+        font-size: $text-sm;
+        line-height: 1.5;
+        color: rgba(131, 144, 168, 0.8);
+        padding: 0px 10px;
+        margin-bottom: 6px;
+       }
+       .dropdown-sub-item{
+         margin-bottom: 3px;
+       .dropdown-sub-link{
+         padding: 4px 10px;
+         font-weight: $font-weight-medium;
+         font-size: $text-md;
+         border-radius: 4px;
+         display: block;
+         cursor:pointer;
+         color: $gray1;
+         line-height: 1.5;
+         transition: color $animation-type3 $animation-duration3,
+         font-weight $animation-type3 $animation-duration3;
+         &:hover{
+          background: $gray5;
+         font-weight: $font-weight-semi-bold;
+          color: $app-theme-primary;
+         }
+       }
+       &.selected{
+        background: $gray5;
+        font-weight: $font-weight-semi-bold;
+        color: $app-theme-primary;
+       }
+       &.option-highlight:not(.disabled) {
+        background-color: rgba($color: $gray5, $alpha: 0.5);
+       
+      }
+      }
+    }
+
+  }
+}

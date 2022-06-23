@@ -1,0 +1,498 @@
+@use "../abstracts" as *;
+
+@mixin textfield() {
+  display: block;
+  width: 100%;
+}
+
+%textfield {
+  @include textfield;
+}
+
+
+.app-textfield {
+  @include textfield;
+  padding-left: $field-p-x;
+  padding-right: $field-p-x;
+  font-family: $body-font;
+  font-size: 1.6rem;
+  border-radius: 8px;
+  border: 1px solid $white;
+  transition: border-color $animation-type3 $animation-duration3,
+  box-shadow $animation-type3 $animation-duration3;
+  color:$app-theme-primary;
+  font-weight: $font-weight-medium;
+  @extend %truncate;
+  &.app-darktheme-textfield{
+    background: $app-theme-primary;
+    border: 1px solid $app-theme-primary;
+    color: $white;
+    &::placeholder {
+      color:$gray4;
+    }
+  }
+  &::placeholder {
+    color: $gray1;
+    font-weight: $font-weight-regular;
+  }
+  &:hover{
+   &:not(.form-error) {
+     border-color: $app-theme-primary-green;
+    }
+  }
+  &:focus {
+    outline: none;
+
+    &:not(.form-error) {
+      border-color: $app-theme-primary-green;
+
+    }
+
+  }
+  &.form-error {
+    border:1px solid $app-theme-tertiary-red;
+    color: $app-theme-tertiary-red;
+  }
+  &:disabled,
+  &.disabled {
+    border-color: $gray3;
+    color: $gray3;
+    cursor: not-allowed;
+    background-color: $white;
+    &:hover{
+      box-shadow: none;
+      border-color: $gray3;
+    }
+    & + .calendar{
+      opacity: 0.6;
+      &:hover{
+        cursor: not-allowed;
+        svg{
+          color: $gray3;
+        }
+      }
+    }
+  }
+
+  &-md {
+    height: $field-btn-md-h; /* 40px */
+    padding-top: ($field-btn-md-py + 1); /* 10px */
+    padding-bottom: ($field-btn-md-py + 1);
+  }
+
+  &-lg {
+    height: ($field-btn-md-h + 8); /* 48px */
+    padding-top: ($field-btn-md-py + 3); /* 12px */
+    padding-bottom: ($field-btn-md-py + 3);
+    background: $white;
+    border-radius: 8px;
+    @media (max-width: $screen-md) {
+      height: 4.8rem;
+    }
+    
+  }
+  @media (max-width: $screen-md) {
+    font-size: 1.4rem;
+    color:$app-theme-primary;
+  }
+ }
+
+.app-textareafield {
+  @include textfield;
+  padding-left: $field-p-x;
+  padding-right: $field-p-x;
+  font-family: $body-font;
+  font-size: 1.6rem;
+  border-radius: 8px;
+  border: 1px solid $white;
+  font-weight:$font-weight-medium;
+  transition: border-color $animation-type3 $animation-duration3,
+  box-shadow $animation-type3 $animation-duration3;
+  color:$app-theme-primary;
+  resize:none;
+  &.dark-theme{
+    background-color: $app-theme-primary;
+    color: $white;
+    border-color: $app-theme-primary;
+    &::placeholder {
+      color:$gray4;
+    }
+  }
+  &:disabled,
+  &.disabled {
+    background-color: $gray6;
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color:$gray1;
+  }
+
+  &:focus {
+    outline: none;
+
+    &:not(.form-error) {
+      border-color: $app-theme-primary-green;
+    }
+
+    &.form-error {
+      border-color: $error;
+    }
+  }
+  &.form-error {
+    border-color: $error;
+  }
+
+  &-md {
+    height: $field-btn-md-h; /* 40px */
+    padding-top: ($field-btn-md-py + 1); /* 10px */
+    padding-bottom: ($field-btn-md-py + 1);
+  }
+
+  &-lg {
+    height: 9.6rem; /* 96px */
+    padding-top: ($field-btn-md-py + 3); /* 12px */
+    padding-bottom: ($field-btn-md-py + 3);
+    background: $white;
+    border-radius: 8px;
+    @media (max-width: $screen-md) {
+      height: 9.6rem;
+    }
+  }
+  @media (max-width: $screen-md) {
+    font-size: 1.6rem;
+    color:$app-theme-primary;
+  }
+}
+
+.app-l-form-wrap {
+  max-width: 550px;
+  @media (max-width: $screen-md) {
+    max-width: 100%;
+  }
+  &--label{
+    font-weight: $font-weight-medium;
+    font-size: $text-md;
+    color: $gray1;
+    margin-bottom: 10px;
+    display: block;
+    @media (max-width: $screen-md) {
+      font-weight: $font-weight-medium;
+      font-size: $text-sm-plus;
+      margin-bottom: 10px;
+    }
+  }
+  &.addon {
+    position: relative;
+    @extend %touch-tap-none;
+    .app-btn-addon {
+      position: absolute;
+      top: 24px;
+      transform: translateY(-50%);
+    }
+  }
+
+  //icon
+  &.addon-start {
+    .app-btn-addon {
+      left: 16px;
+    }
+
+    &.addon-size-24 {
+      .app-textfield {
+        padding-left: calc(
+          #{nth($icon-sizes, 6)} + 16px + 5px
+        ); /* icon width + left pos value + extra spacing*/
+      }
+    }
+  }
+
+  //icon
+  &.addon-end {
+    .app-textfield {
+      padding-right: calc(
+        #{nth($icon-sizes, 6)} + 20px + 5px
+      ); /* icon width + left pos value + extra spacing*/
+    }
+
+    .app-btn-addon {
+      right: 13px;
+
+      @media (max-width: $screen-md) {
+        &.date-btn {
+          top: 18px;
+        }
+      }
+      &.right-end{
+        right: 0;
+        margin: 0;
+        top: calc(24px - (48px / 2));
+        transform: none;
+        .app-btn-circle-outer{
+          width: 46px;
+          height: 46px;
+          @media (max-width:$screen-md){
+            width: 36px;
+            height: 36px;
+          }
+        }
+        @media (max-width:$screen-md){
+          top: calc(19px - (38px / 2));
+        }
+      }
+      &.left-end {
+        left: 0px;
+      }
+      //icon+button
+      &.edit-btn {
+        height: 40px;
+        width: 40px;
+        right: 5px;
+        background: $gray6;
+        border-radius: $field-addon-btn-radius;
+
+        &:active .ripple {
+          animation: none;
+        }
+
+        .ripple-wrapper {
+          color: rgba($color: $gray6, $alpha: 0.2);
+        }
+        @media (max-width: $screen-md) {
+            height: 30px;
+            width: 30px;
+            right: 5px;
+            top: 19px;
+
+        }
+      }
+    }
+
+    &.addon-size-24 {
+      .app-textfield {
+        padding-right: calc(#{nth($icon-sizes, 6)} + 15px + 5px); /* icon width + right pos value + extra spacing*/
+      }
+    }
+  }
+
+  //icon+button
+  &.addon-info {
+    .app-textfield {
+      padding-left: calc(#{nth($icon-sizes, 6)} + 16px + 10px); /* icon width + left pos value + extra spacing*/
+    }
+
+    input {
+      &:focus {
+        &:not(.form-error) {
+          & + .app-btn-addon {
+            border-color: $app-theme-primary;
+          }
+        }
+      }
+    }
+
+    .app-btn-addon {
+      @extend %flex-all-center;
+      height: 40px;
+      width: 40px;
+      left: 0;
+      top: 20px;
+      border-radius: 10px 0 0 10px;
+      border-right: 1px solid $gray6;
+
+      .ripple-wrapper {
+        color: rgba($color: $gray6, $alpha: 0.2);
+      }
+    }
+  }
+
+  //form error
+  .form-error {
+    & + .app-btn-addon {
+      &.edit-btn {
+        background: transparent;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+ //icon top pos on md-form-field
+  &.md {
+    &.addon {
+      .app-btn-addon {
+        top: 20px;
+      }
+    }
+  }
+}
+
+/* hides the default password toggle icon in IE11 */
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+.add-on-right{
+  right:auto;
+}
+.app-l-textfield-wrap{
+  position: relative;
+  button,label{
+    &.close,&.icon__right{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 14px;
+      border: none;
+      padding: 0;
+      background-color: transparent;
+      cursor: pointer;
+      z-index: 0;
+      .icon-svg{
+        color:$gray1;
+      }
+    }
+    &.calendar{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 16px;
+      border: none;
+      padding: 0;
+      background-color: transparent;
+      cursor: pointer;
+      z-index: 0;
+      pointer-events: none;
+    }
+    &:focus{
+      outline: none;
+    }
+    &:hover{
+      .icon-svg{
+        color:$app-theme-primary;
+      }
+    }
+  }
+  .left-icon{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 16px;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 0;
+    .app-l-info-icon{
+      font-size: $text-lg;
+      font-weight: $font-weight-medium;
+      color: $gray1;
+      width: 26px;
+      border-right: 1px solid $gray4;
+     @extend %flex-vert-center;
+      height: 24px;
+    }
+  }
+  .app-textfield-icon-right{
+    padding-right: 40px;
+  }
+  .app-textfield-icon-right-xl{
+    padding-right: 50px;
+  }
+  .app-textfield-icon-left{
+    padding-left: 58px;
+  }
+  .label__right{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 16px;
+    border: none;
+    font-size:$text-md;
+    font-weight: $font-weight-regular;
+    color: $app-theme-primary;
+  }
+}
+.app-l-textareafield-wrap{
+  position: relative;
+  button{
+    &.close{
+      position: absolute;
+      top: 18px;
+      right: 16px;
+      border: none;
+      padding: 0;
+      background-color: transparent;
+      cursor: pointer;
+      z-index: 0;
+    }
+    &:focus{
+      outline: none;
+    }
+  }
+
+}
+
+.app-l-file-upload{
+  height: 48px;
+  background: $white;
+  border-radius: 8px;
+  border: 1px solid $white;
+  transition: border-color $animation-type3
+  $animation-duration3;
+  color: $gray1;
+  font-weight: $font-weight-regular;
+  font-size: $text-lg;
+  &.app-l-placeholder__hide{
+   color:$app-theme-primary;
+   font-weight: $font-weight-medium;
+  }
+  input[type=file] {
+   display:none;
+  }
+  label{
+      &.icon__right{
+          position: absolute;
+          right: 16px;
+          top: 50%;
+          transform: translateY(-50%);
+          cursor: pointer;
+          
+      }
+      &:hover{
+          .icon-svg{
+              color:$app-theme-primary;
+          }
+      }
+  }
+  .app-l-file-name{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 16px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      right: 45px;
+      @extend %truncate;
+      @media (max-width: $screen-md) {
+          font-size: $text-md;
+      }
+  }
+  &:hover{
+      &:not(.form-error) {
+        border: 1px solid $app-theme-primary-green;
+       }
+  }
+  &:focus {
+      outline: none;
+  &:not(.form-error) {
+      border-color: $app-theme-primary-green;
+      
+      }
+  
+  }
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
